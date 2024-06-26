@@ -1,0 +1,63 @@
+/* AddNewProduct.css */
+.modal-overlay-custom {
+    background-color: rgba(0, 0, 0, 0.5); /* Customize as needed */
+  }
+  
+  .modal-content-custom {
+    background-color: white; /* Customize as needed */
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    width: 1000px !important; /* Increased width for larger modal */
+    /* max-width: 800px; Ensure it doesn't get too wide on larger screens */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .modal-content-custom h2 {
+    font-family: 'Krona One', sans-serif;
+    margin-top: 0;
+  }
+  
+  .modal-content-custom form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-content-custom form label {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .modal-content-custom form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .modal-content-custom form button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%; /* Full width buttons for better touch targets on mobile */
+  }
+  
+  .modal-content-custom form button + button {
+    margin-top: 10px; /* Adjust margin for stacked buttons on mobile */
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .modal-content-custom {
+      width: 70%; /* Adjusted for larger screens */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .modal-content-custom {
+      width: 90%; /* Ensure it fits well on smaller screens */
+    }
+  }
+  

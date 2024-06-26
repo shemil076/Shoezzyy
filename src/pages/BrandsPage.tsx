@@ -5,16 +5,16 @@ import { fetchShoes } from '../features/shoeSlice';
 import '../styles/styles.css';
 import { Brand } from '../types/enum';
 import { getReadableBrandName } from '../utils/helperFunctions';
+import ProductCard from '../components/ProductCard';
 
 const brandCoverImages: Record<Brand, string> = {
-  [Brand.Adidas]: '/assets/mensShoes.jpg',
-  [Brand.AllStarConverse]: '/assets/womenshoes.jpg',
-  [Brand.NewBalance]: '/assets/kidsShoes.jpg',
-  [Brand.Nike]: '',
-  [Brand.VansOldSkool]: ''
+  [Brand.ADIDAS]: '/assets/mensShoes.jpg',
+  [Brand.ALLSTARCONVERSE]: '/assets/womenshoes.jpg',
+  [Brand.NEWBALANCE]: '/assets/kidsShoes.jpg',
+  [Brand.NIKE]: '',
+  [Brand.VANSOLDSKOOL]: ''
 };
 ;
-
 
 const BrandsPage: React.FC = () => {
   const { brand: brandParam } = useParams<{ brand: string }>();
@@ -36,10 +36,11 @@ const BrandsPage: React.FC = () => {
       {loading ? <p>Loading...</p> : (
         <ul>
           {shoes.map((shoe) => (
-            <li key={shoe.name}>
-              <img src={shoe.image} alt={shoe.name} />
-              <p>{shoe.name}</p>
-            </li>
+            // <li key={shoe.name}>
+            //   <img src={shoe.image} alt={shoe.name} />
+            //   <p>{shoe.name}</p>
+            // </li>
+            <ProductCard image='/assets/testProduct.jpeg' price={0} name={shoe.name}></ProductCard>
           ))}
         </ul>
       )}

@@ -1,8 +1,17 @@
 export enum Brand {
-    Adidas = 'Adidas',
-    AllStarConverse = 'AllStarConverse',
-    NewBalance = 'NewBalance',
-    Nike = 'Nike',
-    VansOldSkool = 'VansOldSkool'
+    ADIDAS  = 'Adidas',
+    ALLSTARCONVERSE = 'AllStarConverse',
+    NEWBALANCE = 'NewBalance',
+    NIKE = 'Nike',
+    VANSOLDSKOOL = 'VansOldSkool'
   }
   
+  export enum ProductCategory {
+    SHOES = "shoes",
+    EYEWEAR = "eyewear",
+  }
+
+export enum orderStatus{
+  NEW ="new",
+  DELIVERED="delivered",
+}
