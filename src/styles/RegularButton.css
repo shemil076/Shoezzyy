@@ -1,0 +1,28 @@
+.regular-black-button {
+    background-color: black;
+    color: white;
+    border: none;
+    height: 30px;
+    margin-top: 5px;
+    /* border-radius: 30px; */
+    /* padding: 5px 20px; */
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .regular-black-button:hover {
+    background-color: #333;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .regular-black-button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+    }
+  }
+  

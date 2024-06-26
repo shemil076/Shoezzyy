@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Category from './pages/Category';
+import Brands from './pages/BrandsPage';
 import TrackOrder from './pages/TrackOrder';
 
 const App: React.FC = () => {
@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/category/:category" element={<Category />} />
+          <Route path="/:brand" element={<Brands />} />
           <Route path="/track-order" element={<TrackOrder />} />
         </Routes>
       </Router>

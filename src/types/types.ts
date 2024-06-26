@@ -1,6 +1,6 @@
 export interface Shoe {
     name: string;
-    category: 'men' | 'women' | 'kids';
+    brand: 'men' | 'women' | 'kids';
     image: string;
   }
   

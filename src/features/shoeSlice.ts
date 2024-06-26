@@ -12,8 +12,8 @@ const initialState: ShoeState = {
   loading: false
 };
 
-export const fetchShoes = createAsyncThunk<Shoe[], string>('shoes/fetchShoes', async (category) => {
-  const response = await axios.get(`/api/shoes/${category}`);
+export const fetchShoes = createAsyncThunk<Shoe[], string>('shoes/fetchShoes', async (brand) => {
+  const response = await axios.get(`/api/shoes/${brand}`);
   return response.data;
 });
 
