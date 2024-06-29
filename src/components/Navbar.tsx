@@ -46,8 +46,8 @@ const Navbar = () => {
       <div className='admin-button-container'>
       <Button className="regular-black-button" onClick={openShoeModal}>Add Product</Button>
       <Button className="regular-black-button" onClick={openCreateOrderModal}>Create Order</Button>
-      <Button className="regular-black-button" onClick={openUpdateOrderModal}>Order Status</Button>
-      <AddNewProductModal isOpen={ishoeModal} onClose={closeShoeModal} onSave={()=>console.log("hi")} />
+      <Button className="regular-black-button" onClick={openUpdateOrderModal}>Update Order</Button>
+      <AddNewProductModal isOpen={ishoeModal} onClose={closeShoeModal}/>
       <CreateOrderModal isOpen={isCreateOrderModal} onClose={closeCreateOrderModal} onSave={()=>console.log("hi")}/>
       <UpdateOrderStatusModal isOpen={isUpdateOrderModal} onClose={closeUpdateOrderModal} onSave={()=>console.log("hi")}/>
       </div>

@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <div>
       <div>
       <img src="/assets/homeCover.jpg" alt="cover" className="cover-image"/>
-      <h1 className='section-name'>Featured Products</h1>
+      <h1 className='section-name'>New Arrivals</h1>
       </div>
     </div>
   )

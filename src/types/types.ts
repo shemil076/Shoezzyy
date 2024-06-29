@@ -1,7 +1,12 @@
+import { Brand } from "./enum";
+
 export interface Shoe {
+    _id: number,
     name: string;
-    brand: 'men' | 'women' | 'kids';
-    image: string;
+    brand: Brand
+    price: number;
+    description : string;
+    images: string[];
   }
   
   export interface Order {

@@ -11,7 +11,9 @@ export enum Brand {
     EYEWEAR = "eyewear",
   }
 
-export enum orderStatus{
-  NEW ="new",
+export enum OrderStatus{
+  NEW = "new",
+  IMPORTING ="importing",
+  ARRIVED= "arrived",
   DELIVERED="delivered",
 }

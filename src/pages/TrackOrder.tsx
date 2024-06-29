@@ -29,7 +29,7 @@ const TrackOrder: React.FC = () => {
             <p>Job ID: {orderStatus.jobId}</p>
             <p>Shoe: {orderStatus.shoeId.name}</p>
             <p>Status: {orderStatus.status}</p>
-            <img src={orderStatus.shoeId.image} alt={orderStatus.shoeId.name} />
+            {/* <img src={orderStatus.shoeId.image} alt={orderStatus.shoeId.name} /> */}
           </div>
         )
       )}
