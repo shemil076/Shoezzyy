@@ -17,8 +17,9 @@
     padding: 20px;
     border-radius: 8px;
     position: relative;
-    width: 100%; /* Adjusted for mobile-friendly design */
-    max-width: 800px; /* Ensure it doesn't get too wide on larger screens */
+    height: auto;
+    width: auto; /* Adjusted for mobile-friendly design */
+    /* max-width: 800px; Ensure it doesn't get too wide on larger screens */
     box-sizing: border-box; /* Ensure padding is included in the width */
   }
   

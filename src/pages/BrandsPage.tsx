@@ -7,7 +7,6 @@ import '../styles/BrandsPage.css'
 import { Brand } from '../types/enum';
 import { getReadableBrandName } from '../utils/helperFunctions';
 import ProductCard from '../components/ProductCard';
-import ProductDetailModal from '../modals/ProductDetaiModal';
 
 const brandCoverImages: Record<Brand, string> = {
   [Brand.ADIDAS]: '/assets/mensShoes.jpg',
@@ -23,10 +22,7 @@ const BrandsPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const shoes = useAppSelector((state) => state.shoes.shoes);
   const loading = useAppSelector((state) => state.shoes.loading);
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
-  const openProductDetailModal = () => setIsProductDetailOpen(true);
-  const closeProductDetailModal = () => setIsProductDetailOpen(false);
   useEffect(() => {
     if (brandName) {
       dispatch(fetchShoes(brandName));
@@ -42,11 +38,7 @@ const BrandsPage: React.FC = () => {
       {loading ? <p>Loading...</p> : (
         <div className="product-list">
           {shoes.map((shoe) => (
-            <>
-            <ProductCard shoe={shoe} onClick={openProductDetailModal}/>
-            
-            < ProductDetailModal isOpen={isProductDetailOpen} shoe={shoe}  onClose={closeProductDetailModal}/>
-            </>
+            <ProductCard shoe={shoe}/>
           ))}
         </div>
       )}

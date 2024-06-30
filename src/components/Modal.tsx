@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import '../styles/Modal.css'; // You can style your modal in this CSS file
+import '../styles/Modal.css';
 
 interface ModalProps {
   isOpen: boolean;
@@ -19,8 +19,8 @@ const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className={`modal-overlay ${overlayClassName}`}>
-      <div className={`modal-content ${contentClassName}`}>
+    <div className={`modal-overlay ${overlayClassName}`} onClick={onClose}>
+      <div className={`modal-content ${contentClassName}`} onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           &times;
         </button>
