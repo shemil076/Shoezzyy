@@ -1,7 +1,7 @@
 import { Brand } from "./enum";
 
 export interface Shoe {
-    _id: number,
+    _id: string,
     name: string;
     brand: Brand
     price: number;

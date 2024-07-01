@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { fetchShoes } from '../features/shoeSlice';
+import { fetchAllShoes } from '../features/shoeSlice';
 import '../styles/styles.css';
 import '../styles/BrandsPage.css'
 import { Brand } from '../types/enum';
@@ -23,11 +23,11 @@ const BrandsPage: React.FC = () => {
   const shoes = useAppSelector((state) => state.shoes.shoes);
   const loading = useAppSelector((state) => state.shoes.loading);
 
-  useEffect(() => {
-    if (brandName) {
-      dispatch(fetchShoes(brandName));
-    }
-  }, [brandName, dispatch]);
+  // useEffect(() => {
+  //   if (brandName) {
+  //     dispatch(fetchShoes(brandName));
+  //   }
+  // }, [brandName, dispatch]);
 
 
 

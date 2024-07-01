@@ -1,0 +1,42 @@
+
+.section-name{
+    margin-left: 10px;
+    font-family: 'Krona One', sans-serif;
+    color: #555;;
+  }
+
+  /* ProductPage.css */
+
+.cover-image {
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.page-name {
+    text-align: center;
+    margin-top: 20px; /* Adjust spacing */
+    margin-bottom: 20px; /* Adjust spacing */
+}
+
+.brand-section {
+    margin-bottom: 30px; /* Adjust spacing between brand sections */
+}
+
+
+
+.product-list {
+    display: flex;
+    gap: 15px; /* Adjust spacing between products */
+}
+
+.scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-list {
+        flex-wrap: nowrap; /* Ensure products remain in a single row on smaller screens */
+    }
+}

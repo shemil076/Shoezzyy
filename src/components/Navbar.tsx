@@ -36,11 +36,7 @@ const Navbar = () => {
         <img src="/assets/shoezzyylogo.png" alt="logo" className="logo"/>
       </Link>
       <Link to="/" className="navbar-link">Home</Link>
-      {Object.values(Brand).map((brand) => (
-        <Link key={brand} to={createBrandUrl(brand)} className="navbar-link">
-          {getReadableBrandName(brand)}
-        </Link>
-      ))}
+      <Link to="/product-page" className="navbar-link">Products</Link>
       <Link to="/track-order" className="navbar-link">Track Order</Link>
       <Link to="#" className="navbar-link">Sign In</Link>
       <div className='admin-button-container'>
