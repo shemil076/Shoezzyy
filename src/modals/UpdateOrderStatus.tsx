@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../components/Modal';
-import '../styles/AddNewProduct.css';
-import { ProductCategory, Brand } from '../types/enum';
+
+import { ProductCategory, Brand, OrderStatus } from '../types/enum';
 import Button from '../components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../store';
+import { selectOrder, selectOrderLastFetched, selectOrderLoading } from '../selectors/orderSelectors';
+import { fetchAllOrders } from '../features/orderSlice';
+import { Order } from '../types/types';
+import '../styles/AddNewProduct.css';
+import '../styles/UpdateOrderStatus.css';
+import '../styles/RegularButton.css'
 
 
 interface CreateOrderProps {
@@ -11,18 +19,81 @@ interface CreateOrderProps {
     onSave: (shoeData: { shoeName: string; shoeType: string }) => void;
 }
 
-const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose, onSave }) => {
-    const [shoeName, setShoeName] = useState('');
-    const [prductType, setProductType] = useState("");
-    const [shoeType, setShoeType] = useState('');
+const getOrderDetailsByJobId = (orders : Order[], jobId : string): Order | undefined => {
+    const filteredOrders = orders.filter((order)=> (order.jobId === jobId));
+    return filteredOrders.length > 0 ? filteredOrders[0] : undefined;
+};
 
-    const handleSave = () => {
-        onSave({ shoeName, shoeType });
+
+const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose,  }) => {
+    const dispatch = useDispatch<AppDispatch>();
+    const orders = useSelector(selectOrder);
+    const loading = useSelector(selectOrderLoading);
+    const lastFetched = useSelector(selectOrderLastFetched);
+
+    const [shoeName, setShoeName] = useState('');
+    const [shoeType, setShoeType] = useState('');
+    const [jobId, setJobId] = useState('');
+    const [currenOrder, setCurrentOrder] = useState<Order>();
+    const [orderStatus, setOrderStatus] = useState<OrderStatus>();
+    
+
+
+    const handleClose = () => {
         setShoeName('');
         setShoeType('');
     };
 
+    const handleSave = async () => {
+        const updatedStatus = {
+            _id: currenOrder?._id,
+            status : orderStatus,
+        };
+
+        try {
+            const response = await fetch('/api/orders/status',{
+                method: 'PUT',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body : JSON.stringify(updatedStatus)
+            });
+
+            if (response.ok){
+                console.log('Status updated');
+                handleClose();
+            }else{
+                console.error('Error updating status');
+            }
+        }catch(error){
+            console.error('Error updating status',error);
+        }
+    };
+
+
+    useEffect(()=>{
+        if(orders.length === 0 || !lastFetched){
+            dispatch(fetchAllOrders())
+        }
+        console.log("orders in update Status", orders)
+    },[dispatch, orders.length]);
+
+
+    useEffect(()=>{
+        setCurrentOrder(getOrderDetailsByJobId(orders, jobId));
+    },[jobId]);
+ 
+    const jobIdOptions = () => {
+        return orders.map((order)=>{
+            console.log("order", order)
+            return(
+                <option value={order.jobId}>{order.jobId}</option>
+
+            );
+        });
+    }
     return (
+
         <Modal
             isOpen={isOpen}
             onClose={onClose}
@@ -30,46 +101,41 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose, o
             contentClassName="modal-content-custom"
         >
             <h2>Update Order Status</h2>
-            <form>
+            {loading ? <p>Loading...</p> : <form>
                 <label>
-                    Product Type:
+                    Job Id:
                     <select
-                        value={prductType}
-                        onChange={(e) => setProductType(e.target.value as ProductCategory)}
+                        value={jobId}
+                        onChange={(e) => setJobId(e.target.value)}
                     >
-                        <option value={ProductCategory.SHOES}>Shoes</option>
-                        <option value={ProductCategory.EYEWEAR}>Eyewear</option>
+                        <option value=''>Select the job id</option>
+                        {jobIdOptions()}
                     </select>
                 </label>
-                {prductType == ProductCategory.SHOES ? <label>
-                    Shoe Brand:
-                    <select
-                        value={shoeType}
-                        onChange={(e) => setShoeType(e.target.value as Brand)}
-                    >
-                        <option value={Brand.ADIDAS}>Adidas</option>
-                        <option value={Brand.ALLSTARCONVERSE}>All Star Converse</option>
-                        <option value={Brand.NEWBALANCE}>New Balance</option>
-                        <option value={Brand.NIKE}>Nike</option>
-                        <option value={Brand.VANSOLDSKOOL}>Vans Old Skool</option>
-                    </select>
-                </label> : null}
                 <label>
-                    Shoe Name:
-                    <input
-                        type="text"
-                        value={shoeName}
-                        onChange={(e) => setShoeName(e.target.value)}
-                    />
+                    Next Order Status:
+                    <select
+                        value={orderStatus}
+                        onChange={(e) => setOrderStatus(e.target.value as OrderStatus)}
+                    >
+                        <option value={OrderStatus.NEW}>New</option>
+                        <option value={OrderStatus.IMPORTING}>Importing</option>
+                        <option value={OrderStatus.ARRIVED}>Arrived</option>
+                        <option value={OrderStatus.DELIVERED}>Delivered</option>
+                    </select>
                 </label>
-                <Button  onClick={handleSave}>
-                    Save
-                </Button>
-                <Button onClick={onClose || (() => {})}>
+                <div className='button-section'>
+                
+                <Button onClick={onClose || (() => {})} className='regular-black-button'>
                     Cancel
                 </Button>
-            </form>
+                <Button  onClick={handleSave} className='regular-black-button'>
+                    Save
+                </Button>
+                </div>
+            </form>}
         </Modal>
+
     );
 };
 

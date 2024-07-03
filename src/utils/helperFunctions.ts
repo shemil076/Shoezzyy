@@ -9,6 +9,7 @@ const brandNames: Record<Brand, string> = {
     [Brand.VANSOLDSKOOL]: 'Vans Old Skool'
   };
 
+
 export  const getReadableBrandName = (brandKey: Brand): string => {
     return brandNames[brandKey];
   };
@@ -23,4 +24,5 @@ export const categorizeShoesByBrand = (shoes: Shoe[]): { [key: string]: Shoe[] }
     return acc;
   }, {} as { [key: string]: Shoe[] });
 };
+
 

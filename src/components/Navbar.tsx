@@ -9,8 +9,12 @@ import Button from './Button';
 import AddNewProductModal from '../modals/AddNewProduct';
 import CreateOrderModal from '../modals/CreateOrder';
 import UpdateOrderStatusModal from '../modals/UpdateOrderStatus';
+import { useSelector } from 'react-redux';
+import { selectShoes } from '../selectors/shoeSelectors';
 
 const Navbar = () => {
+  const shoes = useSelector(selectShoes);
+
   const [ishoeModal, setIshoeModal] = useState(false);
   const [isCreateOrderModal, setIsCreateOrderModal] = useState(false);
   const [isUpdateOrderModal, setIsUpdateOrderModal] = useState(false);
@@ -29,7 +33,7 @@ const Navbar = () => {
     return `/${brand.replace(/\s+/g, '-')}`;
   };
 
-
+  console.log(shoes);
   return (
     <nav className="navbar">
       <Link to="/">
@@ -44,7 +48,7 @@ const Navbar = () => {
       <Button className="regular-black-button" onClick={openCreateOrderModal}>Create Order</Button>
       <Button className="regular-black-button" onClick={openUpdateOrderModal}>Update Order</Button>
       <AddNewProductModal isOpen={ishoeModal} onClose={closeShoeModal}/>
-      <CreateOrderModal isOpen={isCreateOrderModal} onClose={closeCreateOrderModal} onSave={()=>console.log("hi")}/>
+      <CreateOrderModal shoes={shoes} isOpen={isCreateOrderModal} onClose={closeCreateOrderModal} onSave={()=>console.log("hi")}/>
       <UpdateOrderStatusModal isOpen={isUpdateOrderModal} onClose={closeUpdateOrderModal} onSave={()=>console.log("hi")}/>
       </div>
     </nav>

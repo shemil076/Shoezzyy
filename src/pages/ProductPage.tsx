@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectShoes, selectShoesLoading } from "../selectors/shoeSelectors";
+import { selectShoes, selectShoesLastFetched, selectShoesLoading } from "../selectors/shoeSelectors";
 import ProductCard from "../components/ProductCard";
 import '../styles/ProductPage.css'
 import '../styles/styles.css'
@@ -16,10 +16,11 @@ const ProductPage: React.FC = () => {
 
     const shoes = useSelector(selectShoes);
     const loading = useSelector(selectShoesLoading);
+    const lastFetched = useSelector(selectShoesLastFetched);
     const categorizedShoes = categorizeShoesByBrand(shoes);
 
     useEffect(() => {
-        if (shoes.length === 0) {
+        if (shoes.length === 0 || !lastFetched) {
             dispatch(fetchAllShoes());
         }
     }, [dispatch, shoes.length]);

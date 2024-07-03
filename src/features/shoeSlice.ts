@@ -18,8 +18,8 @@ const initialState: ShoeState = {
 export const fetchAllShoes = createAsyncThunk<Shoe[], void, { state: RootState }>(
   'shoes/fetchAllShoes',
   async (_, { getState }) => {
-    const { shoes } = getState();
-    if (shoes.lastFetched) {
+    const state = getState();
+    if (state.shoes.lastFetched) {
       return [];
     }
     const response = await axios.get('/api/shoes');

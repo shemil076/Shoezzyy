@@ -17,3 +17,11 @@ export enum OrderStatus{
   ARRIVED= "arrived",
   DELIVERED="delivered",
 }
+
+export enum ReadbleBrandName {
+  Adidas = 'Adidas',
+  AllStarConverse = 'All Star Converse',
+  NewBalance = 'New Balance',
+  Nike = 'Nike',
+  VansOldSkool = 'Vans Old Skool'
+}

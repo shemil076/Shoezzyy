@@ -1,4 +1,4 @@
-import { Brand } from "./enum";
+import { Brand, OrderStatus } from "./enum";
 
 export interface Shoe {
     _id: string,
@@ -10,7 +10,12 @@ export interface Shoe {
   }
   
   export interface Order {
+    _id : string;
     jobId: string;
-    shoeId: Shoe;
-    status: 'pending' | 'completed';
+    shoeId: string;
+    shoeBrand: Brand
+    shoeName: string;
+    quantity: number;
+    cost: number;
+    status: OrderStatus;
   }

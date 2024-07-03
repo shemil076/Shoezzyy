@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { fetchOrderStatus } from '../features/orderSlice';
+import { AppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { selectOrder, selectOrderLoading } from '../selectors/orderSelectors';
+// import { fetchOrderStatus } from '../features/orderSlice';
 
 const TrackOrder: React.FC = () => {
   const [jobId, setJobId] = useState('');
-  const dispatch = useAppDispatch();
-  const orderStatus = useAppSelector((state) => state.orders.orderStatus);
-  const loading = useAppSelector((state) => state.orders.loading);
+  // const dispatch = useAppDispatch<AppDispatch>();
+  // const orders = useSelector(selectOrder);
+  // const loading = useSelector(selectOrderLoading);
+  // const isOrderLastFetched = useSelector(selectOrderLoading);
 
   const handleTrackOrder = () => {
-    dispatch(fetchOrderStatus(jobId));
+    // dispatch(fetchOrderStatus(jobId));
   };
 
   return (
@@ -22,17 +26,17 @@ const TrackOrder: React.FC = () => {
         placeholder="Enter Job ID"
       />
       <button onClick={handleTrackOrder}>Track</button>
-      {loading ? <p>Loading...</p> : (
+      {/* {loading ? <p>Loading...</p> : (
         orderStatus && (
           <div>
             <h2>Order Status</h2>
             <p>Job ID: {orderStatus.jobId}</p>
             <p>Shoe: {orderStatus.shoeId.name}</p>
             <p>Status: {orderStatus.status}</p>
-            {/* <img src={orderStatus.shoeId.image} alt={orderStatus.shoeId.name} /> */}
+            <img src={orderStatus.shoeId.image} alt={orderStatus.shoeId.name} />
           </div>
         )
-      )}
+      )} */}
     </div>
   );
 };

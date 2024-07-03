@@ -50,6 +50,7 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "@types/react-modal": "^3.16.3",
+    "@types/redux-persist": "^4.3.1",
     "@types/webpack-env": "^1.18.5"
   },
   "compilerOptions": {
@@ -62,7 +63,10 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ]
     }
   }
 }

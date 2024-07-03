@@ -1,13 +1,40 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import shoeReducer from './features/shoeSlice';
 import orderReducer from './features/orderSlice';
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
-export const store = configureStore({
-  reducer: {
-    shoes: shoeReducer,
-    orders: orderReducer
-  }
+
+
+const rootReducer = combineReducers({
+  shoes: shoeReducer,
+  orders: orderReducer
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+const persistConfig = {
+  key: 'root',
+  storage,
+  whiteList : ['shoes','orders'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware : (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+      serializableCheck:{
+        ignoredActions : [
+          'persist/PERSIST',
+          'persist/REHYDRATE',
+          'persist/REGISTER'
+        ]
+      }
+    })
+});
+
+export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState> & PersistPartial;
 export type AppDispatch = typeof store.dispatch;
