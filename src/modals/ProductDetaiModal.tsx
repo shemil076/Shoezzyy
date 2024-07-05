@@ -5,9 +5,10 @@ import "../styles/RegularButton.css"
 import Button from '../components/Button';
 import { Shoe } from '../types/types';
 import ConfirmationModal from '../components/ConfirmationModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteShoe } from '../features/shoeSlice';
 import { AppDispatch } from '../store';
+import { seletAdminToken } from '../selectors/adminSelectors';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -22,6 +23,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const openConfirmation = () => setIsConfirmationOpen(true);
   const closeConfirmation = () => setIsConfirmationOpen(false);
+
+
+  const adminToken = useSelector(seletAdminToken);
 
   useEffect(() => {
     if (isOpen) {
@@ -68,9 +72,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             </div>
           </div>
         </div>
-        <Button onClick={openConfirmation} className='regular-black-button'>
+        {adminToken ? <Button onClick={openConfirmation} className='regular-black-button'>
           Remove
-        </Button>
+        </Button> : null}
         <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation}/>
       </div>
     </Modal>

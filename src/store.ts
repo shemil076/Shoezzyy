@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import shoeReducer from './features/shoeSlice';
 import orderReducer from './features/orderSlice';
+import adminReducer from './features/adminSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistPartial } from 'redux-persist/lib/persistReducer';
@@ -9,13 +10,14 @@ import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
 const rootReducer = combineReducers({
   shoes: shoeReducer,
-  orders: orderReducer
+  orders: orderReducer,
+  admin: adminReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList : ['shoes','orders'],
+  whiteList : ['shoes','orders','admin'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

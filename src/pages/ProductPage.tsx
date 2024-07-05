@@ -47,7 +47,7 @@ const ProductPage: React.FC = () => {
 
     return (
         <div>
-            <img src='/assets/womenshoes.jpg' alt='shoes-cover-image' className='cover-image' />
+            <img src='/assets/productCover.jpg' alt='shoes-cover-image' className='cover-image' />
             <h1 className="page-name">Products</h1>
             <div className="product-page">
                 {displaySections()}

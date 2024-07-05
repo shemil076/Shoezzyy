@@ -12,7 +12,7 @@ import { categorizeShoesByBrand, getReadableBrandName } from '../utils/helperFun
 interface CreateOrderModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSave: (shoeData: { shoeName: string; shoeBrand: string }) => void;
+
     shoes: Shoe[];
 }
 
@@ -22,7 +22,7 @@ const getShoeDataByName = (shoeName: string ,  shoes : Shoe[]):Shoe | undefined=
     return filteredShoes.length > 0 ? filteredShoes[0] : undefined;
 };
 
-const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, onSave, shoes }) => {
+const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, shoes }) => {
     const [orderId, setOrderID] = useState('');
     const [shoeName, setShoeName] = useState('');
     const [shoeBrand, setShoeBrand] = useState('');
@@ -58,7 +58,6 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, on
                 body : JSON.stringify(orderData)
             })
             if(response.ok){
-                console.log('Order saved successfully');
                 handleClose();
             }else{
                 console.error('Error saving order');

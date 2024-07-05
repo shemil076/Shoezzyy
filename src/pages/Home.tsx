@@ -28,7 +28,6 @@ const Home: React.FC = () => {
     if(orders.length === 0 || !isOrderLastFetched){
       dispatch(fetchAllOrders())
   }
-  console.log("orders in home", orders)
   }, [dispatch, shoes.length,orders.length]);
 
 

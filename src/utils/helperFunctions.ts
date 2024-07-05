@@ -1,5 +1,5 @@
 import { Brand } from "../types/enum";
-import { Shoe } from "../types/types";
+import { Order, Shoe } from "../types/types";
 
 const brandNames: Record<Brand, string> = {
     [Brand.ADIDAS]: 'Adidas',
@@ -23,6 +23,12 @@ export const categorizeShoesByBrand = (shoes: Shoe[]): { [key: string]: Shoe[] }
     acc[shoe.brand].push(shoe);
     return acc;
   }, {} as { [key: string]: Shoe[] });
+};
+
+
+export const getOrderDetailsByJobId = (orders : Order[], jobId : string): Order | undefined => {
+    const filteredOrders = orders.filter((order)=> (order.jobId === jobId));
+    return filteredOrders.length > 0 ? filteredOrders[0] : undefined;
 };
 
 

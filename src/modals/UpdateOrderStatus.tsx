@@ -11,21 +11,17 @@ import { Order } from '../types/types';
 import '../styles/AddNewProduct.css';
 import '../styles/UpdateOrderStatus.css';
 import '../styles/RegularButton.css'
+import { getOrderDetailsByJobId } from '../utils/helperFunctions';
 
 
 interface CreateOrderProps {
     isOpen: boolean;
     onClose?: () => void;
-    onSave: (shoeData: { shoeName: string; shoeType: string }) => void;
 }
 
-const getOrderDetailsByJobId = (orders : Order[], jobId : string): Order | undefined => {
-    const filteredOrders = orders.filter((order)=> (order.jobId === jobId));
-    return filteredOrders.length > 0 ? filteredOrders[0] : undefined;
-};
 
 
-const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose,  }) => {
+const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose}) => {
     const dispatch = useDispatch<AppDispatch>();
     const orders = useSelector(selectOrder);
     const loading = useSelector(selectOrderLoading);
@@ -60,7 +56,6 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose,  
             });
 
             if (response.ok){
-                console.log('Status updated');
                 handleClose();
             }else{
                 console.error('Error updating status');
@@ -75,7 +70,6 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose,  
         if(orders.length === 0 || !lastFetched){
             dispatch(fetchAllOrders())
         }
-        console.log("orders in update Status", orders)
     },[dispatch, orders.length]);
 
 
@@ -85,7 +79,6 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose,  
  
     const jobIdOptions = () => {
         return orders.map((order)=>{
-            console.log("order", order)
             return(
                 <option value={order.jobId}>{order.jobId}</option>
 

@@ -37,7 +37,6 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
             });
 
             if (response.ok) {
-                console.log('shoe saved successfully');
                 handleOnClose();
             } else {
                 console.error('Error saving shoe');
