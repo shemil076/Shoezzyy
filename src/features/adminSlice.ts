@@ -40,7 +40,13 @@ export const adminSignin = createAsyncThunk(
 const adminSlice = createSlice({
     name: 'admin',
     initialState,
-    reducers:{},
+    reducers:{
+      adminLogout: (state) => {
+        state.token = null;
+        state.loading = false;
+        state.error = null;
+      }
+    },
     extraReducers : (builder) => {
         builder
         .addCase(adminSignin.pending, (state)=>{
@@ -59,4 +65,5 @@ const adminSlice = createSlice({
     }
 });
 
+export const { adminLogout } = adminSlice.actions;
 export default adminSlice.reducer;

@@ -9,9 +9,12 @@ import Button from './Button';
 import AddNewProductModal from '../modals/AddNewProduct';
 import CreateOrderModal from '../modals/CreateOrder';
 import UpdateOrderStatusModal from '../modals/UpdateOrderStatus';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectShoes } from '../selectors/shoeSelectors';
 import { seletAdminToken } from '../selectors/adminSelectors';
+import SignInModal from '../modals/SignInModal';
+import { AppDispatch } from '../store';
+import { adminLogout } from "../features/adminSlice";
 
 const Navbar = () => {
   const shoes = useSelector(selectShoes);
@@ -19,6 +22,7 @@ const Navbar = () => {
   const [ishoeModal, setIshoeModal] = useState(false);
   const [isCreateOrderModal, setIsCreateOrderModal] = useState(false);
   const [isUpdateOrderModal, setIsUpdateOrderModal] = useState(false);
+  const [isSignInModal, setIsSignInModal] = useState(false);
 
   const openShoeModal = () => setIshoeModal(true);
   const closeShoeModal = () => setIshoeModal(false);
@@ -29,10 +33,21 @@ const Navbar = () => {
   const openUpdateOrderModal = () => setIsUpdateOrderModal(true);
   const closeUpdateOrderModal = () => setIsUpdateOrderModal(false);
 
+  const openSignInModal = () => setIsSignInModal(true);
+  const closeSignInModal = () => setIsSignInModal(false);
+
   const adminToken = useSelector(seletAdminToken);
-  
+
   const createBrandUrl = (brand: string) => {
     return `/${brand.replace(/\s+/g, '-')}`;
+  };
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleLogout = () => {
+    dispatch(adminLogout());
+    // Optionally, clear token from localStorage or other storage
+    localStorage.removeItem('token');
   };
 
   console.log("admintoken", adminToken);
@@ -44,7 +59,15 @@ const Navbar = () => {
       <Link to="/" className="navbar-link">Home</Link>
       <Link to="/product-page" className="navbar-link">Products</Link>
       <Link to="/track-order" className="navbar-link">Track Order</Link>
-      <Link to="/signIn" className="navbar-link">Sign In</Link>
+      {/* <Link to="/signIn" className="navbar-link">Sign In</Link> */}
+
+      {!adminToken ? 
+      <><Button className="regular-black-button" onClick={openSignInModal}>SignIn</Button>
+      <SignInModal isOpen={isSignInModal} onClose={closeSignInModal}/></>
+      :
+      <Button className="regular-black-button" onClick={handleLogout}>SignOut</Button>
+      }
+
       {adminToken ? <div className='admin-button-container'>
       <Button className="regular-black-button" onClick={openShoeModal}>Add Product</Button>
       <Button className="regular-black-button" onClick={openCreateOrderModal}>Create Order</Button>
