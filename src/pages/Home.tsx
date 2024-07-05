@@ -38,8 +38,8 @@ const Home: React.FC = () => {
       <h1 className='page-name'>New Arrivals</h1>
       {loading ? <p>Loading..</p>: (
         <div className="new-arrival-list">
-        {newArrivalList.map((shoe) => (
-          <ProductCard shoe={shoe}/>
+        {newArrivalList.map((shoe,index) => (
+          <ProductCard  key={index} shoe={shoe}/>
         ))}
       </div>
       ) }

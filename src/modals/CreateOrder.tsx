@@ -79,9 +79,9 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
 
 
     const returnBrandOptions = () => {
-        return Object.keys(categorizedShoes).map((brand)=>{
+        return Object.keys(categorizedShoes).map((brand, index)=>{
             return(
-                <option value={brand}>{brand}</option>
+                <option key={index} value={brand}>{brand}</option>
             );
         });
     };
@@ -89,9 +89,9 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
     const returnShoeOptions = () => {
         const relatedProducts = categorizedShoes[shoeBrand];
         if (!relatedProducts) return null;
-        return relatedProducts.map((shoe)=>{
+        return relatedProducts.map((shoe, index)=>{
             return (
-                <option value={shoe.name}>{shoe.name}</option>
+                <option key={index} value={shoe.name}>{shoe.name}</option>
             );
         });
     };

@@ -36,8 +36,8 @@ const ProductPage: React.FC = () => {
                 <div key={brand} className="brand-section">
                     <h2 className="section-name">{brand}</h2>
                     <div className={`product-list ${shouldScroll ? 'scrollable' : ''}`}>
-                        {products.map((shoe: Shoe) => (
-                            <ProductCard shoe={shoe} />
+                        {products.map((shoe: Shoe, index) => (
+                            <ProductCard key={index} shoe={shoe} />
                         ))}
                     </div>
                 </div>

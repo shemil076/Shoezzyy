@@ -46,7 +46,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(adminLogout());
-    // Optionally, clear token from localStorage or other storage
     localStorage.removeItem('token');
   };
 

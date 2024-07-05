@@ -78,9 +78,9 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose}) 
     },[jobId]);
  
     const jobIdOptions = () => {
-        return orders.map((order)=>{
+        return orders.map((order, index)=>{
             return(
-                <option value={order.jobId}>{order.jobId}</option>
+                <option key={index} value={order.jobId}>{order.jobId}</option>
 
             );
         });

@@ -37,8 +37,8 @@ const BrandsPage: React.FC = () => {
       <h1 className='section-name'>{getReadableBrandName(brandName)?.toUpperCase()} Shoes</h1>
       {loading ? <p>Loading...</p> : (
         <div className="product-list">
-          {shoes.map((shoe) => (
-            <ProductCard shoe={shoe}/>
+          {shoes.map((shoe, index) => (
+            <ProductCard  key={index} shoe={shoe}/>
           ))}
         </div>
       )}

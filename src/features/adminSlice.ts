@@ -9,7 +9,7 @@ interface AdminState{
 };
 
 const initialState : AdminState = {
-    token: null,
+    token: localStorage.getItem('token'),
     loading: false,
     error: null,
 };
@@ -45,6 +45,7 @@ const adminSlice = createSlice({
         state.token = null;
         state.loading = false;
         state.error = null;
+        localStorage.removeItem('token');
       }
     },
     extraReducers : (builder) => {
@@ -57,6 +58,7 @@ const adminSlice = createSlice({
             state.loading = false;
             state.token = action.payload;
             state.error = null;
+            localStorage.setItem('token', action.payload);
         })
         .addCase(adminSignin.rejected, (state, action)=>{
             state.loading = false;
