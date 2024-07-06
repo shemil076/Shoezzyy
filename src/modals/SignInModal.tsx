@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "../components/Modal";
 import { adminSignin } from "../features/adminSlice";
 import { AppDispatch, RootState } from "../store";
+import '../styles/RegularButton.css';
 
 interface SignInModalProps  {
     isOpen: boolean;
@@ -51,7 +52,7 @@ const SignInModal: React.FC<SignInModalProps> = ({isOpen, onClose}) => {
           placeholder="Password"
           required
         />
-        <button type="submit" disabled={loading}>
+        <button className="regular-black-button" type="submit" disabled={loading}>
           {loading ? 'Signing In...' : 'Sign In'}
         </button>
       </form>

@@ -10,6 +10,8 @@ import  "../styles/TrackOrder.css";
 import { OrderStatus } from '../types/enum';
 import "../styles/RegularButton.css"
 import "../styles/styles.css"
+import OrderTracker from '../components/ProgressBar';
+import ProgressBar from '../components/ProgressBar';
 
 const TrackOrder: React.FC = () => {
   const [jobId, setJobId] = useState('');
@@ -63,13 +65,16 @@ const TrackOrder: React.FC = () => {
         className="inputField"
       />
       <button onClick={handleTrackOrder} className="regular-black-button">Track</button>
-      <div className="statusContainer">
+      {/* <div className="statusContainer">
         <div className="progressBar">
           <div className={getStatusClass(currentOrder?.status || '')}></div>
         </div>
         {loading && <p>Loading...</p>}
-      </div>
+      </div> */}
+      {/* <OrderTracker/> */}
+      <ProgressBar currentStatus={currentOrder?.status} />
     </div>
+    
     </div>
   );
 };

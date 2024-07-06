@@ -31,9 +31,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe }) => {
     <div className="product-card" onClick={openProductDetailModal}>
       <div className='product-image-container'>
         <img className="product-image" src={mainImage} alt="" />
-        <div className='overlay'>
+        {/* <div className='overlay'>
           <p>More</p>
-        </div>
+        </div> */}
       </div>
       <div className='product-multiple-image-container'>
         {decodeImages(shoe.images)}
