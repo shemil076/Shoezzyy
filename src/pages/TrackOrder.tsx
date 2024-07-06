@@ -9,6 +9,7 @@ import { Order } from '../types/types';
 import  "../styles/TrackOrder.css";
 import { OrderStatus } from '../types/enum';
 import "../styles/RegularButton.css"
+import "../styles/styles.css"
 
 const TrackOrder: React.FC = () => {
   const [jobId, setJobId] = useState('');
@@ -48,7 +49,12 @@ const TrackOrder: React.FC = () => {
                   <img src='/assets/trackOrderCover.jpg' alt='shoes-cover-image' className='cover-image' />
 
       <div className="container">
-      <h1 className="heading">Track Your Order</h1>
+      <div className="cover-overlay">
+          <h1 className="overlay-text" style={{"fontSize": "4rem"}}>Track Your Order</h1>
+          <p className="overlay-subtext">with</p>
+          <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
+
+        </div>
       <input
         type="text"
         value={jobId}

@@ -82,4 +82,22 @@
   .product-brand{
     font-size: 10px;
   }
+
+  .overlay{
+    width: 50px; /* Reduce image size further for smaller screens */
+    height: 80px;
+  }
+}
+
+.overlay{
+  position: absolute;
+  background-color: rgba(0, 0, 255, 0.181);
+  overflow: hidden;
+  width: 18rem;
+  height: 0;
+  transition: 0.5s ease;
+}
+
+.product-image-container:hover .overlay{
+  height: 50%;
 }

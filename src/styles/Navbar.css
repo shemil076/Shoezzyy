@@ -8,11 +8,28 @@
   
   .navbar-link {
     margin-top: 10px;
+    position: relative;
+    display: inline-block;
     text-decoration: none;
-    color: #000;
-    padding: 0 10px;
-
+    color: inherit;
   }
+  
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    left: 0;
+    background: rgb(0, 0, 0);
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .navbar-link:hover::after {
+    width: 100%;
+  }
+  
 
   .tab-list{
     display: flex;

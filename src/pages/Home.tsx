@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   const orders = useSelector(selectOrder);
   const isOrderloading = useSelector(selectOrderLoading);
   const isOrderLastFetched = useSelector(selectOrderLastFetched);
-  const newArrivalList = shoes.slice(0,5);
+  const newArrivalList = shoes.slice(0,4);
 
   useEffect(() => {
     if (shoes.length === 0 ||!lastFetched) {
@@ -27,25 +27,29 @@ const Home: React.FC = () => {
     }
     if(orders.length === 0 || !isOrderLastFetched){
       dispatch(fetchAllOrders())
-  }
-  }, [dispatch, shoes.length,orders.length]);
+    }
+  }, [dispatch, shoes.length, orders.length]);
 
-
-  return(
+  return (
     <div>
-      <div>
-      <img src="/assets/homeCover.jpg" alt="cover" className="cover-image"/>
-      <h1 className='page-name'>New Arrivals</h1>
-      {loading ? <p>Loading..</p>: (
+      <div className="cover-container">
+        <img src="/assets/homeCover.jpg" alt="cover" className="cover-image" />
+        <div className="cover-overlay">
+          <h1 className="overlay-text">New Arrivals</h1>
+          <p className="overlay-subtext">Discover the Latest Arrivals with</p>
+          <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
+
+        </div>
+      </div>
+      {loading ? <p>Loading..</p> : (
         <div className="new-arrival-list">
-        {newArrivalList.map((shoe,index) => (
-          <ProductCard  key={index} shoe={shoe}/>
-        ))}
-      </div>
-      ) }
-      </div>
+          {newArrivalList.map((shoe, index) => (
+            <ProductCard key={index} shoe={shoe} />
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 };
 
 export default Home;

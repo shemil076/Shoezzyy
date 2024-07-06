@@ -7,4 +7,60 @@ h1 {
   text-align: center;
 }
 
+.cover-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.overlay-text {
+  font-size: 5em;
+  font-weight: bold;
+  margin: 0;
+}
 
+.overlay-subtext {
+  font-size: 2em;
+  margin: 0;
+  
+}
+
+.overlay-subtext-brand-name{
+  font-size: 3em;
+  margin: 0;
+  font-family: 'Krona One', sans-serif;
+}
+
+
+
+@media (max-width: 768px) {
+  .overlay-text {
+    font-size: 1.5em;
+  }
+
+  .overlay-subtext {
+    font-size: 1em;
+  }
+
+  .overlay-subtext-brand-name{
+    font-size: 1.2em;
+  }
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%); /* Slightly move text up initially */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Move text to center */
+  }
+}

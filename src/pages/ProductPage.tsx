@@ -10,6 +10,9 @@ import { AppDispatch } from "../store";
 import { fetchAllShoes } from "../features/shoeSlice";
 import { categorizeShoesByBrand } from "../utils/helperFunctions";
 import { Shoe } from "../types/types";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const ProductPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -18,6 +21,41 @@ const ProductPage: React.FC = () => {
     const loading = useSelector(selectShoesLoading);
     const lastFetched = useSelector(selectShoesLastFetched);
     const categorizedShoes = categorizeShoesByBrand(shoes);
+
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
 
     useEffect(() => {
         if (shoes.length === 0 || !lastFetched) {
@@ -35,11 +73,11 @@ const ProductPage: React.FC = () => {
             return (
                 <div key={brand} className="brand-section">
                     <h2 className="section-name">{brand}</h2>
-                    <div className={`product-list ${shouldScroll ? 'scrollable' : ''}`}>
+                    <Slider {...settings}>
                         {products.map((shoe: Shoe, index) => (
                             <ProductCard key={index} shoe={shoe} />
                         ))}
-                    </div>
+                        </Slider>
                 </div>
             );
         });
@@ -48,7 +86,12 @@ const ProductPage: React.FC = () => {
     return (
         <div>
             <img src='/assets/productCover.jpg' alt='shoes-cover-image' className='cover-image' />
-            <h1 className="page-name">Products</h1>
+            <div className="cover-overlay">
+          <h1 className="overlay-text" style={{"fontSize": "3.5rem"}}>Available Products</h1>
+          <p className="overlay-subtext">on</p>
+          <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
+
+        </div>
             <div className="product-page">
                 {displaySections()}
             </div>
