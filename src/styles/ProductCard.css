@@ -1,74 +1,77 @@
 .product-card {
-  /* border: 1px solid #ddd; */
-  padding: 12px; /* Reduced padding for smaller screens */
+  padding: 12px;
   margin: 12px;
   text-align: center;
-  max-width: 300px; /* Limit maximum width for better mobile layout */
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); 
+  max-width: 300px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  /* Add more styles as needed */
 }
 
-/* .product-images {
+.product-image-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-} */
-
-.product-image-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 8px; /* Add margin for spacing */
 }
 
 .product-image {
-  width: 18rem;
-  margin: 8px;
+  width: 100%; /* Adjust image width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
   object-fit: cover;
 }
 
-.product-detail-container{
-  display: flex;
-  flex-direction: column;
+.product-detail-container {
   text-align: left;
 }
 
-.product-individual-image{
-  width: 50px; 
+.product-individual-image {
+  width: 50px;
   margin-right: 5px;
 }
 
-.product-multiple-image-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-right: 0;
-}
-
 .product-price {
-  font-size: 16px; /* Smaller font size for price on mobile */
+  font-size: 16px;
   color: #555;
-  margin-top: 8px; /* Add spacing between price and other elements */
+  margin-top: 8px;
 }
 
 .product-name {
-  font-size: 20px; /* Smaller font size for name on mobile */
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 4px; /* Add spacing between name and other elements */
+  margin-top: 4px;
 }
 
-.product-brand{
-  font-size: 14px; /* Smaller font size for price on mobile */
-  color: #555;
+.product-brand {
+  font-size: 14px;
   font-weight: bold;
-  margin-top: 4px; /* Add spacing between price and other elements */
+  margin-top: 4px;
+  color: #555;
 }
+
+.payment-methods {
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  align-items: center; /* Center payment methods horizontally */
+}
+
+.koko-image {
+  height: 1rem;
+  margin-left: 0.3rem;
+}
+
+.product-card-offer-price {
+  color: #ff0000;
+  font-size: larger;
+  margin-left: 10px;
+}
+
 @media (max-width: 768px) {
   .product-card {
     max-width: 90%; /* Allow the card to take full width on smaller screens */
   }
 
   .product-image {
-    width: 50px; /* Reduce image size further for smaller screens */
-    height: 80px;
+    width: 100%; /* Adjust image size to fit smaller screens */
   }
 
   .product-price {
@@ -79,25 +82,11 @@
     font-size: 18px; /* Further reduce font size for name */
   }
 
-  .product-brand{
-    font-size: 10px;
+  .product-brand {
+    font-size: 12px; /* Further reduce font size for brand */
   }
 
-  .overlay{
-    width: 50px; /* Reduce image size further for smaller screens */
-    height: 80px;
+  .overlay {
+    /* Adjust overlay styles for smaller screens if used */
   }
-}
-
-.overlay{
-  position: absolute;
-  background-color: rgba(0, 0, 255, 0.181);
-  overflow: hidden;
-  width: 18rem;
-  height: 0;
-  transition: 0.5s ease;
-}
-
-.product-image-container:hover .overlay{
-  height: 50%;
 }

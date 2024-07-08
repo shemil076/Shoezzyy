@@ -10,6 +10,8 @@ import { selectOrder, selectOrderLastFetched, selectOrderLoading } from '../sele
 import { fetchAllOrders } from '../features/orderSlice';
 import { Shoe } from '../types/types';
 import ProductDetailModal from '../modals/ProductDetaiModal';
+import Features from '../components/Features';
+import SectionDevider from '../components/SectionDevider';
 
 const Home: React.FC = () => {
 
@@ -51,12 +53,23 @@ const closeProductDetailModal = () => {
       <div className="cover-container">
         <img src="/assets/homeCover.jpg" alt="cover" className="cover-image" />
         <div className="cover-overlay">
-          <h1 className="overlay-text">New Arrivals</h1>
+          <h1 className="overlay-text" style={{"fontSize": "3.5rem"}}>Featured Products</h1>
           <p className="overlay-subtext">Discover the Latest Arrivals with</p>
           <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
 
         </div>
       </div>
+
+      <Features/>
+      <SectionDevider title={"New Arrivals"} subtitle={'Step into the Latest Trends'}/>
+      {loading ? <p>Loading..</p> : (
+        <div className="new-arrival-list">
+          {newArrivalList.map((shoe, index) => (
+             <ProductCard key={index} shoe={shoe} onCardClick={openProductDetailModal} />
+          ))}
+        </div>
+      )}
+      <SectionDevider title={"Top Picks"} subtitle={'Handpicked Favorites Just for You'}/>
       {loading ? <p>Loading..</p> : (
         <div className="new-arrival-list">
           {newArrivalList.map((shoe, index) => (

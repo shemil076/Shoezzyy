@@ -97,7 +97,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
     };
 
     const calculateCost = () => {
-        setCost(selectedShoe && quantity ? selectedShoe?.price * quantity : 0) 
+        setCost(selectedShoe && quantity ? selectedShoe?.actualPrice * quantity : 0) 
     }; 
     
 

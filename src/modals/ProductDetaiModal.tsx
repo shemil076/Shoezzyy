@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteShoe } from '../features/shoeSlice';
 import { AppDispatch } from '../store';
 import { seletAdminToken } from '../selectors/adminSelectors';
+import ToggleComponent from '../components/ToggleComponent';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -20,10 +21,15 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const dispatch = useDispatch<AppDispatch>();
   const [mainImage, setMainImage] = useState<string>(shoe.images[0]);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [toggleState, setToggleState] = useState<boolean>(false);
+
 
   const openConfirmation = () => setIsConfirmationOpen(true);
   const closeConfirmation = () => setIsConfirmationOpen(false);
-
+  
+  const handleToggle = () => {
+    setToggleState(prevState => !prevState); // Toggle the boolean state
+  };
 
   const adminToken = useSelector(seletAdminToken);
 
@@ -66,7 +72,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
           </div>
           <div className='product-detail-text-container'>
             <h2>{shoe.name}</h2>
-            <h3>Price: ${shoe.price}</h3>
+            <h3>Price: ${shoe.actualPrice}</h3>
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
             </div>
@@ -75,6 +81,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
         {adminToken ? <Button onClick={openConfirmation} className='regular-black-button'>
           Remove
         </Button> : null}
+
+        <ToggleComponent/>
+
         <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation}/>
       </div>
     </Modal>
@@ -83,3 +92,5 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
 export default ProductDetailModal;
 // className="regular-black-button"
+
+

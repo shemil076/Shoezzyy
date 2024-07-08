@@ -36,13 +36,33 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
           <p>More</p>
         </div> */}
       </div>
-      <div className='product-multiple-image-container'>
+      {/* <div className='product-multiple-image-container'>
         {decodeImages(shoe.images)}
-      </div>
+      </div> */}
       <div className='product-detail-container'>
-        <div className="product-name">{shoe.name}</div>
         <div className="product-brand">{shoe.brand}</div>
-        <div className="product-price">$ {shoe.price}</div>
+        <div className="product-name">{shoe.name}</div>
+        <div className="product-price">Size: 36 - 45</div>
+        {
+          shoe.offerPrice ? (
+            <div className="product-price">
+          <s>LKR. {shoe.actualPrice}</s>
+          <em className='product-card-offer-price'>  LKR. {shoe.offerPrice}</em>
+          </div>
+          ) : (
+            <div className="product-price">
+              {shoe.actualPrice}
+          </div>
+          )
+        }
+        <div className='product-card-payment-container'>
+          <p className='payment-with-topic'>We accept,</p>
+          <div className='payment-methods'>
+            <p><strong>Bank Transfer</strong> & </p>
+          <img src="/assets/koko.png" alt="" className="koko-image" />
+          </div>
+        </div>
+        
       </div>
       {/* <ProductDetailModal isOpen={isProductDetailModalOpen} shoe={shoe} onClose={closeProductDetailModal} /> */}
     </div>
@@ -50,3 +70,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
 };
 
 export default ProductCard;
+
+// Brandd
+// Name
+// sizes 36-45
+// price
+// payments 

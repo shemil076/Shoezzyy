@@ -4,9 +4,11 @@ export interface Shoe {
     _id: string,
     name: string;
     brand: Brand
-    price: number;
+    actualPrice: number;
+    offerPrice:number;
     description : string;
     images: string[];
+    isATopPcik: boolean;
   }
   
   export interface Order {
