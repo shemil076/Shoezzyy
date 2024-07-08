@@ -1,0 +1,16 @@
+.warning-image{
+    width: 5rem;
+    align-items: center;
+}
+
+.confirmation-button-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.modal-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

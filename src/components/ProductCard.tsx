@@ -6,9 +6,10 @@ import ProductDetailModal from '../modals/ProductDetaiModal';
 
 interface ProductCardProps {
   shoe: Shoe;
+  onCardClick: (shoe: Shoe) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ shoe }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
   const [mainImage, setMainImage] = useState<string>(shoe.images[0]);
   const [isProductDetailModalOpen, setIsProductDetailModalOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe }) => {
   };
 
   return (
-    <div className="product-card" onClick={openProductDetailModal}>
+    <div className="product-card" onClick={() => onCardClick(shoe)}>
       <div className='product-image-container'>
         <img className="product-image" src={mainImage} alt="" />
         {/* <div className='overlay'>
@@ -43,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe }) => {
         <div className="product-brand">{shoe.brand}</div>
         <div className="product-price">$ {shoe.price}</div>
       </div>
-      <ProductDetailModal isOpen={isProductDetailModalOpen} shoe={shoe} onClose={closeProductDetailModal} />
+      {/* <ProductDetailModal isOpen={isProductDetailModalOpen} shoe={shoe} onClose={closeProductDetailModal} /> */}
     </div>
   );
 };

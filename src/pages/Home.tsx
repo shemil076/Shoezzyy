@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/HomePage.css'; 
 import '../styles/styles.css'; 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,8 @@ import { AppDispatch } from '../store';
 import ProductCard from '../components/ProductCard';
 import { selectOrder, selectOrderLastFetched, selectOrderLoading } from '../selectors/orderSelectors';
 import { fetchAllOrders } from '../features/orderSlice';
+import { Shoe } from '../types/types';
+import ProductDetailModal from '../modals/ProductDetaiModal';
 
 const Home: React.FC = () => {
 
@@ -20,6 +22,20 @@ const Home: React.FC = () => {
   const isOrderloading = useSelector(selectOrderLoading);
   const isOrderLastFetched = useSelector(selectOrderLastFetched);
   const newArrivalList = shoes.slice(0,4);
+
+  const [isProductDetailOpen, setProductDetailOpen] = useState(false);
+  const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
+
+  const openProductDetailModal = (shoe: Shoe) => {
+    setSelectedShoe(shoe);
+    setProductDetailOpen(true);
+};
+
+const closeProductDetailModal = () => {
+    setProductDetailOpen(false);
+    setSelectedShoe(null);
+};
+
 
   useEffect(() => {
     if (shoes.length === 0 ||!lastFetched) {
@@ -44,10 +60,13 @@ const Home: React.FC = () => {
       {loading ? <p>Loading..</p> : (
         <div className="new-arrival-list">
           {newArrivalList.map((shoe, index) => (
-            <ProductCard key={index} shoe={shoe} />
+             <ProductCard key={index} shoe={shoe} onCardClick={openProductDetailModal} />
           ))}
         </div>
       )}
+      {selectedShoe && (
+                <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
+            )}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import "../styles/RegularButton.css"
 import "../styles/styles.css"
 import OrderTracker from '../components/ProgressBar';
 import ProgressBar from '../components/ProgressBar';
+import OrderNotFoundModal from '../modals/OrderNotFound';
 
 const TrackOrder: React.FC = () => {
   const [jobId, setJobId] = useState('');
@@ -20,9 +21,18 @@ const TrackOrder: React.FC = () => {
   const loading = useSelector(selectOrderLoading);
   const isOrderLastFetched = useSelector(selectOrderLoading);
   const [currentOrder, selectCurrentOrder] = useState<Order>();
+  const [isShowOrderNotFound, setIsShowOrderNotFound] = useState(false);
+
+  const openOrderNotFoundModal = () => setIsShowOrderNotFound(true);
+  const closeOrderNotFoundModal = () => setIsShowOrderNotFound(false);
 
   const handleTrackOrder = () => {
+    setJobId('');
+    if(!currentOrder){
+      openOrderNotFoundModal();
+    }
     selectCurrentOrder(getOrderDetailsByJobId(orders, jobId));
+
   };
 
   useEffect(() => {
@@ -64,15 +74,14 @@ const TrackOrder: React.FC = () => {
         placeholder="Enter Job ID"
         className="inputField"
       />
+     < OrderNotFoundModal isOpen={isShowOrderNotFound && !currentOrder?.status} onClose={closeOrderNotFoundModal}/>
       <button onClick={handleTrackOrder} className="regular-black-button">Track</button>
-      {/* <div className="statusContainer">
-        <div className="progressBar">
-          <div className={getStatusClass(currentOrder?.status || '')}></div>
-        </div>
-        {loading && <p>Loading...</p>}
-      </div> */}
-      {/* <OrderTracker/> */}
-      <ProgressBar currentStatus={currentOrder?.status} />
+      {currentOrder?.status ? 
+      <>
+      <h1>Job Id: {currentOrder.jobId}</h1>
+      <ProgressBar currentStatus={currentOrder?.status} /> 
+      </>
+      : null}
     </div>
     
     </div>
