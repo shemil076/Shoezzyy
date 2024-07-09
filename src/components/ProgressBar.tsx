@@ -15,7 +15,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStatus }) => {
   ];
 
   const getStepClass = (status: string) => {
-    console.log("status", currentStatus)
     if (!currentStatus) return '';
     const currentIndex = statusSteps.findIndex(step => step.status === currentStatus);
     const stepIndex = statusSteps.findIndex(step => step.status === status);
@@ -29,13 +28,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStatus }) => {
     <div className="progress-bar">
       {statusSteps.map((step, index) => (
         <div key={step.status} className={`progress-step ${getStepClass(step.status)}`}>
-          {/* <div className="circle"></div> */}
           <div className="label-container">
             <img src={step.icon} alt={step.label} className="status-icon" />
             <div className="label">{step.label}</div>
           </div>
-          {index < statusSteps.length && <div className="line"></div>}
-          
+          {index < statusSteps.length  && <div className="line"></div>}
         </div>
       ))}
     </div>

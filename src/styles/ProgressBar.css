@@ -1,49 +1,47 @@
-/* Progress Bar Styles */
 .progress-bar {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items to the top */
-    margin-top: 20px;
-    position: relative;
-    width: 100%;
-  }
-  
-  .progress-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    flex: 1;
-  }
-  
-  .progress-step .line {
-    width: 50%;
-    height: 0.5rem;
-    background-color: lightgrey;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .progress-step.current .line,
-  .progress-step.completed .line {
-    background-color: rgb(53, 0, 128);
-  }
-  
-  .progress-step .status-icon {
-    width: 4rem;
-    /* height: 32px; */
-    margin-top: 8px; /* Add margin to position the icon below the circle */
-  }
-  
-  .progress-step .label {
-    font-size: 0.9rem;
-    margin-top: 4px;
-    text-align: center;
-  }
-  
-  .label-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.progress-step .line {
+  width: 50%;
+  background-color: lightgrey;
+  position: relative;
+  z-index: 1;
+  min-height: 5px; 
+  min-width: 1px;
+}
+
+.progress-step.current .line,
+.progress-step.completed .line {
+  background-color: rgb(53, 0, 128);
+}
+
+.progress-step .status-icon {
+  width: 4rem;
+  margin-top: 8px;
+}
+
+.progress-step .label {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
