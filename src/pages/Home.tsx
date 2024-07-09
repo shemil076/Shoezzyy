@@ -62,6 +62,8 @@ const closeProductDetailModal = () => {
 
       <Features/>
       <SectionDevider title={"New Arrivals"} subtitle={'Step into the Latest Trends'}/>
+
+      {shoes.length === 0 ? <p style={{"textAlign": "center"}}>No products to show...</p> : null}
       {loading ? <p>Loading..</p> : (
         <div className="new-arrival-list">
           {newArrivalList.map((shoe, index) => (
@@ -69,14 +71,7 @@ const closeProductDetailModal = () => {
           ))}
         </div>
       )}
-      <SectionDevider title={"Top Picks"} subtitle={'Handpicked Favorites Just for You'}/>
-      {loading ? <p>Loading..</p> : (
-        <div className="new-arrival-list">
-          {newArrivalList.map((shoe, index) => (
-             <ProductCard key={index} shoe={shoe} onCardClick={openProductDetailModal} />
-          ))}
-        </div>
-      )}
+
       {selectedShoe && (
                 <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
             )}

@@ -66,3 +66,13 @@
     width: 80%;
     text-align: justify;
   }
+
+  .top-pick-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .radio-button-group{
+    margin-left: 10px;
+  }

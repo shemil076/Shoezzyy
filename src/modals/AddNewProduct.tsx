@@ -13,10 +13,12 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [shoeName, setShoeName] = useState('');
     const [shoeBrand, setShoeBrand] = useState('');
     const [shoePrice, setShoePrice] = useState('');
+    const [offerPrice, setOfferPrice] = useState('');
     const [shoeDescription, setShoeDescription] = useState('');
     const [images, setImages] = useState<string[]>([]);
     const [imageURLs, setImageURLs] = useState<string[]>([]);
     const [isFormValid, setIsFormValid] = useState(false);
+
 
     useEffect(() => {
         setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
@@ -25,7 +27,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const handleSave = async () => {
         if (!isFormValid) return;
 
-        const shoeData = { name: shoeName, brand: shoeBrand, price: shoePrice, description: shoeDescription, images };
+        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images,offerPrice, isATopPcik: false };
         
         try {
             const response = await fetch('/api/shoes', {
@@ -67,6 +69,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         setShoeName('');
         setShoeBrand('');
         setShoePrice('');
+        setOfferPrice('');
         setShoeDescription('');
         setImages([]);
         setImageURLs([]);
@@ -110,11 +113,20 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                     />
                 </label>
                 <label>
-                    Price: $
+                    Price: LKR
                     <input
                         type="number"
                         value={shoePrice}
                         onChange={(e) => setShoePrice(e.target.value)}
+                        style={getInputStyle(shoePrice)}
+                    />
+                </label>
+                <label>
+                    Price after discount: LKR
+                    <input
+                        type="number"
+                        value={offerPrice}
+                        onChange={(e) => setOfferPrice(e.target.value)}
                         style={getInputStyle(shoePrice)}
                     />
                 </label>

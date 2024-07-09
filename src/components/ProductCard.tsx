@@ -51,7 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
           </div>
           ) : (
             <div className="product-price">
-              {shoe.actualPrice}
+             LKR. {shoe.actualPrice}
           </div>
           )
         }

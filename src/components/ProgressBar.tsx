@@ -15,6 +15,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStatus }) => {
   ];
 
   const getStepClass = (status: string) => {
+    console.log("status", currentStatus)
     if (!currentStatus) return '';
     const currentIndex = statusSteps.findIndex(step => step.status === currentStatus);
     const stepIndex = statusSteps.findIndex(step => step.status === status);

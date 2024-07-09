@@ -31,4 +31,7 @@ export const getOrderDetailsByJobId = (orders : Order[], jobId : string): Order 
     return filteredOrders.length > 0 ? filteredOrders[0] : undefined;
 };
 
-
+export const getShoesByBrand = (shoes : Shoe[], brandName : string): Shoe[] => {
+  const filteredShoes = shoes.filter((shoe)=> (shoe.brand === brandName));
+  return filteredShoes.length > 0 ? filteredShoes : [];
+};

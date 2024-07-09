@@ -1,0 +1,25 @@
+.sub-nav-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .sub-nav-item {
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #f6f6f6;
+    border: 1px solid #eaeaea;
+    cursor: pointer; /* Add cursor pointer for better UX */
+  }
+  
+  .sub-nav-item:hover {
+    background-color: #ffffff;
+  }
+  
+  .sub-nav-item.selected {
+    background-color: #ffffff;
+    border-color: #ccc; /* Optional: different border color for the selected item */
+  }
+  

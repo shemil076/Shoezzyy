@@ -157,7 +157,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
                     />
                 </label>
                 <div>
-                    <h3>Price: ${cost}</h3>
+                    <h3>Price: LKR. {cost}</h3>
                 </div>
                 <div className='creat-order-button-section'>
                 <Button onClick={onClose || (() => { })} className='regular-black-button'>

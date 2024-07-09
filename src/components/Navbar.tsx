@@ -49,7 +49,6 @@ const Navbar = () => {
     localStorage.removeItem('token');
   };
 
-  console.log("admintoken", adminToken);
   return (
     <nav className="navbar">
       <Link to="/">

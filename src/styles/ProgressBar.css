@@ -16,8 +16,6 @@
     flex: 1;
   }
   
-
-  
   .progress-step .line {
     width: 50%;
     height: 0.5rem;
@@ -28,7 +26,7 @@
   
   .progress-step.current .line,
   .progress-step.completed .line {
-    background-color: purple;
+    background-color: rgb(53, 0, 128);
   }
   
   .progress-step .status-icon {

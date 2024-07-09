@@ -11,9 +11,10 @@ interface ConfirmationModalProps {
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, onClick }) => {
-    // const handleDelete = () => {
-    //     onclick();
-    // }
+    const handleDelete = () => {
+        onClick();
+        onClose();
+    }
     return (
         <Modal isOpen={isOpen}
             onClose={onClose}
@@ -29,7 +30,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
                <div className="confirmation-button-section">
                <Button onClick={onClose} className="regular-black-button">Cancel</Button>
 
-<Button onClick={onClick} className="regular-black-button">Proceed</Button>
+<Button onClick={handleDelete} className="regular-black-button">Proceed</Button>
                </div>
             </div>
         </Modal>
