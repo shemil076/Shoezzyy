@@ -53,7 +53,7 @@ const closeProductDetailModal = () => {
       <div className="cover-container">
         <img src="/assets/homeCover.jpg" alt="cover" className="cover-image" />
         <div className="cover-overlay">
-          <h1 className="overlay-text" style={{"fontSize": "3.5rem"}}>Featured Products</h1>
+          <h1 className="overlay-text">Featured Products</h1>
           <p className="overlay-subtext">Discover the Latest Arrivals with</p>
           <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
 

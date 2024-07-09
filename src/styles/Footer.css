@@ -9,8 +9,9 @@
   
   .footer-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
   }
   
   .footer p {
@@ -34,6 +35,15 @@
     text-decoration: none;
     font-size: 14px;
   }
+
+  .footer-logo{
+    width: 5rem;
+  }
+  .footer-contats-img{
+    width: 2rem;
+    margin-left: 10px;
+  }
+
   
   /* Media query for mobile styles */
   @media (max-width: 768px) {

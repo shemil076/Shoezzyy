@@ -62,7 +62,7 @@ const TrackOrder: React.FC = () => {
 
       <div className="container">
       <div className="cover-overlay">
-          <h1 className="overlay-text" style={{"fontSize": "4rem"}}>Track Your Order</h1>
+          <h1 className="overlay-text">Track Your Order</h1>
           <p className="overlay-subtext">with</p>
           <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
 
