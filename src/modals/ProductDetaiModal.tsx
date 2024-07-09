@@ -13,6 +13,7 @@ import ToggleComponent from '../components/ToggleComponent';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { getReadableBrandName } from '../utils/helperFunctions';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -25,7 +26,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const [mainImage, setMainImage] = useState<string>(shoe.images[0]);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [toggleState, setToggleState] = useState<boolean>(false);
-  const [isToggleUpdated , setIsToggleUpdated] = useState<boolean>(false);
+  const [isToggleUpdated, setIsToggleUpdated] = useState<boolean>(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setToggleState(event.target.value === 'true'); // Update the toggle state
@@ -39,44 +40,44 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const handleSave = async () => {
     const updatedStatus = {
-        _id: shoe._id,
-        isATopPcik : toggleState,
+      _id: shoe._id,
+      isATopPcik: toggleState,
     };
-    console.log("_id",shoe._id);
-    console.log("toggleState",toggleState);
+    console.log("_id", shoe._id);
+    console.log("toggleState", toggleState);
     try {
-        const response = await fetch('/api/shoes/isATopPick',{
-            method: 'PUT',
-            headers : {
-                'Content-Type': 'application/json'
-            },
-            body : JSON.stringify(updatedStatus)
-        });
+      const response = await fetch('/api/shoes/isATopPick', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedStatus)
+      });
 
-        if (response.ok){
-          console.log(response)
-          onClose();
-        }else{
-            console.error('Error updating status');
-        }
-        window.location.reload();
-    }catch(error){
-        console.error('Error updating status',error);
+      if (response.ok) {
+        console.log(response)
+        onClose();
+      } else {
+        console.error('Error updating status');
+      }
+      window.location.reload();
+    } catch (error) {
+      console.error('Error updating status', error);
     }
-};
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     setToggleState(shoe.isATopPcik);
-  },[shoe]);
+  }, [shoe]);
 
-  useEffect(()=>{
-    if(toggleState !== shoe.isATopPcik){
+  useEffect(() => {
+    if (toggleState !== shoe.isATopPcik) {
       setIsToggleUpdated(true);
-    }else{
+    } else {
       setIsToggleUpdated(false);
     }
-    
-  },[toggleState]);
+
+  }, [toggleState]);
 
   useEffect(() => {
     if (isOpen) {
@@ -100,7 +101,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
       />
     ));
   };
-  
+
   return (
     <Modal
       isOpen={isOpen}
@@ -117,8 +118,20 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             <img className="product-main-image" src={mainImage} alt="" />
           </div>
           <div className='product-detail-text-container'>
-            <h2>{shoe.name}</h2>
-            <h3>Price: LKR. {shoe.actualPrice}</h3>
+            <h3>{getReadableBrandName(shoe.brand)}</h3>
+            <h1>{shoe.name}</h1>
+            {
+              shoe.offerPrice ? (
+                <div className="product-price">
+                  <s>LKR. {shoe.actualPrice}</s>
+                  <em className='product-card-offer-price'>  LKR. {shoe.offerPrice}</em>
+                </div>
+              ) : (
+                <div className="product-price">
+                  LKR. {shoe.actualPrice}
+                </div>
+              )
+            }
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
             </div>
@@ -148,7 +161,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
           Save
         </Button> : null}
 
-        
+
 
         <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation} />
       </div>

@@ -44,28 +44,9 @@
   }
   
   .admin-button-container{
-
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  }
-
-  nav .menu{
-    display: flex;
-    position: absolute;
-    top: 0.75rem;
-    right: 0.5rem;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 2.25rem;
-    height: 2rem;
-  }
-
-  nav .menu span{
-    height: 0.4rem;
-    width: 100%;
-    background-color: #000000;
-    border-radius: 0.2rem;
   }
 
 
@@ -84,27 +65,7 @@
   
   @media screen and (max-width: 600px) {
 
-    nav .menu{
-      display: flex;
-    }
-
-    nav{
-      flex-direction: column;
-      align-items: start;
-    }
-
-    .navbar-link{
-      /* display: none; */
-      flex-direction: column;
-      width: 100%;
-      margin-bottom: 0.25rem;
-      align-items: center;
-    }
-
-
-
-    /* existing */
-    /* .navbar {
+    .navbar {
       flex-direction: column;
       align-items: center;
     }
@@ -117,6 +78,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-    } */
+    }
   }
   

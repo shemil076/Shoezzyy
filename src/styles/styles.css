@@ -20,7 +20,7 @@ h1 {
   animation: fadeIn 1s forwards;
 }
 .overlay-text {
-  font-size: 3.5em;
+  font-size: 5rem;
   font-weight: bold;
   margin: 0;
 }
