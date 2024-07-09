@@ -1,3 +1,4 @@
+/* HomePage.css */
 .cover-container {
   position: relative;
 }
@@ -7,7 +8,22 @@
   height: auto; /* Maintain aspect ratio */
 }
 
+.cover-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
 
+.overlay-text {
+  font-size: 2.5rem;
+}
+
+.overlay-subtext, .overlay-subtext-brand-name {
+  font-size: 1.2rem;
+}
 
 .new-arrival-list {
   display: grid;
@@ -16,3 +32,33 @@
   padding: 20px;
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+  .overlay-text {
+    font-size: 2rem;
+  }
+
+  .overlay-subtext, .overlay-subtext-brand-name {
+    font-size: 1rem;
+  }
+
+  .new-arrival-list {
+    padding: 10px;
+    gap: 10px; /* Reduce gap between cards on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-text {
+    font-size: 1.5rem;
+  }
+
+  .overlay-subtext, .overlay-subtext-brand-name {
+    font-size: 0.9rem;
+  }
+
+  .new-arrival-list {
+    padding: 5px;
+    gap: 5px; /* Further reduce gap between cards on very small screens */
+  }
+}

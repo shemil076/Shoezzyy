@@ -3,78 +3,117 @@
 .cover-image {
     width: 100%; /* Adjust as needed */
     height: auto; /* Maintain aspect ratio */
-}
-
-.page-name {
+  }
+  
+  .page-name {
     text-align: center;
     margin-top: 20px; /* Adjust spacing */
     margin-bottom: 20px; /* Adjust spacing */
-}
-
-.brand-section {
+  }
+  
+  .brand-section {
     width: 100%;
     margin-bottom: 30px; /* Adjust spacing between brand sections */
-}
-
-.slick-slider {
+  }
+  
+  .slick-slider {
     width: 100%;
     /* overflow: hidden; */
-}
-
-.product-list {
+  }
+  
+  .product-list {
     display: flex;
     gap: 15px; /* Adjust spacing between products */
-}
-
-.scrollable {
+  }
+  
+  .scrollable {
     overflow-x: auto;
     white-space: nowrap;
-}
-
-/* Custom Scrollbar Styling */
-.scrollable {
+  }
+  
+  /* Custom Scrollbar Styling */
+  .scrollable {
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #888 #f1f1f1; /* Firefox */
-}
-
-/* Webkit Browsers */
-.scrollable::-webkit-scrollbar {
+  }
+  
+  /* Webkit Browsers */
+  .scrollable::-webkit-scrollbar {
     height: 8px; /* Adjust the height of the scrollbar */
-}
-
-.scrollable::-webkit-scrollbar-track {
+  }
+  
+  .scrollable::-webkit-scrollbar-track {
     background: #f1f1f1; /* Background color of the scrollbar track */
     border-radius: 10px;
-}
-
-.scrollable::-webkit-scrollbar-thumb {
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb {
     background: #888; /* Color of the scrollbar thumb */
     border-radius: 10px;
-}
-
-.scrollable::-webkit-scrollbar-thumb:hover {
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the scrollbar thumb on hover */
-}
-
-/* Hide scrollbar by default, show on hover */
-.scrollable {
+  }
+  
+  /* Hide scrollbar by default, show on hover */
+  .scrollable {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     overflow: -moz-scrollbars-none; /* Firefox */
-}
-
-.scrollable::-webkit-scrollbar {
+  }
+  
+  .scrollable::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
-}
-
-.scrollable:hover::-webkit-scrollbar {
+  }
+  
+  .scrollable:hover::-webkit-scrollbar {
     display: block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
     .product-list {
-        flex-wrap: nowrap; /* Ensure products remain in a single row on smaller screens */
+      flex-wrap: nowrap; /* Ensure products remain in a single row on smaller screens */
     }
-}
+  
+    .cover-overlay {
+      text-align: center;
+    }
+  
+    .overlay-text {
+      font-size: 2rem;
+    }
+  
+    .overlay-subtext, .overlay-subtext-brand-name {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-list {
+      flex-wrap: nowrap; /* Ensure products remain in a single row on smaller screens */
+    }
+  
+    .cover-overlay {
+      text-align: center;
+    }
+  
+    .overlay-text {
+      font-size: 1.5rem;
+    }
+  
+    .overlay-subtext, .overlay-subtext-brand-name {
+      font-size: 0.9rem;
+    }
+  
+    .scrollable {
+      padding: 0 5px; /* Adjust padding for very small screens */
+    }
+  
+    .product-list {
+      gap: 10px; /* Adjust gap between products for very small screens */
+    }
+  }
+  

@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "./Modal";
 import Button from "./Button";
-import "../styles/ConfirmationModa.css"
+import "../styles/ConfirmationModal.css"
 import "../styles/RegularButton.css"
 
 interface ConfirmationModalProps {
@@ -18,8 +18,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
     return (
         <Modal isOpen={isOpen}
             onClose={onClose}
-            overlayClassName="modal-overlay-custom"
-            contentClassName="modal-content-custom" >
+            overlayClassName="confirmModal-overlay-custom"
+            contentClassName="confirmModal-content-custom" >
             <div>
                 <div>
                     <img src="/assets/warning.png" alt="warnning" className="warning-image" />

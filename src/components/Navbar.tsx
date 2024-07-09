@@ -54,10 +54,23 @@ const Navbar = () => {
       <Link to="/">
         <img src="/assets/shoezzyylogo.png" alt="logo" className="logo"/>
       </Link>
+
+
+      <div className='menu'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+
       <Link to="/" className="navbar-link">Home</Link>
       <Link to="/product-page" className="navbar-link">Products</Link>
       <Link to="/track-order" className="navbar-link">Track Order</Link>
       {/* <Link to="/signIn" className="navbar-link">Sign In</Link> */}
+
+
+
 
       {!adminToken ? 
       <><Button className="regular-black-button" onClick={openSignInModal}>SignIn</Button>

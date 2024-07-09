@@ -1,3 +1,5 @@
+/* AddNewProduct.module.css */
+
 .modal-overlay-custom {
   position: fixed;
   top: 0;
@@ -32,11 +34,14 @@ form {
   flex-direction: column;
 }
 
-form > div, form > label {
+form > div,
+form > label {
   margin-bottom: 15px;
 }
 
-form select, form input, form textarea {
+form select,
+form input,
+form textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -45,12 +50,16 @@ form select, form input, form textarea {
   box-sizing: border-box;
 }
 
-form select:focus, form input:focus, form textarea:focus {
+form select:focus,
+form input:focus,
+form textarea:focus {
   border-color: #0056b3;
   outline: none;
 }
 
-form select:invalid, form input:invalid, form textarea:invalid {
+form select:invalid,
+form input:invalid,
+form textarea:invalid {
   border-color: red;
 }
 
@@ -74,7 +83,7 @@ form select:invalid, form input:invalid, form textarea:invalid {
   background: #383838;
   color: rgb(255, 255, 255);
   border: none;
-  border-radius: px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
@@ -101,13 +110,57 @@ form select:invalid, form input:invalid, form textarea:invalid {
 
 @media (min-width: 600px) {
   .modal-button {
-      width: auto;
-      margin-bottom: 0;
-      margin-left: 10px;
+    width: auto;
+    margin-bottom: 0;
+    margin-left: 10px;
   }
 
   .button-group {
-      display: flex;
-      justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* Mobile-Friendly Styles */
+@media (max-width: 600px) {
+  .modal-content-custom {
+    padding: 10px;
+    width: 90%;
+  }
+
+  .modal-overlay-custom {
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  form select,
+  form input,
+  form textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .modal-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .image-preview-thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 18px;
+  }
+
+  .image-preview-thumbnail {
+    width: 60px;
+    height: 60px;
   }
 }
