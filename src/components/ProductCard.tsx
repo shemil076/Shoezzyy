@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Shoe } from '../types/types';
 import "../styles/ProductCard.css";
+import { getReadableBrandName } from '../utils/helperFunctions';
 
 interface ProductCardProps {
   shoe: Shoe;
@@ -38,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
         {decodeImages(shoe.images)}
       </div> */}
       <div className='product-detail-container'>
-        <div className="product-brand">{shoe.brand}</div>
+        <div className="product-brand">{getReadableBrandName(shoe.brand)}</div>
         <div className="product-name">{shoe.name}</div>
         <div className="product-price">Size: 36 - 45</div>
         {

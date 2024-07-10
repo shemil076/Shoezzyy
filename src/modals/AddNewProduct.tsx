@@ -27,7 +27,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const handleSave = async () => {
         if (!isFormValid) return;
 
-        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images,offerPrice, isATopPcik: false };
+        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images,offerPrice, isATopPick: false };
         
         try {
             const response = await fetch('/api/shoes', {
@@ -51,6 +51,11 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             const files = Array.from(e.target.files);
+            if (files.length + images.length > 4) {
+                alert('You can only upload up to 4 images.');
+                return;
+            }
+    
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onloadend = () => {

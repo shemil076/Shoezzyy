@@ -40,7 +40,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const handleSave = async () => {
     const updatedStatus = {
       _id: shoe._id,
-      isATopPcik: toggleState,
+      isATopPick: toggleState,
     };
     console.log("_id", shoe._id);
     console.log("toggleState", toggleState);
@@ -66,11 +66,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   };
 
   useEffect(() => {
-    setToggleState(shoe.isATopPcik);
+    setToggleState(shoe.isATopPick);
   }, [shoe]);
 
   useEffect(() => {
-    if (toggleState !== shoe.isATopPcik) {
+    if (toggleState !== shoe.isATopPick) {
       setIsToggleUpdated(true);
     } else {
       setIsToggleUpdated(false);

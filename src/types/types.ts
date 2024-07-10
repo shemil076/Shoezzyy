@@ -8,7 +8,7 @@ export interface Shoe {
     offerPrice:number;
     description : string;
     images: string[];
-    isATopPcik: boolean;
+    isATopPick: boolean;
   }
   
   export interface Order {

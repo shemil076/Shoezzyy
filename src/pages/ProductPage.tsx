@@ -32,8 +32,8 @@ const ProductPage: React.FC = () => {
       if(filteredShoes.length > 0){
         return (
           <div className="new-arrival-list">
-          {filteredShoes.map((shoe, index) => (
-            <ProductCard key={index} shoe={shoe} onCardClick={openProductDetailModal} />
+          {filteredShoes.map((shoe) => (
+            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
           ))}
         </div>
         );
@@ -78,9 +78,9 @@ const ProductPage: React.FC = () => {
         <>
         <SectionDevider title={"Top Picks"} subtitle={"Handpicked Favorites Just for You."}/>
         <div className="new-arrival-list">
-        {shoes.map((shoe, index) => (
-          shoe.isATopPcik ? (
-            <ProductCard key={index} shoe={shoe} onCardClick={openProductDetailModal} />
+        {shoes.map((shoe) => (
+          shoe.isATopPick ? (
+            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
           ) : null
         ))}
       </div> 

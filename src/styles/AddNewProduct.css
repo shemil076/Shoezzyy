@@ -78,10 +78,10 @@ form textarea:invalid {
 
 .modal-button {
   padding: 10px 15px;
-  background: #383838;
+  background: #000000;
   color: rgb(255, 255, 255);
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
@@ -89,21 +89,21 @@ form textarea:invalid {
 }
 
 .modal-button:hover {
-  background: #000000;
+  background: #333;
 }
 
 .modal-button:disabled {
-  background: #ccc;
+  background: #323232;
   cursor: not-allowed;
-  color: #000000;
+  color: #ffffff;
 }
 
 .modal-button:last-child {
-  background: #ccc;
+  background: #000000;
 }
 
 .modal-button:last-child:hover {
-  background: #aaa;
+  background: #333;
 }
 
 @media (min-width: 600px) {

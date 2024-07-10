@@ -7,16 +7,11 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <img src="/assets/shoezzyylogo.png" alt="" className='footer-logo' />
         <p>&copy; 2024 Shoe.zzyy. All rights reserved.</p>
-        {/* <ul className="footer-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul> */}
         <div className='footer-contacts'>
-        <a href="#">
+        <a href="https://wa.me/94776995453">
           <img src="/assets/whatsapp.png" alt="" className='footer-contats-img' />
         </a>
-        <a href="#">
+        <a href="https://www.instagram.com/shoe.zzyy/">
           <img src="/assets/instagram.png" alt="" className='footer-contats-img'/>
         </a>
         </div>
