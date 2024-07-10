@@ -58,15 +58,20 @@ const TrackOrder: React.FC = () => {
 
   return (
     <div>
-                  <img src='/assets/trackOrderCover.jpg' alt='shoes-cover-image' className='cover-image' />
+                 
 
-      <div className="container">
-      <div className="cover-overlay">
+      <div className='cover-container'>
+      <img src='/assets/trackOrderCover.jpg' alt='shoes-cover-image' className='cover-image' />
+                  <div className="cover-overlay">
           <h1 className="overlay-text">Track Your Order</h1>
           <p className="overlay-subtext">with</p>
           <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
 
         </div>
+      </div>
+
+      <div className="container">
+      
       <input
         type="text"
         value={jobId}
