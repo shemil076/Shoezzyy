@@ -153,7 +153,10 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
                     <input
                         type="number"
                         value={quantity}
-                        onChange={(e) => setQuantity(e.target.value as unknown as number)}
+                        onChange={(e) => {
+                            const value = Math.max(0, Number(e.target.value));
+                            setQuantity(value as unknown as number)
+                        }}
                     />
                 </label>
                 <div>
