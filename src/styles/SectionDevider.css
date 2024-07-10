@@ -9,7 +9,7 @@
   .line {
     flex: 1;
     height: 1px;
-    background-color: #000000; /* Adjust the color as needed */
+    background-color: #000000; 
     margin: 0 3rem;
   }
   

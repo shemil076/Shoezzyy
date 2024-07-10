@@ -4,18 +4,17 @@
   text-align: center;
   max-width: 300px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  /* Add more styles as needed */
 }
 
 .product-image-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 8px; /* Add margin for spacing */
+  margin-bottom: 8px; 
 }
 
 .product-image {
-  width: 100%; /* Adjust image width for responsiveness */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; 
+  height: auto; 
   object-fit: cover;
 }
 
@@ -51,7 +50,7 @@
   margin: 0%;
   padding: 0%;
   display: flex;
-  align-items: center; /* Center payment methods horizontally */
+  align-items: center; 
 }
 
 .koko-image {
@@ -67,26 +66,23 @@
 
 @media (max-width: 768px) {
   .product-card {
-    max-width: 90%; /* Allow the card to take full width on smaller screens */
+    max-width: 90%; 
   }
 
   .product-image {
-    width: 100%; /* Adjust image size to fit smaller screens */
+    width: 100%; 
   }
 
   .product-price {
-    font-size: 14px; /* Further reduce font size for price */
+    font-size: 14px; 
   }
 
   .product-name {
-    font-size: 18px; /* Further reduce font size for name */
+    font-size: 18px; 
   }
 
   .product-brand {
-    font-size: 12px; /* Further reduce font size for brand */
+    font-size: 12px; 
   }
 
-  .overlay {
-    /* Adjust overlay styles for smaller screens if used */
-  }
 }

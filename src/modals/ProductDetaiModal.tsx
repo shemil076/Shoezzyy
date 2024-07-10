@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteShoe } from '../features/shoeSlice';
 import { AppDispatch } from '../store';
 import { seletAdminToken } from '../selectors/adminSelectors';
-import ToggleComponent from '../components/ToggleComponent';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -170,6 +169,5 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 };
 
 export default ProductDetailModal;
-// className="regular-black-button"
 
 

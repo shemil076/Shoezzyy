@@ -3,7 +3,7 @@ import Modal from '../components/Modal';
 import '../styles/AddNewProduct.css';
 import '../styles/CreateOrder.css';
 import '../styles/RegularButton.css'
-import { ProductCategory, Brand, ReadbleBrandName, OrderStatus } from '../types/enum';
+import { Brand, OrderStatus } from '../types/enum';
 import Button from '../components/Button';
 import { Shoe } from '../types/types';
 import { categorizeShoesByBrand, getReadableBrandName } from '../utils/helperFunctions';

@@ -57,14 +57,14 @@ h1 {
   }
 }
 
-/* Keyframes for fade-in effect */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -60%); /* Slightly move text up initially */
+    transform: translate(-50%, -60%); 
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%); /* Move text to center */
+    transform: translate(-50%, -50%); 
   }
 }

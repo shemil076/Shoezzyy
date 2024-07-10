@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '../components/Modal';
 
-import { ProductCategory, Brand, OrderStatus } from '../types/enum';
+import { OrderStatus } from '../types/enum';
 import Button from '../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';

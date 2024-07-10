@@ -20,10 +20,6 @@ export const fetchAllOrders = createAsyncThunk<Order[], void, {state: RootState}
   async (_, {getState}) => {
 
     const state = getState();
-    // if(state.orders.isOrderLastFetched){
-    //   console.log("Inside lastfetched condition")
-    //   return [];
-    // }
     const response = await axios.get('api/orders');
     return response.data;
   }

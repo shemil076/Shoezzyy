@@ -22,7 +22,6 @@ const SignInModal: React.FC<SignInModalProps> = ({isOpen, onClose}) => {
       try {
         await dispatch(adminSignin({ email, password }));
         setError(null);
-        //  window.location.href = '/';
       } catch (err) {
         setError('Invalid credentials');
       }

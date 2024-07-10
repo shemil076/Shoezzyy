@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Shoe } from '../types/types';
 import "../styles/ProductCard.css";
-import ProductDetailModal from '../modals/ProductDetaiModal';
-
 
 interface ProductCardProps {
   shoe: Shoe;

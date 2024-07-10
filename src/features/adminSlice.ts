@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from '../store';
 
 interface AdminState{
     token : string | null;

@@ -71,8 +71,6 @@
 
 .product-main-image {
   width : 20rem;
-  /* width: 100%; */
-  /* max-width: 300px; */
   margin: 8px;
   border-radius: 12px;
   object-fit: contain;
@@ -125,7 +123,6 @@
     width: 15rem;
     margin-left: 10rem;
 
-    /* max-width: 200px; */
     align-content: center;
 }
 

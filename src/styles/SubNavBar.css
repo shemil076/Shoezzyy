@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  flex-wrap: wrap; 
 }
 
 .sub-nav-item {
@@ -12,9 +12,9 @@
   padding-right: 2rem;
   background-color: #f6f6f6;
   border: 1px solid #eaeaea;
-  cursor: pointer; /* Add cursor pointer for better UX */
-  margin: 0.5rem; /* Add margin for spacing between items */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer; 
+  margin: 0.5rem; 
+  transition: background-color 0.3s ease; 
 }
 
 .sub-nav-item:hover {
@@ -23,20 +23,20 @@
 
 .sub-nav-item.selected {
   background-color: #ffffff;
-  border-color: #ccc; /* Optional: different border color for the selected item */
+  border-color: #ccc; 
 }
 
 @media (max-width: 768px) {
   .sub-nav-container {
     margin: 1rem;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    align-items: center; 
   }
 
   .sub-nav-item {
     padding-left: 1rem;
     padding-right: 1rem;
-    width: 85%; /* Make items take full width */
-    text-align: center; /* Center text inside items */
+    width: 85%; 
+    text-align: center; 
   }
 }

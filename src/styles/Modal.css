@@ -1,4 +1,3 @@
-/* Modal.css */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -9,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure the modal is on top of other elements */
+    z-index: 1000; 
   }
   
   .modal-content {
@@ -18,9 +17,8 @@
     border-radius: 8px;
     position: relative;
     height: auto;
-    width: auto; /* Adjusted for mobile-friendly design */
-    /* max-width: 800px; Ensure it doesn't get too wide on larger screens */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    width: auto; 
+    box-sizing: border-box; 
   }
   
   .modal-close {
