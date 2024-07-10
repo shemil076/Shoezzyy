@@ -81,7 +81,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
     const returnBrandOptions = () => {
         return Object.keys(categorizedShoes).map((brand, index)=>{
             return(
-                <option key={index} value={brand}>{brand}</option>
+                <option key={index} value={brand}>{getReadableBrandName(brand as Brand)}</option>
             );
         });
     };
