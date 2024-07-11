@@ -5,7 +5,7 @@ import ProductCard from "../components/ProductCard";
 import '../styles/ProductPage.css';
 import { AppDispatch } from "../store";
 import { fetchAllShoes } from "../features/shoeSlice";
-import { getReadableBrandName, getShoesByBrand } from "../utils/helperFunctions";
+import { getOnlyTopPicks, getReadableBrandName, getShoesByBrand } from "../utils/helperFunctions";
 import { Shoe } from "../types/types";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,6 +13,8 @@ import ProductDetailModal from "../modals/ProductDetaiModal";
 import { Brand } from "../types/enum";
 import SubNavBar from "../components/SubNavBar";
 import SectionDevider from "../components/SectionDevider";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const ProductPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +25,48 @@ const ProductPage: React.FC = () => {
   const [isProductDetailOpen, setProductDetailOpen] = useState(false);
   const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
   const [currentSelection, setCurrentSelection] = useState<Brand | string>("topPicks");
+
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+      slidesToSlide: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 4
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1
+    }
+  };
+
+  const displayOnlyTopPicks = () => {
+    if (loading) return <p>Loading...</p>;
+
+    const filteredShoes = getOnlyTopPicks(shoes);
+
+    if (!filteredShoes) return null;
+    return (
+      <div className="new-arrival-list">
+        <Carousel responsive={responsive}>
+      {filteredShoes.map((shoe) => (
+          shoe.isATopPick ? (
+            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
+          ) : null
+        ))}
+      </Carousel>
+      </div> 
+    );
+  };
 
   const displayProducts = () =>{
     if (loading) return <p>Loading...</p>;
@@ -77,13 +121,7 @@ const ProductPage: React.FC = () => {
       {currentSelection === 'topPicks' ? (
         <>
         <SectionDevider title={"Top Picks"} subtitle={"Handpicked Favorites Just for You."}/>
-        <div className="new-arrival-list">
-        {shoes.map((shoe) => (
-          shoe.isATopPick ? (
-            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
-          ) : null
-        ))}
-      </div> 
+        {displayOnlyTopPicks()}
         </>
       ): null}
 

@@ -35,3 +35,8 @@ export const getShoesByBrand = (shoes : Shoe[], brandName : string): Shoe[] => {
   const filteredShoes = shoes.filter((shoe)=> (shoe.brand === brandName));
   return filteredShoes.length > 0 ? filteredShoes : [];
 };
+
+export const getOnlyTopPicks = (shoes : Shoe[]) : Shoe[] =>{
+  const filteredShoes = shoes.filter((shoe)=> (shoe.isATopPick));
+  return filteredShoes.length > 0 ? filteredShoes : [];
+}
