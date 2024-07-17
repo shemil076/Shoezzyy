@@ -1,4 +1,4 @@
-import { Brand, OrderStatus } from "./enum";
+import { AdidasTypes, Brand, NewBalanceTypes, NikeTypes, OrderStatus } from "./enum";
 
 export interface Shoe {
     _id: string,
@@ -9,6 +9,8 @@ export interface Shoe {
     description : string;
     images: string[];
     isATopPick: boolean;
+    model: AdidasTypes | NewBalanceTypes | NikeTypes | null;
+    sizeUrl: string;
   }
   
   export interface Order {
@@ -21,3 +23,5 @@ export interface Shoe {
     cost: number;
     status: OrderStatus;
   }
+
+  

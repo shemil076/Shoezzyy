@@ -11,7 +11,7 @@
   padding: 10px;
   width: 100%;
   height: 100%;
-  z-index: 111;
+  z-index: 1111;
 }
 
 .modal-content-custom-product-detail {
@@ -23,6 +23,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   animation: fadeIn 0.3s ease-in-out;
+  z-index: 10000;
 }
 .product-detail-modal-upper-section {
   display: flex;

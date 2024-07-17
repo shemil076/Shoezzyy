@@ -31,10 +31,19 @@
   
   @media (max-width: 768px) {
     .features-container {
-      flex-direction: column;
+      /* flex-direction: column; */
       align-items: center;
     }
+
+    .feature-icon img{
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+    }
   
+    .feature-text h3 {
+      font-size: 12px;
+    }
     .feature-item {
       max-width: 100%;
     }

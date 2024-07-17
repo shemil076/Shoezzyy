@@ -57,7 +57,7 @@ const TrackOrder: React.FC = () => {
         type="text"
         value={jobId}
         onChange={(e) => setJobId(e.target.value)}
-        placeholder="Enter Job ID"
+        placeholder="Enter Order ID"
         className="inputField"
       />
      < OrderNotFoundModal isOpen={isShowOrderNotFound && !currentOrder?.status} onClose={closeOrderNotFoundModal}/>

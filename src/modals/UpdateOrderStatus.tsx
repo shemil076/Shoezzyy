@@ -96,12 +96,12 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose}) 
             <h2>Update Order Status</h2>
             {loading ? <p>Loading...</p> : <form>
                 <label>
-                    Job Id:
+                    Order Id:
                     <select
                         value={jobId}
                         onChange={(e) => setJobId(e.target.value)}
                     >
-                        <option value=''>Select the job id</option>
+                        <option value=''>Select the order id</option>
                         {jobIdOptions()}
                     </select>
                 </label>

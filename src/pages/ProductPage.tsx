@@ -15,6 +15,7 @@ import SubNavBar from "../components/SubNavBar";
 import SectionDevider from "../components/SectionDevider";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { responsive } from "../utils/constants";
 
 const ProductPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,28 +27,7 @@ const ProductPage: React.FC = () => {
   const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
   const [currentSelection, setCurrentSelection] = useState<Brand | string>("topPicks");
 
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-      slidesToSlide: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-      slidesToSlide: 4
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1
-    }
-  };
+ 
 
   const displayOnlyTopPicks = () => {
     if (loading) return <p>Loading...</p>;
