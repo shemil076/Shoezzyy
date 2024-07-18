@@ -42,8 +42,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
       _id: shoe._id,
       isATopPick: toggleState,
     };
-    console.log("_id", shoe._id);
-    console.log("toggleState", toggleState);
+
     try {
       const response = await fetch('/api/shoes/isATopPick', {
         method: 'PUT',
@@ -54,7 +53,6 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
       });
 
       if (response.ok) {
-        console.log(response)
         onClose();
       } else {
         console.error('Error updating status');
