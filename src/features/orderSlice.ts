@@ -4,20 +4,20 @@ import { Order } from '../types/types';
 import { RootState } from '../store';
 
 interface OrderState {
-  orders : Order[];
+  orders: Order[];
   loading: boolean;
   isOrderLastFetched: boolean;
 }
 
 const initialState: OrderState = {
-  orders : [],
+  orders: [],
   loading: false,
   isOrderLastFetched: false
 };
 
-export const fetchAllOrders = createAsyncThunk<Order[], void, {state: RootState}>(
+export const fetchAllOrders = createAsyncThunk<Order[], void, { state: RootState }>(
   'orders/fetchAllOrders',
-  async (_, {getState}) => {
+  async (_, { getState }) => {
 
     const state = getState();
     const response = await axios.get('api/orders');
@@ -28,20 +28,20 @@ export const fetchAllOrders = createAsyncThunk<Order[], void, {state: RootState}
 const orderSlice = createSlice({
   name: 'orders',
   initialState,
-  reducers:{},
+  reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchAllOrders.pending, (state) => {
-      state.loading = true;
-    })
-    .addCase(fetchAllOrders.fulfilled, (state, action : PayloadAction<Order[]>)=>{
-      state.loading = false;
-      state.orders =  action.payload;
-      state.isOrderLastFetched = true;
-    })
-    .addCase(fetchAllOrders.rejected, (state)=>{
-      state.loading =  false;
-    });
+      .addCase(fetchAllOrders.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAllOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
+        state.loading = false;
+        state.orders = action.payload;
+        state.isOrderLastFetched = true;
+      })
+      .addCase(fetchAllOrders.rejected, (state) => {
+        state.loading = false;
+      });
   }
 });
 

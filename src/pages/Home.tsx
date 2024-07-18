@@ -25,7 +25,6 @@ const Home: React.FC = () => {
   const lastFetched = useSelector(selectShoesLastFetched);
 
   const orders = useSelector(selectOrder);
-  const isOrderloading = useSelector(selectOrderLoading);
   const isOrderLastFetched = useSelector(selectOrderLastFetched);
 
 
@@ -64,15 +63,15 @@ const Home: React.FC = () => {
   const displayNewArrivals = () => {
     if (loading) return <p>Loading...</p>;
     const newArrivalList = shoes.slice(0, 4);
-    return(
+    return (
       <div className="new-arrival-list">
-          <Carousel responsive={responsive}>
-            {newArrivalList.map((shoe, index) => (
-              <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
-            ))}
-          </Carousel>
+        <Carousel responsive={responsive}>
+          {newArrivalList.map((shoe, index) => (
+            <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
+          ))}
+        </Carousel>
 
-        </div>
+      </div>
     );
 
   };
@@ -101,10 +100,9 @@ const Home: React.FC = () => {
 
       <Features />
 
-
       <SectionDevider title={"Products by Brands"} subtitle={""} />
 
-      <BrandsButtonPanel/>
+      <BrandsButtonPanel />
 
       <SectionDevider title={"Top Picks"} subtitle={"Handpicked Favorites Just for You."} />
       {shoes.length === 0 ? <p style={{ "textAlign": "center" }}>No products to show...</p> : null}
@@ -115,8 +113,8 @@ const Home: React.FC = () => {
       {displayNewArrivals()}
 
       {selectedShoe && (
-                <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
-            )}    </div>
+        <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
+      )}    </div>
   );
 };
 

@@ -13,7 +13,7 @@ import { Shoe } from "../types/types";
 const getImagesForSlideShow = (shoes: Shoe[], brand: Brand): string[] => {
   const shoesFiltterdByBrands = getShoesByBrand(shoes, brand);
   let imagesArray: string[] = [];
-  switch(brand){
+  switch (brand) {
     case Brand.ADIDAS:
     case Brand.NEWBALANCE:
     case Brand.NIKE:

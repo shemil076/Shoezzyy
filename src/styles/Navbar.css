@@ -76,7 +76,7 @@
 
 .admin-button-container {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .regular-black-button {
@@ -103,7 +103,7 @@
     z-index: 1000;
   }
 
-  .navbar-link{
+  .navbar-link {
     margin: 5px;
   }
 
@@ -118,6 +118,6 @@
 
   .admin-button-container {
     flex-direction: column;
-    gap: 5px; 
+    gap: 5px;
   }
 }

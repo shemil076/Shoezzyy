@@ -30,7 +30,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         if (!isFormValid) return;
 
         const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images, offerPrice, isATopPick: false, model: shoeModel };
-        
+
         try {
             const response = await fetch('/api/shoes', {
                 method: 'POST',
@@ -57,7 +57,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                 alert('You can only upload up to 4 images.');
                 return;
             }
-    
+
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onloadend = () => {
@@ -86,15 +86,15 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         switch (shoeBrand) {
             case Brand.ADIDAS:
                 return Object.values(AdidasTypes).map(type => (
-                    <option key={type} value={type}>{getReadableModelName(Brand.ADIDAS,type)}</option>
+                    <option key={type} value={type}>{getReadableModelName(Brand.ADIDAS, type)}</option>
                 ));
             case Brand.NEWBALANCE:
                 return Object.values(NewBalanceTypes).map(type => (
-                    <option key={type} value={type}>{getReadableModelName(Brand.NEWBALANCE,type)}</option>
+                    <option key={type} value={type}>{getReadableModelName(Brand.NEWBALANCE, type)}</option>
                 ));
             case Brand.NIKE:
                 return Object.values(NikeTypes).map(type => (
-                    <option key={type} value={type}>{getReadableModelName(Brand.NIKE,type)}</option>
+                    <option key={type} value={type}>{getReadableModelName(Brand.NIKE, type)}</option>
                 ));
             default:
                 return null;

@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import "../styles/Slideshow.css";
 
-const imagesArray = [
-  '/assets/new.png',
-  '/assets/c.png',
-  '/assets/newBalance.png',
-];
 
 const fade = keyframes`
   0% { opacity: 0; }
@@ -29,7 +24,7 @@ interface SlideImageProps {
 
 const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVisible }) => ({
   'data-is-visible': isVisible,
-}))<SlideImageProps>`
+})) <SlideImageProps>`
   max-width: 100%;
   max-height: 100%;
   object-fit: contain; /* Ensure the image covers the container while maintaining aspect ratio */

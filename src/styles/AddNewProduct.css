@@ -34,8 +34,8 @@ form {
   flex-direction: column;
 }
 
-form > div,
-form > label {
+form>div,
+form>label {
   margin-bottom: 15px;
 }
 
@@ -121,7 +121,6 @@ form textarea:invalid {
   }
 }
 
-/* Mobile-Friendly Styles */
 @media (max-width: 600px) {
   .modal-content-custom {
     padding: 10px;

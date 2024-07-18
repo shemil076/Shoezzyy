@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import '../styles/RegularButton.css'; // You can create a CSS file for styling
 
 

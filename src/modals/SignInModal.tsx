@@ -5,35 +5,35 @@ import { adminSignin } from "../features/adminSlice";
 import { AppDispatch, RootState } from "../store";
 import '../styles/RegularButton.css';
 
-interface SignInModalProps  {
-    isOpen: boolean;
-    onClose: () => void;
+interface SignInModalProps {
+  isOpen: boolean;
+  onClose: () => void;
 };
 
-const SignInModal: React.FC<SignInModalProps> = ({isOpen, onClose}) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
-    const dispatch = useDispatch<AppDispatch>();
-    const { loading, error: authError } = useSelector((state: RootState) => state.admin);
-  
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      try {
-        await dispatch(adminSignin({ email, password }));
-        setError(null);
-      } catch (err) {
-        setError('Invalid credentials');
-      }
-    };
-  
-    return (
-        <Modal
-            isOpen={isOpen}
-            onClose={onClose}
-            overlayClassName="modal-overlay-custom"
-            contentClassName="modal-content-custom">
-                  <h2>Admin Sign-In</h2>
+const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, error: authError } = useSelector((state: RootState) => state.admin);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await dispatch(adminSignin({ email, password }));
+      setError(null);
+    } catch (err) {
+      setError('Invalid credentials');
+    }
+  };
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      overlayClassName="modal-overlay-custom"
+      contentClassName="modal-content-custom">
+      <h2>Admin Sign-In</h2>
       {error && <p>{error}</p>}
       {authError && <p>{authError}</p>}
       <form onSubmit={handleSubmit}>
@@ -55,8 +55,8 @@ const SignInModal: React.FC<SignInModalProps> = ({isOpen, onClose}) => {
           {loading ? 'Signing In...' : 'Sign In'}
         </button>
       </form>
-        </Modal>
-    );
+    </Modal>
+  );
 };
 
 export default SignInModal;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css'; 
+import '../styles/Navbar.css';
 import '../styles/styles.css';
 import '../styles/RegularButton.css';
 import Button from './Button';
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
         <Link to="/" className="navbar-link">Home</Link>
         <Link to="/product-page" className="navbar-link">Products</Link>
         <Link to="/track-order" className="navbar-link">Track Order</Link>
-        
+
         {!adminToken ? (
           <>
             <Button className="regular-black-button" onClick={openSignInModal}>SignIn</Button>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { fetchAllShoes } from '../features/shoeSlice';
-import '../styles/styles.css'; 
+import '../styles/styles.css';
 import { Brand } from '../types/enum';
 import { categorizeShoesByModel, getReadableBrandName, getReadableModelName, getShoesByBrand, normalizeBrand } from '../utils/helperFunctions';
 import SectionDevider from '../components/SectionDevider';
@@ -25,7 +25,6 @@ const BrandPage: React.FC = () => {
   const brandName = normalizeBrand(brandParam);
   const dispatch = useAppDispatch();
   const shoes = useAppSelector((state) => state.shoes.shoes);
-  const loading = useAppSelector((state) => state.shoes.loading);
   const lastFetched = useAppSelector((state) => state.shoes.lastFetched);
   const [isProductDetailOpen, setProductDetailOpen] = useState(false);
   const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
@@ -53,39 +52,39 @@ const BrandPage: React.FC = () => {
     return <p>Invalid brand</p>;
   }
 
-  const filteredShoes = getShoesByBrand(shoes,brandName);
+  const filteredShoes = getShoesByBrand(shoes, brandName);
 
-  const displayShoesDynamically = () =>{
-    switch(brandName){
+  const displayShoesDynamically = () => {
+    switch (brandName) {
       case Brand.ALLSTARCONVERSE:
       case Brand.VANSOLDSKOOL:
-        return(
+        return (
           <div className="new-arrival-list">
-          <Carousel responsive={responsive}>
-            {filteredShoes.map((shoe) => (
-              shoe ? (
-                <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
-              ) : null
-            ))}
-          </Carousel>
-        </div>
+            <Carousel responsive={responsive}>
+              {filteredShoes.map((shoe) => (
+                shoe ? (
+                  <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
+                ) : null
+              ))}
+            </Carousel>
+          </div>
         );
       case Brand.ADIDAS:
       case Brand.NEWBALANCE:
       case Brand.NIKE:
         const categoriesWithShoes = categorizeShoesByModel(filteredShoes);
         console.log(categoriesWithShoes)
-        return Object.keys(categoriesWithShoes).map((category) =>{
-          return(
+        return Object.keys(categoriesWithShoes).map((category) => {
+          return (
             <>
-            <SectionDevider title={getReadableModelName(brandName,category)} subtitle={''}/>
-            <Carousel responsive={responsive}>
-            {categoriesWithShoes[category].map((shoe) => (
-              shoe ? (
-                <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
-              ) : null
-            ))}
-          </Carousel>
+              <SectionDevider title={getReadableModelName(brandName, category)} subtitle={''} />
+              <Carousel responsive={responsive}>
+                {categoriesWithShoes[category].map((shoe) => (
+                  shoe ? (
+                    <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
+                  ) : null
+                ))}
+              </Carousel>
             </>
           );
         });
@@ -98,34 +97,20 @@ const BrandPage: React.FC = () => {
     <div>
 
       <div className="cover-container">
-        <img 
-        src={brandCoverImages[brandName]} 
-        alt={`${getReadableBrandName(brandName)} shoes`} 
-        className='cover-image' 
-      />
+        <img
+          src={brandCoverImages[brandName]}
+          alt={`${getReadableBrandName(brandName)} shoes`}
+          className='cover-image'
+        />
         <div className="cover-overlay">
           <h1 className="overlay-text">{getReadableBrandName(brandName)}</h1>
-          {/* <p className="overlay-subtext">Discover the Latest Arrivals with</p>
-          <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3> */}
 
         </div>
       </div>
-      
-
-      {/* <SectionDevider title={getReadableBrandName(brandName)?.toUpperCase()} subtitle={''}/> */}
 
       {displayShoesDynamically()}
-      {/* {loading ? <p>Loading...</p> : (
-        <ul>
-          {filteredShoes.map((shoe) => (
-            <li key={shoe.name}>
-              <p>{shoe.name}</p>
-            </li>
-          ))}
-        </ul>
-      )} */}
 
-{selectedShoe && (
+      {selectedShoe && (
         <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
       )}
     </div>

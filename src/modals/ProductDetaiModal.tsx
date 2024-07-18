@@ -119,9 +119,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
           <div className='product-detail-text-container'>
             <div>
-            {shoe.model ? <h3> {getReadableBrandName(shoe.brand)} {getReadableModelName(shoe.brand, shoe.model)}</h3> :
-            <h3>{getReadableBrandName(shoe.brand)}</h3>
-            }
+              {shoe.model ? <h3> {getReadableBrandName(shoe.brand)} {getReadableModelName(shoe.brand, shoe.model)}</h3> :
+                <h3>{getReadableBrandName(shoe.brand)}</h3>
+              }
             </div>
             <h1>{shoe.name}</h1>
             {
@@ -137,12 +137,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
               )
             }
             <div className='instructions-container'>
-            <p className='instructions'>How to place the order? &#9432;</p>
-            <p className='instructions'>Free delivery islandwide.</p>
-            <div className='instructions-payments'>
-            <p>Bank Transfer & </p>
-          <img src="/assets/koko.png" alt="" className="koko-image" />
-          </div>
+              <p className='instructions'>How to place the order? &#9432;</p>
+              <p className='instructions'>Free delivery islandwide.</p>
+              <div className='instructions-payments'>
+                <p>Bank Transfer & </p>
+                <img src="/assets/koko.png" alt="" className="koko-image" />
+              </div>
             </div>
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
@@ -165,17 +165,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             <FormControlLabel value={false} control={<Radio />} label="No" />
           </RadioGroup>
         </div> : null}
-
         {adminToken && !isToggleUpdated ? <Button onClick={openConfirmation} className='regular-black-button'>
           Remove
         </Button> : null}
-
         {isToggleUpdated ? <Button onClick={handleSave} className='regular-black-button'>
           Save
         </Button> : null}
-
-
-
         <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation} />
       </div>
     </Modal>
