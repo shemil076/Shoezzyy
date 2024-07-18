@@ -6,7 +6,7 @@ import '../styles/RegularButton.css'
 import { Brand, OrderStatus } from '../types/enum';
 import Button from '../components/Button';
 import { Shoe } from '../types/types';
-import { categorizeShoesByBrand, getReadableBrandName } from '../utils/helperFunctions';
+import { categorizeShoesByBrand, getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
 
 
 interface CreateOrderModalProps {
@@ -90,8 +90,9 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
         const relatedProducts = categorizedShoes[shoeBrand];
         if (!relatedProducts) return null;
         return relatedProducts.map((shoe, index)=>{
+            const optionText = shoe.model ? getReadableModelName(shoe.brand,shoe.model) + " " + shoe.name : shoe.name
             return (
-                <option key={index} value={shoe.name}>{shoe.name}</option>
+                <option key={index} value={shoe.name}>{optionText}</option>
             );
         });
     };

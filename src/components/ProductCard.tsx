@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shoe } from '../types/types';
 import "../styles/ProductCard.css";
-import { getReadableBrandName } from '../utils/helperFunctions';
+import { getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
 
 interface ProductCardProps {
   shoe: Shoe;
@@ -16,18 +16,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
         <img className="product-image" src={shoe.images[0]} alt="" />
       </div>
       <div className='product-detail-container'>
+        {shoe.model ? <div className="product-brand">{getReadableBrandName(shoe.brand)} {getReadableModelName(shoe.brand,shoe.model)}</div>:
         <div className="product-brand">{getReadableBrandName(shoe.brand)}</div>
+        }
         <div className="product-name">{shoe.name}</div>
-        <div className="product-price">Size: 36 - 45</div>
         {
           shoe.offerPrice ? (
             <div className="product-price">
-          <s>LKR. {shoe.actualPrice}</s>
-          <em className='product-card-offer-price'>  LKR. {shoe.offerPrice}</em>
+          <s>LKR. {shoe.actualPrice.toLocaleString()}</s>
+          <em className='product-card-offer-price'>  LKR. {shoe.offerPrice.toLocaleString()}</em>
           </div>
           ) : (
             <div className="product-price">
-             LKR. {shoe.actualPrice}
+             LKR. {shoe.actualPrice.toLocaleString()}
           </div>
           )
         }

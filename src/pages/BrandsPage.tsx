@@ -14,10 +14,10 @@ import ProductDetailModal from '../modals/ProductDetaiModal';
 
 const brandCoverImages: Record<Brand, string> = {
   [Brand.ADIDAS]: '/assets/brandCover.jpg',
-  [Brand.ALLSTARCONVERSE]: '/assets/brandCover.jpg',
-  [Brand.NEWBALANCE]: '/assets/brandCover.jpg',
-  [Brand.NIKE]: '/assets/brandCover.jpg',
-  [Brand.VANSOLDSKOOL]: '/assets/brandCover.jpg'
+  [Brand.ALLSTARCONVERSE]: '/assets/c.png',
+  [Brand.NEWBALANCE]: '/assets/newBalance.png',
+  [Brand.NIKE]: '/assets/NIKEE.png',
+  [Brand.VANSOLDSKOOL]: '/assets/vans.png'
 };
 
 const BrandPage: React.FC = () => {

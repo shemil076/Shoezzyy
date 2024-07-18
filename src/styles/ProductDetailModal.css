@@ -25,6 +25,7 @@
   animation: fadeIn 0.3s ease-in-out;
   z-index: 10000;
 }
+
 .product-detail-modal-upper-section {
   display: flex;
   flex-direction: row;
@@ -37,6 +38,7 @@
   height: auto;
   padding: 20px;
 }
+
 .product-detail-text-container {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -53,9 +55,11 @@
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
 .product-detail-individual-image:hover {
   transform: scale(1.1);
 }
+
 .product-detail-multiple-image-container {
   display: flex;
   flex-direction: column;
@@ -71,11 +75,12 @@
 }
 
 .product-main-image {
-  width : 20rem;
+  width: 20rem;
   margin: 8px;
   border-radius: 12px;
   object-fit: contain;
 }
+
 .product-detail-description {
   margin-top: 1rem;
   width: 100%;
@@ -97,6 +102,26 @@
   gap: 10px;
 }
 
+.instructions-container {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.instructions {
+  font-size: 12px;
+  padding: 0;
+}
+
+.instructions-payments {
+  font-size: 12px;
+  padding: 0%;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  align-items: center;
+  height: 8%;
+}
+
 
 @media (max-width: 768px) {
   .modal-content-custom-product-detail {
@@ -113,34 +138,38 @@
     margin-left: 0;
     margin-right: 0;
   }
+
   .product-detail-image-container,
   .product-detail-multiple-image-container {
     margin-top: 10px;
-      flex-direction: row;
-      justify-content: center;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .product-main-image {
     width: 15rem;
-    margin-left: 10rem;
+    margin-left: 12rem;
 
     align-content: center;
-}
 
-.product-detail-description {
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-}
-.top-pick-section {
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.radio-button-group {
-  flex-direction: column;
-  gap: 5px;
-}
-}
 
+  }
+
+  .product-detail-description {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .top-pick-section {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .radio-button-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

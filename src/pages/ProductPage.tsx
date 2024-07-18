@@ -18,73 +18,73 @@ import 'react-multi-carousel/lib/styles.css';
 import { responsive } from "../utils/constants";
 
 const ProductPage: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
 
-  const shoes = useSelector(selectShoes);
-  const loading = useSelector(selectShoesLoading);
-  const lastFetched = useSelector(selectShoesLastFetched);
-  const [isProductDetailOpen, setProductDetailOpen] = useState(false);
-  const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
-  const [currentSelection, setCurrentSelection] = useState<Brand | string>("topPicks");
+  // const shoes = useSelector(selectShoes);
+  // const loading = useSelector(selectShoesLoading);
+  // const lastFetched = useSelector(selectShoesLastFetched);
+  // const [isProductDetailOpen, setProductDetailOpen] = useState(false);
+  // const [selectedShoe, setSelectedShoe] = useState<Shoe | null>(null);
+  // const [currentSelection, setCurrentSelection] = useState<Brand | string>("topPicks");
 
  
 
-  const displayOnlyTopPicks = () => {
-    if (loading) return <p>Loading...</p>;
+  // const displayOnlyTopPicks = () => {
+  //   if (loading) return <p>Loading...</p>;
 
-    const filteredShoes = getOnlyTopPicks(shoes);
+  //   const filteredShoes = getOnlyTopPicks(shoes);
 
-    if (!filteredShoes) return null;
-    return (
-      <div className="new-arrival-list">
-        <Carousel responsive={responsive}>
-      {filteredShoes.map((shoe) => (
-          shoe.isATopPick ? (
-            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
-          ) : null
-        ))}
-      </Carousel>
-      </div> 
-    );
-  };
+  //   if (!filteredShoes) return null;
+  //   return (
+  //     <div className="new-arrival-list">
+  //       <Carousel responsive={responsive}>
+  //     {filteredShoes.map((shoe) => (
+  //         shoe.isATopPick ? (
+  //           <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
+  //         ) : null
+  //       ))}
+  //     </Carousel>
+  //     </div> 
+  //   );
+  // };
 
-  const displayProducts = () =>{
-    if (loading) return <p>Loading...</p>;
+  // const displayProducts = () =>{
+  //   if (loading) return <p>Loading...</p>;
 
-    if( currentSelection !== 'topPicks'){
-     const filteredShoes = getShoesByBrand(shoes, currentSelection);
-      if(filteredShoes.length > 0){
-        return (
-          <div className="new-arrival-list">
-          {filteredShoes.map((shoe) => (
-            <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
-          ))}
-        </div>
-        );
-      }
-      return <p style={{"textAlign": "center"}}>No items</p>
-    }
+  //   if( currentSelection !== 'topPicks'){
+  //    const filteredShoes = getShoesByBrand(shoes, currentSelection);
+  //     if(filteredShoes.length > 0){
+  //       return (
+  //         <div className="new-arrival-list">
+  //         {filteredShoes.map((shoe) => (
+  //           <ProductCard key={`${shoe._id}-${currentSelection}`} shoe={shoe} onCardClick={openProductDetailModal} />
+  //         ))}
+  //       </div>
+  //       );
+  //     }
+  //     return <p style={{"textAlign": "center"}}>No items</p>
+  //   }
   
 
-    return null;
-  };
+  //   return null;
+  // };
 
-  const openProductDetailModal = (shoe: Shoe) => {
-    setSelectedShoe(shoe);
-    setProductDetailOpen(true);
-  };
+  // const openProductDetailModal = (shoe: Shoe) => {
+  //   setSelectedShoe(shoe);
+  //   setProductDetailOpen(true);
+  // };
 
-  const closeProductDetailModal = () => {
-    setProductDetailOpen(false);
-    setSelectedShoe(null);
-  };
+  // const closeProductDetailModal = () => {
+  //   setProductDetailOpen(false);
+  //   setSelectedShoe(null);
+  // };
 
 
-  useEffect(() => {
-    if (shoes.length === 0 || !lastFetched) {
-      dispatch(fetchAllShoes());
-    }
-  }, [dispatch, shoes.length, lastFetched]);
+  // useEffect(() => {
+  //   if (shoes.length === 0 || !lastFetched) {
+  //     dispatch(fetchAllShoes());
+  //   }
+  // }, [dispatch, shoes.length, lastFetched]);
 
   return (
     <div>
@@ -96,17 +96,17 @@ const ProductPage: React.FC = () => {
         <h3 className="overlay-subtext-brand-name">Shoe.zzyy</h3>
       </div>
       </div>
-      <SubNavBar selection={setCurrentSelection} />
+      <SubNavBar/>
 
-      {currentSelection === 'topPicks' ? (
+      {/* {currentSelection === 'topPicks' ? (
         <>
         <SectionDevider title={"Top Picks"} subtitle={"Handpicked Favorites Just for You."}/>
         {displayOnlyTopPicks()}
         </>
-      ): null}
+      ): null} */}
 
 
-      {currentSelection !== 'topPicks' ? (
+      {/* {currentSelection !== 'topPicks' ? (
        <>
        <SectionDevider title={getReadableBrandName(currentSelection as Brand)} subtitle={""} />
         {displayProducts()}</>
@@ -114,7 +114,7 @@ const ProductPage: React.FC = () => {
 
       {selectedShoe && (
         <ProductDetailModal isOpen={isProductDetailOpen} shoe={selectedShoe} onClose={closeProductDetailModal} />
-      )}
+      )} */}
     </div>
   );
 };
