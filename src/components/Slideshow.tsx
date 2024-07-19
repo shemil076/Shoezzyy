@@ -44,7 +44,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+    }, 2000);
 
     return () => clearInterval(intervalId);
   }, [images.length]);

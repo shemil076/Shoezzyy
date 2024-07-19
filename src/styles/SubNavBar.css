@@ -1,7 +1,8 @@
 .sub-nav-container {
   margin: 2rem;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -15,10 +16,10 @@
   background-color: #f6f6f6;
   border: 1px solid #eaeaea;
   cursor: pointer;
-  margin: 0.5rem;
+  margin:1rem;
   transition: background-color 0.3s ease;
   height: auto;
-  width: 14%;
+  width: 30%;
   align-items: center;
 }
 
@@ -29,6 +30,10 @@
 .sub-nav-item.selected {
   background-color: #ffffff;
   border-color: #ccc;
+}
+
+.view-more-button{
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {

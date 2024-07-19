@@ -9,6 +9,8 @@ import { AppDispatch } from "../store";
 import { selectShoes, selectShoesLastFetched } from "../selectors/shoeSelectors";
 import { fetchAllShoes } from "../features/shoeSlice";
 import { Shoe } from "../types/types";
+import Button from "./Button";
+import "../styles/RegularButton.css";
 
 const getImagesForSlideShow = (shoes: Shoe[], brand: Brand): string[] => {
   const shoesFiltterdByBrands = getShoesByBrand(shoes, brand);
@@ -47,38 +49,42 @@ const SubNavBar: React.FC = () => {
     <div className="sub-nav-container">
       <div
         className="sub-nav-item"
-        onClick={() => navigate('/brand/ADIDAS')}
       >
-        <h2>{getReadableBrandName(Brand.ADIDAS)}</h2>
+        <h1>{getReadableBrandName(Brand.ADIDAS)}</h1>
         <Slideshow images={getImagesForSlideShow(shoes, Brand.ADIDAS)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/ADIDAS')}>View More</Button>
       </div>
       <div
         className="sub-nav-item"
-        onClick={() => navigate('/brand/ALLSTARCONVERSE')}
+        
       >
-        <h2>{getReadableBrandName(Brand.ALLSTARCONVERSE)}</h2>
+        <h1>{getReadableBrandName(Brand.ALLSTARCONVERSE)}</h1>
         <Slideshow images={getImagesForSlideShow(shoes, Brand.ALLSTARCONVERSE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/ALLSTARCONVERSE')}>View More</Button>
       </div>
       <div
         className="sub-nav-item"
-        onClick={() => navigate('/brand/NEWBALANCE')}
+        
       >
-        <h2>{getReadableBrandName(Brand.NEWBALANCE)}</h2>
+        <h1>{getReadableBrandName(Brand.NEWBALANCE)}</h1>
         <Slideshow images={getImagesForSlideShow(shoes, Brand.NEWBALANCE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/NEWBALANCE')}>View More</Button>
       </div>
       <div
         className="sub-nav-item"
-        onClick={() => navigate('/brand/NIKE')}
+        
       >
-        <h2>{getReadableBrandName(Brand.NIKE)}</h2>
+        <h1>{getReadableBrandName(Brand.NIKE)}</h1>
         <Slideshow images={getImagesForSlideShow(shoes, Brand.NIKE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/NIKE')}>View More</Button>
       </div>
       <div
         className="sub-nav-item"
-        onClick={() => navigate('/brand/VANSOLDSKOOL')}
+       
       >
-        <h2>{getReadableBrandName(Brand.VANSOLDSKOOL)}</h2>
+        <h1>{getReadableBrandName(Brand.VANSOLDSKOOL)}</h1>
         <Slideshow images={getImagesForSlideShow(shoes, Brand.VANSOLDSKOOL)} />
+        <Button className='regular-black-button view-more-button'  onClick={() => navigate('/brand/VANSOLDSKOOL')}>View More</Button>
       </div>
     </div>
   );
