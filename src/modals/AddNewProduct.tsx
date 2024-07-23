@@ -23,13 +23,13 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [sizeUrl, setSizeUrl] = useState('');
 
     useEffect(() => {
-        setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoeModel !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
+        setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
     }, [shoeName, shoeBrand, shoePrice, shoeDescription, images, shoeModel]);
 
     const handleSave = async () => {
         if (!isFormValid) return;
 
-        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images, offerPrice, isATopPick: false, model: shoeModel };
+        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images, offerPrice, isATopPick: false, model: shoeModel, sizeUrl : sizeUrl };
 
         try {
             const response = await fetch('/api/shoes', {

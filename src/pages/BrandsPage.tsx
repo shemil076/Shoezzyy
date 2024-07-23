@@ -73,10 +73,10 @@ const BrandPage: React.FC = () => {
       case Brand.NEWBALANCE:
       case Brand.NIKE:
         const categoriesWithShoes = categorizeShoesByModel(filteredShoes);
-        return Object.keys(categoriesWithShoes).map((category,indexe) => {
+        return Object.keys(categoriesWithShoes).map((category,index) => {
           return (
             <>
-              <SectionDevider title={getReadableModelName(brandName, category)} subtitle={''} key={indexe} />
+              <SectionDevider title={getReadableModelName(brandName, category)} subtitle={''} key={index} />
               <Carousel responsive={responsive}>
                 {categoriesWithShoes[category].map((shoe) => (
                   shoe ? (

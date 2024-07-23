@@ -31,7 +31,7 @@ export const deleteShoe = createAsyncThunk<string, string, { state: RootState }>
   'shoes/deleteShoe',
   async (_shoeId, { rejectWithValue }) => {
     try {
-      await axios.delete(`api/shoes/${_shoeId}`);
+      await axios.delete(`/api/shoes/${_shoeId}`);
       return _shoeId;
     } catch (error) {
       return rejectWithValue('Error deleting shoe');
