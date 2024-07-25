@@ -60,6 +60,7 @@ const Navbar: React.FC = () => {
         <Link to="/" className="navbar-link">Home</Link>
         <Link to="/product-page" className="navbar-link">Products</Link>
         <Link to="/track-order" className="navbar-link">Track Order</Link>
+        <a href="https://drive.google.com/file/d/1Jfc096_gil8biMO2kJmXsb5LPz8cllI7/view" target="_blank" rel="noopener noreferrer" className="navbar-link">Return Policy</a>
 
         {!adminToken ? (
           <>

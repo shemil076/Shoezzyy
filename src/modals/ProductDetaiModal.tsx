@@ -135,7 +135,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
               )
             }
             <div className='instructions-container'>
-              <p className='instructions'>How to place the order? &#9432;</p>
+              <p className='instructions'>How to place the order? &nbsp;
+              <a href='https://drive.google.com/file/d/1XXNr-157HdS9gm19Y82J-BYu6jO08eRS/view?usp=drive_link' target='blank' style={{ textDecoration: 'none' }}>&#9432;</a>
+                </p>
               <p className='instructions'>Free delivery islandwide.</p>
               <div className='instructions-payments'>
                 <p>Bank Transfer & </p>
@@ -145,7 +147,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
             </div>
-            <p>Size chart &#9432;</p>
+            <p>Size chart &nbsp;
+              <a href={shoe.sizeUrl} target='blank' style={{ textDecoration: 'none' }}>&#9432;</a>
+
+            </p>
           </div>
         </div>
 
