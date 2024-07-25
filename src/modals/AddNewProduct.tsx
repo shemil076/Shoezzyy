@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
 import '../styles/AddNewProduct.css';
-import { Brand } from '../types/enum';
+import { AdidasTypes, Brand, NewBalanceTypes, NikeTypes } from '../types/enum';
 import Button from '../components/Button';
+import { getReadableModelName } from '../utils/helperFunctions';
 
 interface AddNewProductModalProps {
     isOpen: boolean;
@@ -18,17 +19,18 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [images, setImages] = useState<string[]>([]);
     const [imageURLs, setImageURLs] = useState<string[]>([]);
     const [isFormValid, setIsFormValid] = useState(false);
-
+    const [shoeModel, setShoeModel] = useState('');
+    const [sizeUrl, setSizeUrl] = useState('');
 
     useEffect(() => {
         setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
-    }, [shoeName, shoeBrand, shoePrice, shoeDescription, images]);
+    }, [shoeName, shoeBrand, shoePrice, shoeDescription, images, shoeModel]);
 
     const handleSave = async () => {
         if (!isFormValid) return;
 
-        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images,offerPrice, isATopPick: false };
-        
+        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images, offerPrice, isATopPick: false, model: shoeModel, sizeUrl : sizeUrl };
+
         try {
             const response = await fetch('/api/shoes', {
                 method: 'POST',
@@ -55,7 +57,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                 alert('You can only upload up to 4 images.');
                 return;
             }
-    
+
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onloadend = () => {
@@ -78,6 +80,25 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         setShoeDescription('');
         setImages([]);
         setImageURLs([]);
+    };
+
+    const getShoeTypeOptions = () => {
+        switch (shoeBrand) {
+            case Brand.ADIDAS:
+                return Object.values(AdidasTypes).map(type => (
+                    <option key={type} value={type}>{getReadableModelName(Brand.ADIDAS, type)}</option>
+                ));
+            case Brand.NEWBALANCE:
+                return Object.values(NewBalanceTypes).map(type => (
+                    <option key={type} value={type}>{getReadableModelName(Brand.NEWBALANCE, type)}</option>
+                ));
+            case Brand.NIKE:
+                return Object.values(NikeTypes).map(type => (
+                    <option key={type} value={type}>{getReadableModelName(Brand.NIKE, type)}</option>
+                ));
+            default:
+                return null;
+        }
     };
 
     const getInputStyle = (value: string) => ({
@@ -108,6 +129,21 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         <option value={Brand.VANSOLDSKOOL}>Vans Old Skool</option>
                     </select>
                 </div>
+                {shoeBrand === Brand.ADIDAS || shoeBrand === Brand.NEWBALANCE || shoeBrand === Brand.NIKE ? (
+                    <div>
+                        <label>
+                            Shoe Model:
+                            <select
+                                value={shoeModel}
+                                onChange={(e) => setShoeModel(e.target.value)}
+                                style={getInputStyle(shoeModel)}
+                            >
+                                <option value="">Select a shoe type</option>
+                                {getShoeTypeOptions()}
+                            </select>
+                        </label>
+                    </div>
+                ) : null}
                 <label>
                     Shoe Name:
                     <input
@@ -115,6 +151,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         value={shoeName}
                         onChange={(e) => setShoeName(e.target.value)}
                         style={getInputStyle(shoeName)}
+                        placeholder='Enter the shoe name'
                     />
                 </label>
                 <label>
@@ -124,6 +161,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         value={shoePrice}
                         onChange={(e) => setShoePrice(e.target.value)}
                         style={getInputStyle(shoePrice)}
+                        placeholder='Enter the price'
                     />
                 </label>
                 <label>
@@ -133,6 +171,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         value={offerPrice}
                         onChange={(e) => setOfferPrice(e.target.value)}
                         style={getInputStyle(shoePrice)}
+                        placeholder='Enter the price after the discount'
                     />
                 </label>
                 <label>
@@ -141,6 +180,17 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         value={shoeDescription}
                         onChange={(e) => setShoeDescription(e.target.value)}
                         style={getInputStyle(shoeDescription)}
+                        placeholder='Description'
+                    />
+                </label>
+                <label>
+                    Size Url:
+                    <input
+                        type="text"
+                        value={sizeUrl}
+                        onChange={(e) => setSizeUrl(e.target.value)}
+                        style={getInputStyle(sizeUrl)}
+                        placeholder='Enter the link to the sizes'
                     />
                 </label>
                 <label>

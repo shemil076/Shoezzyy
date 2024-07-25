@@ -1,21 +1,44 @@
-export enum Brand {
-    ADIDAS  = 'Adidas',
-    ALLSTARCONVERSE = 'AllStarConverse',
-    NEWBALANCE = 'NewBalance',
-    NIKE = 'Nike',
-    VANSOLDSKOOL = 'VansOldSkool'
-  }
-  
-  export enum ProductCategory {
-    SHOES = "shoes",
-    EYEWEAR = "eyewear",
-  }
+export enum AdidasTypes {
+  SAMBA = 'Samba',
+  STANSMITH = 'StanSmith',
+  SUPERSTART = 'SuperStar',
+  YEEZYSLIDES = 'YeezySlides'
+}
 
-export enum OrderStatus{
+export enum NewBalanceTypes {
+  Model327 = '327',
+  Model530 = '530',
+  Model550 = '550',
+  Model1906D = '1906D',
+  Model9060 = '9060',
+}
+
+export enum NikeTypes {
+  AIRFORCE1 = 'AirForce1',
+  AIRJORDAN1 = 'AirJordan1',
+  AIRJORDAN4 = 'AirJordan4',
+  AIRJORDAN5 = 'AirJordan5',
+  AIRMAX = 'AirMax'
+}
+
+export enum Brand {
+  ADIDAS = 'Adidas',
+  ALLSTARCONVERSE = 'AllStarConverse',
+  NEWBALANCE = 'NewBalance',
+  NIKE = 'Nike',
+  VANSOLDSKOOL = 'VansOldSkool'
+}
+
+export enum ProductCategory {
+  SHOES = "shoes",
+  EYEWEAR = "eyewear",
+}
+
+export enum OrderStatus {
   NEW = "new",
-  IMPORTING ="importing",
-  ARRIVED= "arrived",
-  DELIVERED="delivered",
+  IMPORTING = "importing",
+  ARRIVED = "arrived",
+  DELIVERED = "delivered",
 }
 
 export enum ReadbleBrandName {

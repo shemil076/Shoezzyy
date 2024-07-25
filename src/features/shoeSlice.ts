@@ -27,13 +27,13 @@ export const fetchAllShoes = createAsyncThunk<Shoe[], void, { state: RootState }
   }
 );
 
-export const deleteShoe = createAsyncThunk<string, string, {state: RootState}>(
+export const deleteShoe = createAsyncThunk<string, string, { state: RootState }>(
   'shoes/deleteShoe',
-  async (_shoeId, {rejectWithValue}) =>{
-    try{
-      await axios.delete(`api/shoes/${_shoeId}`);
+  async (_shoeId, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/api/shoes/${_shoeId}`);
       return _shoeId;
-    }catch(error){
+    } catch (error) {
       return rejectWithValue('Error deleting shoe');
     }
   }
@@ -56,12 +56,12 @@ const shoeSlice = createSlice({
       .addCase(fetchAllShoes.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(deleteShoe.pending, (state) =>{
+      .addCase(deleteShoe.pending, (state) => {
         state.loading = true;
       })
-      .addCase(deleteShoe.fulfilled, (state, action: PayloadAction<string>) =>{
+      .addCase(deleteShoe.fulfilled, (state, action: PayloadAction<string>) => {
         state.loading = false;
-        state.shoes = state.shoes.filter((shoe)=> shoe._id !== action.payload);
+        state.shoes = state.shoes.filter((shoe) => shoe._id !== action.payload);
       })
       .addCase(deleteShoe.rejected, (state) => {
         state.loading = false;

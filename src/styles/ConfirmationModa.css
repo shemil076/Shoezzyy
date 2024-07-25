@@ -1,8 +1,8 @@
-.warning-image{
+.warning-image {
     width: 5rem;
 }
 
-.confirmation-button-section{
+.confirmation-button-section {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

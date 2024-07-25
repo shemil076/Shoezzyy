@@ -24,10 +24,10 @@ const OrderNotFoundModal: React.FC<OrderNotFoundModalProps> = ({ isOpen, onClose
                     <p>Order not found, recheck the job id!</p>
                 </div>
 
-               <div className="confirmation-button-section">
-               <Button onClick={onClose} className="regular-black-button">Cancel</Button>
+                <div className="confirmation-button-section">
+                    <Button onClick={onClose} className="regular-black-button">Cancel</Button>
 
-               </div>
+                </div>
             </div>
         </Modal>
     );

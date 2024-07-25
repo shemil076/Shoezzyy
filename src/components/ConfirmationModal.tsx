@@ -27,11 +27,11 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
                     <p>You will not be able to undo this action if you proceed!</p>
                 </div>
 
-               <div className="confirmation-button-section">
-               <Button onClick={onClose} className="regular-black-button">Cancel</Button>
+                <div className="confirmation-button-section">
+                    <Button onClick={onClose} className="regular-black-button">Cancel</Button>
 
-<Button onClick={handleDelete} className="regular-black-button">Proceed</Button>
-               </div>
+                    <Button onClick={handleDelete} className="regular-black-button">Proceed</Button>
+                </div>
             </div>
         </Modal>
     );

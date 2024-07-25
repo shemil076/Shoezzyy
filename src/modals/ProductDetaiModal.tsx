@@ -12,7 +12,7 @@ import { seletAdminToken } from '../selectors/adminSelectors';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { getReadableBrandName } from '../utils/helperFunctions';
+import { getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -42,8 +42,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
       _id: shoe._id,
       isATopPick: toggleState,
     };
-    console.log("_id", shoe._id);
-    console.log("toggleState", toggleState);
+
     try {
       const response = await fetch('/api/shoes/isATopPick', {
         method: 'PUT',
@@ -54,7 +53,6 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
       });
 
       if (response.ok) {
-        console.log(response)
         onClose();
       } else {
         console.error('Error updating status');
@@ -116,24 +114,38 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
           <div className='product-detail-image-container'>
             <img className="product-main-image" src={mainImage} alt="" />
           </div>
+
           <div className='product-detail-text-container'>
-            <h3>{getReadableBrandName(shoe.brand)}</h3>
+            <div>
+              {shoe.model ? <h3> {getReadableBrandName(shoe.brand)} {getReadableModelName(shoe.brand, shoe.model)}</h3> :
+                <h3>{getReadableBrandName(shoe.brand)}</h3>
+              }
+            </div>
             <h1>{shoe.name}</h1>
             {
               shoe.offerPrice ? (
                 <div className="product-price">
-                  <s>LKR. {shoe.actualPrice}</s>
-                  <em className='product-card-offer-price'>  LKR. {shoe.offerPrice}</em>
+                  <s>LKR. {shoe.actualPrice.toLocaleString()}</s>
+                  <em className='product-card-offer-price'>  LKR. {shoe.offerPrice.toLocaleString()}</em>
                 </div>
               ) : (
                 <div className="product-price">
-                  LKR. {shoe.actualPrice}
+                  LKR. {shoe.actualPrice.toLocaleString()}
                 </div>
               )
             }
+            <div className='instructions-container'>
+              <p className='instructions'>How to place the order? &#9432;</p>
+              <p className='instructions'>Free delivery islandwide.</p>
+              <div className='instructions-payments'>
+                <p>Bank Transfer & </p>
+                <img src="/assets/koko.png" alt="" className="koko-image" />
+              </div>
+            </div>
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
             </div>
+            <p>Size chart &#9432;</p>
           </div>
         </div>
 
@@ -151,17 +163,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             <FormControlLabel value={false} control={<Radio />} label="No" />
           </RadioGroup>
         </div> : null}
-
         {adminToken && !isToggleUpdated ? <Button onClick={openConfirmation} className='regular-black-button'>
           Remove
         </Button> : null}
-
         {isToggleUpdated ? <Button onClick={handleSave} className='regular-black-button'>
           Save
         </Button> : null}
-
-
-
         <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation} />
       </div>
     </Modal>

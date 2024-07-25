@@ -1,57 +1,90 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Brand } from "../types/enum";
 import "../styles/SubNavBar.css";
-import { getReadableBrandName } from "../utils/helperFunctions";
+import { categorizeShoesByModel, getReadableBrandName, getShoesByBrand } from "../utils/helperFunctions";
+import { useNavigate } from 'react-router-dom';
+import Slideshow from "./Slideshow";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../store";
+import { selectShoes, selectShoesLastFetched } from "../selectors/shoeSelectors";
+import { fetchAllShoes } from "../features/shoeSlice";
+import { Shoe } from "../types/types";
+import Button from "./Button";
+import "../styles/RegularButton.css";
 
-interface SubNavBarProps {
-  selection: (category: Brand | string) => void;
-}
+const getImagesForSlideShow = (shoes: Shoe[], brand: Brand): string[] => {
+  const shoesFiltterdByBrands = getShoesByBrand(shoes, brand);
+  let imagesArray: string[] = [];
+  switch (brand) {
+    case Brand.ADIDAS:
+    case Brand.NEWBALANCE:
+    case Brand.NIKE:
+      const shoesByModels = categorizeShoesByModel(shoesFiltterdByBrands);
+      Object.values(shoesByModels).map((shoe) => {
+        imagesArray.push(shoe[0].images[0]);
+      });
+      return imagesArray;
+    default:
+      shoesFiltterdByBrands.map((shoe) => {
+        imagesArray.push(shoe.images[0]);
+      });
+      return imagesArray;
+  }
+};
 
-const SubNavBar: React.FC<SubNavBarProps> = ({ selection }) => {
-  const [selectedItem, setSelectedItem] = useState<string | Brand>("");
+const SubNavBar: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleSelection = (category: string | Brand) => {
-    setSelectedItem(category);
-    selection(category);
-  };
+  const shoes = useSelector(selectShoes);
+  const lastFetched = useSelector(selectShoesLastFetched);
+
+  useEffect(() => {
+    if (shoes.length === 0 || !lastFetched) {
+      dispatch(fetchAllShoes());
+    }
+  }, [dispatch, shoes.length, lastFetched]);
 
   return (
     <div className="sub-nav-container">
       <div
-        className={`sub-nav-item ${selectedItem === "topPicks" ? "selected" : ""}`}
-        onClick={() => handleSelection("topPicks")}
+        className="sub-nav-item"
       >
-        Top Picks
+        <h1>{getReadableBrandName(Brand.ADIDAS)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.ADIDAS)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/ADIDAS')}>View More</Button>
       </div>
       <div
-        className={`sub-nav-item ${selectedItem === Brand.NIKE ? "selected" : ""}`}
-        onClick={() => handleSelection(Brand.NIKE)}
+        className="sub-nav-item"
+        
       >
-        {getReadableBrandName(Brand.NIKE)}
+        <h1>{getReadableBrandName(Brand.ALLSTARCONVERSE)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.ALLSTARCONVERSE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/ALLSTARCONVERSE')}>View More</Button>
       </div>
       <div
-        className={`sub-nav-item ${selectedItem === Brand.ADIDAS ? "selected" : ""}`}
-        onClick={() => handleSelection(Brand.ADIDAS)}
+        className="sub-nav-item"
+        
       >
-        {getReadableBrandName(Brand.ADIDAS)}
+        <h1>{getReadableBrandName(Brand.NEWBALANCE)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.NEWBALANCE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/NEWBALANCE')}>View More</Button>
       </div>
       <div
-        className={`sub-nav-item ${selectedItem === Brand.ALLSTARCONVERSE ? "selected" : ""}`}
-        onClick={() => handleSelection(Brand.ALLSTARCONVERSE)}
+        className="sub-nav-item"
+        
       >
-        {getReadableBrandName(Brand.ALLSTARCONVERSE)}
+        <h1>{getReadableBrandName(Brand.NIKE)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.NIKE)} />
+        <Button className='regular-black-button view-more-button' onClick={() => navigate('/brand/NIKE')}>View More</Button>
       </div>
       <div
-        className={`sub-nav-item ${selectedItem === Brand.NEWBALANCE ? "selected" : ""}`}
-        onClick={() => handleSelection(Brand.NEWBALANCE)}
+        className="sub-nav-item"
+       
       >
-        {getReadableBrandName(Brand.NEWBALANCE)}
-      </div>
-      <div
-        className={`sub-nav-item ${selectedItem === Brand.VANSOLDSKOOL ? "selected" : ""}`}
-        onClick={() => handleSelection(Brand.VANSOLDSKOOL)}
-      >
-        {getReadableBrandName(Brand.VANSOLDSKOOL)}
+        <h1>{getReadableBrandName(Brand.VANSOLDSKOOL)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.VANSOLDSKOOL)} />
+        <Button className='regular-black-button view-more-button'  onClick={() => navigate('/brand/VANSOLDSKOOL')}>View More</Button>
       </div>
     </div>
   );

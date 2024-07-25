@@ -32,7 +32,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStatus }) => {
             <img src={step.icon} alt={step.label} className="status-icon" />
             <div className="label">{step.label}</div>
           </div>
-          {index < statusSteps.length  && <div className="line"></div>}
+          {index < statusSteps.length && <div className="line"></div>}
         </div>
       ))}
     </div>

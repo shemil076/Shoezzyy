@@ -8,6 +8,7 @@ import TrackOrder from './pages/TrackOrder';
 import ProductPage from './pages/ProductPage';
 import Footer from './components/Footer';
 import { PersistGate } from 'redux-persist/integration/react';
+import BrandPage from './pages/BrandsPage';
 
 
 const App: React.FC = () => {
@@ -20,7 +21,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product-page" element={<ProductPage />} />
           <Route path="/track-order" element={<TrackOrder />} />
-        
+          <Route path="/brand/:brand" element={<BrandPage />} />
         </Routes>
       </Router>
       <Footer/>

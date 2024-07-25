@@ -1,20 +1,26 @@
 .sub-nav-container {
   margin: 2rem;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .sub-nav-item {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
   background-color: #f6f6f6;
   border: 1px solid #eaeaea;
-  cursor: pointer; 
-  margin: 0.5rem; 
-  transition: background-color 0.3s ease; 
+  cursor: pointer;
+  margin:1rem;
+  transition: background-color 0.3s ease;
+  height: auto;
+  width: 30%;
+  align-items: center;
 }
 
 .sub-nav-item:hover {
@@ -23,20 +29,30 @@
 
 .sub-nav-item.selected {
   background-color: #ffffff;
-  border-color: #ccc; 
+  border-color: #ccc;
+}
+
+.view-more-button{
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {
   .sub-nav-container {
     margin: 1rem;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
   }
 
   .sub-nav-item {
     padding-left: 1rem;
     padding-right: 1rem;
-    width: 85%; 
-    text-align: center; 
+    width: 85%;
+    text-align: center;
+  }
+
+  .sub-nav-item .slideshow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
