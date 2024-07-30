@@ -99,10 +99,13 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
                         value={orderStatus}
                         onChange={(e) => setOrderStatus(e.target.value as OrderStatus)}
                     >
-                        <option value={OrderStatus.NEW}>New</option>
-                        <option value={OrderStatus.IMPORTING}>Importing</option>
-                        <option value={OrderStatus.ARRIVED}>Arrived</option>
-                        <option value={OrderStatus.DELIVERED}>Delivered</option>
+                        <option value={OrderStatus.NEW}>New Order</option>
+                        <option value={OrderStatus.DEALERCONFIRMED}>Dealer Confirmed</option>
+                        <option value={OrderStatus.ORDERPROCESSING}>Order Processing</option>
+                        <option value={OrderStatus.RECIEVEDINUAE}>Recieved In UAE</option>
+                        <option value={OrderStatus.INTRANSITTOSL}>In Transit To SL</option>
+                        <option value={OrderStatus.ARRIVEDINSL}>Arrived In SL</option>
+                        <option value={OrderStatus.DISPATCHED}>Dispatched</option>
                     </select>
                 </label>
                 <div className='button-section'>

@@ -9,9 +9,13 @@ interface ProgressBarProps {
 const ProgressBar: React.FC<ProgressBarProps> = ({ currentStatus }) => {
   const statusSteps = [
     { label: 'New Order', icon: '/assets/new.png', status: OrderStatus.NEW },
-    { label: 'Importing', icon: '/assets/importing.png', status: OrderStatus.IMPORTING },
-    { label: 'Arrived', icon: '/assets/arrived.png', status: OrderStatus.ARRIVED },
-    { label: 'Delivered', icon: '/assets/delivered.png', status: OrderStatus.DELIVERED },
+    { label: 'Dealer Confirmed', icon: '/assets/dealerConfirmed.png', status: OrderStatus.DEALERCONFIRMED },
+    { label: 'Order Processing', icon: '/assets/orderProcessing.png', status: OrderStatus.ORDERPROCESSING },
+    { label: 'Recieved In UAE', icon: '/assets/recievedInUae.png', status: OrderStatus.RECIEVEDINUAE },
+
+    { label: 'In Transit To SL', icon: '/assets/inTransitToSL.png', status: OrderStatus.INTRANSITTOSL },
+    { label: 'Arrived In SL', icon: '/assets/arrivedInSL.png', status: OrderStatus.ARRIVEDINSL },
+    { label: 'Dispatched', icon: '/assets/dispatched.png', status: OrderStatus.DISPATCHED },
   ];
 
   const getStepClass = (status: string) => {

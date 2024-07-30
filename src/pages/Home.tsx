@@ -89,7 +89,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="cover-container">
-        <img src="/assets/homeCover.jpg" alt="cover" className="cover-image" />
+        <img src="/assets/homeCover.png" alt="cover" className="cover-image" />
         <div className="cover-overlay">
           <h1 className="overlay-text">Featured Products</h1>
           <p className="overlay-subtext">Discover the Latest Arrivals with</p>

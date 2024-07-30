@@ -36,9 +36,12 @@ export enum ProductCategory {
 
 export enum OrderStatus {
   NEW = "new",
-  IMPORTING = "importing",
-  ARRIVED = "arrived",
-  DELIVERED = "delivered",
+  DEALERCONFIRMED = "dealerConfirmed",
+  ORDERPROCESSING = "orderProcessing",
+  RECIEVEDINUAE = "recievedInUae",
+  INTRANSITTOSL = 'inTransitToSL',
+  ARRIVEDINSL ='arrivedInSL',
+  DISPATCHED = 'dispatched',
 }
 
 export enum ReadbleBrandName {

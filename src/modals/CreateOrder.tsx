@@ -7,6 +7,9 @@ import { Brand, OrderStatus } from '../types/enum';
 import Button from '../components/Button';
 import { Shoe } from '../types/types';
 import { categorizeShoesByBrand, getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
+import { fetchAllOrders } from '../features/orderSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store';
 
 
 interface CreateOrderModalProps {
@@ -23,6 +26,7 @@ const getShoeDataByName = (shoeName: string ,  shoes : Shoe[]):Shoe | undefined=
 };
 
 const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, shoes }) => {
+    const dispatch = useDispatch<AppDispatch>();
     const [orderId, setOrderID] = useState('');
     const [shoeName, setShoeName] = useState('');
     const [shoeBrand, setShoeBrand] = useState('');
@@ -58,6 +62,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
                 body : JSON.stringify(orderData)
             })
             if(response.ok){
+                dispatch(fetchAllOrders())
                 handleClose();
             }else{
                 console.error('Error saving order');
@@ -98,7 +103,12 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
     };
 
     const calculateCost = () => {
-        setCost(selectedShoe && quantity ? selectedShoe?.actualPrice * quantity : 0) 
+        if(selectedShoe?.offerPrice){
+            setCost(selectedShoe && quantity ? selectedShoe?.offerPrice * quantity : 0) 
+        }else{
+            setCost(selectedShoe && quantity ? selectedShoe?.actualPrice * quantity : 0) 
+        }
+       
     }; 
     
 

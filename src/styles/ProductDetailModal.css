@@ -127,6 +127,7 @@
   .modal-content-custom-product-detail {
     width: 90%;
     padding: 15px;
+    margin-right: 5%;
   }
 
   .product-detail-modal-upper-section {
@@ -148,7 +149,7 @@
 
   .product-main-image {
     width: 15rem;
-    margin-left: 12rem;
+    margin-left: 110%;
 
     align-content: center;
 

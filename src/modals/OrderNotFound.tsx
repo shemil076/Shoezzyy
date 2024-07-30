@@ -21,7 +21,7 @@ const OrderNotFoundModal: React.FC<OrderNotFoundModalProps> = ({ isOpen, onClose
                 <div className="upper-container">
                     <img src="/assets/warning.png" alt="warnning" className="warning-image" />
                     <h3>404</h3>
-                    <p>Order not found, recheck the job id!</p>
+                    <p>Order not found, recheck the order id!</p>
                 </div>
 
                 <div className="confirmation-button-section">

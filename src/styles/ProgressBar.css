@@ -57,12 +57,17 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
+    width: 50%;
   }
 
   .progress-step .line {
+    position: absolute;
+    right: 0%;
     width: 5px;
     height: 35px;
     min-height: 0;
+    max-width:5px ;
+    /* margin-right: 100%; */
   }
 
   .progress-step .status-icon {
