@@ -16,7 +16,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [shoePrice, setShoePrice] = useState('');
     const [offerPrice, setOfferPrice] = useState('');
     const [shoeDescription, setShoeDescription] = useState('');
-    const [images, setImages] = useState<string[]>([]);
+    const [images, setImages] = useState<File[]>([]);
     const [imageURLs, setImageURLs] = useState<string[]>([]);
     const [isFormValid, setIsFormValid] = useState(false);
     const [shoeModel, setShoeModel] = useState('');
@@ -28,18 +28,26 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
 
     const handleSave = async () => {
         if (!isFormValid) return;
-
-        const shoeData = { name: shoeName, brand: shoeBrand, actualPrice: shoePrice, description: shoeDescription, images, offerPrice, isATopPick: false, model: shoeModel, sizeUrl : sizeUrl };
-
+    
+        const formData = new FormData();
+        formData.append('name', shoeName);
+        formData.append('brand', shoeBrand);
+        formData.append('actualPrice', shoePrice);
+        formData.append('description', shoeDescription);
+        formData.append('offerPrice', offerPrice);
+        formData.append('model', shoeModel);
+        formData.append('sizeUrl', sizeUrl);
+    
+        images.forEach((image, index) => {
+            formData.append('images', image); // Append each image file
+        });
+    
         try {
             const response = await fetch('/api/shoes', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(shoeData)
+                body: formData // Send the FormData
             });
-
+    
             if (response.ok) {
                 handleOnClose();
             } else {
@@ -57,19 +65,15 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                 alert('You can only upload up to 4 images.');
                 return;
             }
-
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    if (reader.result) {
-                        setImages(prevImages => [...prevImages, reader.result as string]);
-                        setImageURLs(prevURLs => [...prevURLs, URL.createObjectURL(file)]);
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
+    
+            setImages(prevImages => [...prevImages, ...files]);
+            setImageURLs(prevURLs => [
+                ...prevURLs,
+                ...files.map(file => URL.createObjectURL(file))
+            ]);
         }
     };
+    
 
     const handleOnClose = () => {
         onClose();

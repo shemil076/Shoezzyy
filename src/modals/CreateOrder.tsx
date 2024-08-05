@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Modal from '../components/Modal';
 import '../styles/AddNewProduct.css';
 import '../styles/CreateOrder.css';
@@ -102,23 +102,23 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
         });
     };
 
-    const calculateCost = () => {
+    const calculateCost = useCallback(() => {
         if(selectedShoe?.offerPrice){
             setCost(selectedShoe && quantity ? selectedShoe?.offerPrice * quantity : 0) 
         }else{
             setCost(selectedShoe && quantity ? selectedShoe?.actualPrice * quantity : 0) 
         }
        
-    }; 
+    },[selectedShoe,quantity]); 
     
 
     useEffect(()=>{
         setSelectedShoe(getShoeDataByName(shoeName, shoes));
-    },[shoeName]);
+    },[shoeName,shoes]);
 
     useEffect(()=>{
         calculateCost();
-    },[selectedShoe,quantity]);
+    },[calculateCost]);
 
 
   
@@ -134,7 +134,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
                 <label>
                     Order Id:
                     <input
-                        type="number"
+                        type="text"
                         value={orderId}
                         onChange={(e) => setOrderID(e.target.value)}
                     />
