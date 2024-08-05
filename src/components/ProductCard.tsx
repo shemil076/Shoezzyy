@@ -10,6 +10,8 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
 
+  console.log("shoe image in pronduct ",shoe.images[0])
+
   return (
     <div className="product-card" onClick={() => onCardClick(shoe)}>
       <div className='product-image-container'>
