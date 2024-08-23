@@ -59,6 +59,7 @@ const BrandPage: React.FC = () => {
     switch (brandName) {
       case Brand.ALLSTARCONVERSE:
       case Brand.VANSOLDSKOOL:
+      case Brand.OTHER:
         return (
           <div className="new-arrival-list">
             <Carousel responsive={responsive}>

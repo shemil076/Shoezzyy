@@ -2,7 +2,7 @@ export enum AdidasTypes {
   SAMBA = 'Samba',
   STANSMITH = 'StanSmith',
   SUPERSTART = 'SuperStar',
-  YEEZYSLIDES = 'YeezySlides'
+  SLIDES = 'Slides'
 }
 
 export enum NewBalanceTypes {
@@ -18,7 +18,8 @@ export enum NikeTypes {
   AIRJORDAN1 = 'AirJordan1',
   AIRJORDAN4 = 'AirJordan4',
   AIRJORDAN5 = 'AirJordan5',
-  AIRMAX = 'AirMax'
+  AIRMAX = 'AirMax',
+  DUNK = 'Dunk'
 }
 
 export enum Brand {

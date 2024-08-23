@@ -138,6 +138,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         <option value={Brand.NEWBALANCE}>New Balance</option>
                         <option value={Brand.NIKE}>Nike</option>
                         <option value={Brand.VANSOLDSKOOL}>Vans Old Skool</option>
+                        <option value={Brand.OTHER}>Other</option>
                     </select>
                 </div>
                 {shoeBrand === Brand.ADIDAS || shoeBrand === Brand.NEWBALANCE || shoeBrand === Brand.NIKE ? (

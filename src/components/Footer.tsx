@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <img src="/assets/shoezzyylogo.png" alt="" className='footer-logo' />
         <p>&copy; 2024 Shoe.zzyy. All rights reserved.</p>
         <div className='footer-contacts'>
-          <a href="https://wa.me/94776995453">
+          <a href="https://wa.me/94728544995">
             <img src="/assets/whatsapp.png" alt="" className='footer-contats-img' />
           </a>
           <a href="https://www.instagram.com/shoe.zzyy/">
