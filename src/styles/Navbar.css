@@ -5,6 +5,7 @@
   padding: 10px 20px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
+  z-index: 100;
 }
 
 .navbar-header {
@@ -18,21 +19,35 @@
   margin-right: 10px;
 }
 
-.burger-menu {
+/* .burger-menu {
   display: none;
   flex-direction: column;
   cursor: pointer;
+} */
+
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+.nav__hamburger__line {
+  width: 30px;
+  height: 3px;
+  background-color: black;
+  margin: 4px 0;
+  transition: 0.4s;
 }
 
-.bar {
+/* .bar {
   width: 25px;
   height: 3px;
   background-color: #333;
   margin: 4px 0;
   transition: 0.4s;
-}
+} */
 
-.change {
+/* .change {
   transform: rotate(45deg);
 }
 
@@ -42,17 +57,25 @@
 
 .change:nth-child(3) {
   transform: rotate(-45deg);
+} */
+
+.navbar-links >ul {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 42.667px;
+  text-decoration: none;
+  padding: 0%;
 }
 
-.navbar-links {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 60%;
+.navbar-links  ul > li > a {
+  text-decoration: none;
 }
 
 .navbar-link {
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  /* padding-top: 1rem; */
+  top: 0.5rem;
   text-decoration: none;
   color: inherit;
   position: relative;
@@ -96,28 +119,65 @@
 
 @media (max-width: 768px) {
   .navbar-links {
-    display: none;
-    flex-direction: column;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255);
+    top: -20rem;
+    left: 0;
     width: 100%;
-    justify-content: space-between;
-    z-index: 1000;
+    transition: all ease-in-out 0.4s;
+    z-index: -100;
   }
+
+  
 
   .navbar-link {
     margin: 5px;
   }
 
+  
+  .navbar-header.active{
+    display: flex;
+    z-index: 150;
+  }
 
   .navbar-links.active {
     display: flex;
   }
 
-  .burger-menu {
+  .nav__hamburger {
     display: flex;
-  }
+   z-index: 200;
+   
+}
 
   .admin-button-container {
     flex-direction: column;
     gap: 5px;
   }
+
+  .navbar-links ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 3rem 0 0.6rem;
+    /* z-index: -100; */
+}
+.navbar-links ul li {
+    text-align: center;
+}
+.navbar-links ul li a {
+    padding: 0.5rem;
+}
+
+
+.navbar-links.active {
+    top: 30px;
+    /* background-color: white; */
+    z-index: 100;
+}
+
 }
