@@ -39,7 +39,7 @@ const TrackOrder: React.FC = () => {
 
 
   return (
-    <div>
+    <div className='page-container'>
 
       <div className='cover-container'>
         <img src='/assets/trackOrderCover.jpg' alt='shoes-cover-image' className='cover-image' />

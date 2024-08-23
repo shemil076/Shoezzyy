@@ -6,7 +6,8 @@ const brandNames: Record<Brand, string> = {
   [Brand.ALLSTARCONVERSE]: 'All Star Converse',
   [Brand.NEWBALANCE]: 'New Balance',
   [Brand.NIKE]: 'Nike',
-  [Brand.VANSOLDSKOOL]: 'Vans Old Skool'
+  [Brand.VANSOLDSKOOL]: 'Vans Old Skool',
+  [Brand.OTHER] : 'Other'
 };
 
 
@@ -66,6 +67,8 @@ export const normalizeBrand = (brand: string | undefined): Brand | undefined => 
       return Brand.NIKE;
     case 'vansoldskool':
       return Brand.VANSOLDSKOOL;
+    case 'other':
+      return Brand.OTHER;
     default:
       return undefined;
   }

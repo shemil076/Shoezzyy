@@ -37,6 +37,12 @@ const BrandsButtonPanel: React.FC = () => {
                 Vans Old Skool
                 </>
             </Button>
+            <Button className="button-panel-item" onClick={() => navigate('/brand/OTHER')}>
+                <>
+                <img src="/assets/other.png" alt="Vans Old Skool Logo" />
+                Other
+                </>
+            </Button>
         </div>
     );
 }

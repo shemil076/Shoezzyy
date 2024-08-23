@@ -86,6 +86,14 @@ const SubNavBar: React.FC = () => {
         <Slideshow images={getImagesForSlideShow(shoes, Brand.VANSOLDSKOOL)} />
         <Button className='regular-black-button view-more-button'  onClick={() => navigate('/brand/VANSOLDSKOOL')}>View More</Button>
       </div>
+      <div
+        className="sub-nav-item"
+       
+      >
+        <h1>{getReadableBrandName(Brand.OTHER)}</h1>
+        <Slideshow images={getImagesForSlideShow(shoes, Brand.OTHER)} />
+        <Button className='regular-black-button view-more-button'  onClick={() => navigate('/brand/OTHER')}>View More</Button>
+      </div>
     </div>
   );
 };

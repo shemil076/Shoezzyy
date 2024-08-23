@@ -8,6 +8,7 @@
 
 .button-panel-item {
   padding: 1rem;
+  padding-bottom: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
   background-color: #f6f6f6;

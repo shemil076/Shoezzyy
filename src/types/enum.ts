@@ -26,7 +26,8 @@ export enum Brand {
   ALLSTARCONVERSE = 'AllStarConverse',
   NEWBALANCE = 'NewBalance',
   NIKE = 'Nike',
-  VANSOLDSKOOL = 'VansOldSkool'
+  VANSOLDSKOOL = 'VansOldSkool',
+  OTHER = 'Other'
 }
 
 export enum ProductCategory {

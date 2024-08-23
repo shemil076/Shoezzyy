@@ -47,10 +47,10 @@
 }
 
 .payment-methods {
-  margin: 0%;
-  padding: 0%;
+  height: 0.2rem;
   display: flex;
   align-items: center;
+  padding-bottom: 1rem;
 }
 
 .koko-image {

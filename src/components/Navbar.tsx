@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-header">
         <Link to="/">
-          <img src="/assets/shoezzyylogo.png" alt="logo" className="logo" />
+          <img src="/assets/black-logo.png" alt="logo" className="logo" />
         </Link>
         <div className="burger-menu" onClick={toggleMenu}>
           <div className={`bar ${isMenuOpen ? 'change' : ''}`}></div>

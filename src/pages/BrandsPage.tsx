@@ -17,7 +17,8 @@ const brandCoverImages: Record<Brand, string> = {
   [Brand.ALLSTARCONVERSE]: '/assets/c.png',
   [Brand.NEWBALANCE]: '/assets/newBalance.png',
   [Brand.NIKE]: '/assets/NIKEE.png',
-  [Brand.VANSOLDSKOOL]: '/assets/vans.png'
+  [Brand.VANSOLDSKOOL]: '/assets/vans.png',
+  [Brand.OTHER]: '/assets/brandCover.jpg'
 };
 
 const BrandPage: React.FC = () => {
