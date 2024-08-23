@@ -27,14 +27,17 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
     const [jobId, setJobId] = useState('');
     const [currenOrder, setCurrentOrder] = useState<Order>();
     const [orderStatus, setOrderStatus] = useState<OrderStatus>();
+    const [isSubmitting,setIsSubmitting] = useState(false);
 
 
     const handleSave = async () => {
+        if(isSubmitting) return;
         const updatedStatus = {
             _id: currenOrder?._id,
             status: orderStatus,
         };
 
+        setIsSubmitting(true);
         try {
             const response = await fetch('/api/orders/status', {
                 method: 'PUT',
@@ -47,8 +50,11 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
             if (!response.ok) {
                 <p>Error updating</p>
             }
+            window.location.reload();
         } catch (error) {
             console.error('Error updating status', error);
+        }finally{
+            setIsSubmitting(false);
         }
     };
 
@@ -82,7 +88,7 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
             contentClassName="modal-content-custom"
         >
             <h2>Update Order Status</h2>
-            {loading ? <p>Loading...</p> : <form>
+            {loading ? <p>Loading...</p> : <form onSubmit={(e)=>{e.preventDefault()}}>
                 <label>
                     Order Id:
                     <select
@@ -113,8 +119,8 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
                     <Button onClick={onClose || (() => { })} className='regular-black-button'>
                         Cancel
                     </Button>
-                    <Button onClick={handleSave} className='regular-black-button'>
-                        Save
+                    <Button onClick={handleSave} isDisabled={isSubmitting} className='regular-black-button'>
+                    {isSubmitting ? 'Saving...' : 'Save'}
                     </Button>
                 </div>
             </form>}

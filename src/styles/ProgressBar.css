@@ -78,6 +78,10 @@
   .progress-step .label {
     font-size: 0.8rem;
   }
+
+  .progress-step .label-container{
+    width: 10rem;
+  }
 }
 
 @media (max-width: 480px) {

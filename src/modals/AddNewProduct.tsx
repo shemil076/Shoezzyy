@@ -21,13 +21,17 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [isFormValid, setIsFormValid] = useState(false);
     const [shoeModel, setShoeModel] = useState('');
     const [sizeUrl, setSizeUrl] = useState('');
+    const [isSubmitting,setIsSubmitting] = useState(false);
 
     useEffect(() => {
         setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
     }, [shoeName, shoeBrand, shoePrice, shoeDescription, images, shoeModel]);
+    
 
     const handleSave = async () => {
-        if (!isFormValid) return;
+        if (!isFormValid || isSubmitting) return;
+
+        setIsSubmitting(true);
     
         const formData = new FormData();
         formData.append('name', shoeName);
@@ -50,11 +54,14 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     
             if (response.ok) {
                 handleOnClose();
+                window.location.reload();
             } else {
                 console.error('Error saving shoe');
             }
         } catch (error) {
             console.error('Error saving shoe:', error);
+        }finally{
+            setIsSubmitting(false);
         }
     };
 
@@ -117,7 +124,7 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
             contentClassName="modal-content-custom"
         >
             <h2>New Product</h2>
-            <form>
+            <form onSubmit={(e)=>{e.preventDefault()}}>
                 <div>
                     Shoe Brand:
                     <select
@@ -214,8 +221,8 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                     </div>
                 )}
                 <div className="button-group">
-                    <Button onClick={handleSave} isDisabled={!isFormValid} className='modal-button'>
-                        Save
+                    <Button onClick={handleSave} isDisabled={!isFormValid || isSubmitting} className='modal-button'>
+                        {isSubmitting ? 'Saving...' : 'Save'}
                     </Button>
                     <Button onClick={handleOnClose} className='modal-button'>
                         Cancel

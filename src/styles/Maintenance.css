@@ -1,0 +1,14 @@
+.maintenance-banner-container{
+    background-color: rgb(255, 0, 76);
+}
+
+.maintenance-banner-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.banner-img{
+    width: 4rem;
+}

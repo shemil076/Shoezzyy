@@ -10,7 +10,7 @@ const Features: React.FC = () => {
         </div>
         <div className="feature-text">
           <h3>Free Shipping</h3>
-          <p>All island free delivery within 6-10 days.</p>
+          <p>We cover the import and local delivery charges for you.</p>
         </div>
       </div>
       <div className="feature-item">
@@ -19,7 +19,7 @@ const Features: React.FC = () => {
         </div>
         <div className="feature-text">
           <h3>Quality Guaranteed</h3>
-          <p>All products are made from 100% Quality materials.</p>
+          <p>We guarantee you the quality.</p>
         </div>
       </div>
       <div className="feature-item">
@@ -28,7 +28,7 @@ const Features: React.FC = () => {
         </div>
         <div className="feature-text">
           <h3>Imported from UAE</h3>
-          <p>Straight imported from UAE once you place the order.</p>
+          <p>Directly Imported from UAE within 6-10 business days.</p>
         </div>
       </div>
     </div>

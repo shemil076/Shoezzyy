@@ -35,14 +35,16 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
     const [cost, setCost] = useState(0);
     const [selectedShoe, setSelectedShoe] = useState<Shoe>();
     const [isFormValid, setIsFormValid] = useState(false);
+    const [isSubmitting,setIsSubmitting] = useState(false);
 
     useEffect(()=>{
         setIsFormValid(orderId !== '' && shoeName !== ''&& shoeBrand !== '' && quantity > 0 && cost > 0);
     },[orderId,shoeName,shoeBrand,quantity,cost]);
 
     const handleSave = async () => {
-        if (!isFormValid) return;
+        if (!isFormValid || isSubmitting) return;
 
+        setIsSubmitting(true)
         const orderData = {
             jobId : orderId,
             shoeId : selectedShoe?._id,
@@ -64,11 +66,14 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
             if(response.ok){
                 dispatch(fetchAllOrders())
                 handleClose();
+                window.location.reload();
             }else{
                 console.error('Error saving order');
             }
         }catch(error){
             console.error('Error saving order', error);
+        }finally{
+            setIsSubmitting(false)
         }
     };
 
@@ -130,7 +135,7 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
             contentClassName="modal-content-custom"
         >
             <h2>New Order</h2>
-            <form>
+            <form onSubmit={(e)=>{e.preventDefault()}}>
                 <label>
                     Order Id:
                     <input
@@ -177,8 +182,8 @@ const CreateOrderModal: React.FC<CreateOrderModalProps> = ({ isOpen, onClose, sh
                 <Button onClick={onClose || (() => { })} className='regular-black-button'>
                     Cancel
                 </Button>
-                <Button onClick={handleSave} isDisabled={!isFormValid} className='regular-black-button'>
-                    Save
+                <Button onClick={handleSave} isDisabled={!isFormValid || isSubmitting} className='regular-black-button'>
+                {isSubmitting ? 'Saving...' : 'Save'}
                 </Button>
                 </div>
                 

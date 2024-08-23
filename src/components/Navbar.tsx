@@ -68,11 +68,11 @@ const Navbar: React.FC = () => {
 
         {!adminToken ? (
           <>
-            <Button className="regular-black-button" onClick={openSignInModal}>SignIn</Button>
+            <Button className="regular-black-button" onClick={openSignInModal}>Sign In</Button>
             <SignInModal isOpen={isSignInModal} onClose={closeSignInModal} />
           </>
         ) : (
-          <Button className="regular-black-button" onClick={handleLogout}>SignOut</Button>
+          <Button className="regular-black-button" onClick={handleLogout}>Sign Out</Button>
         )}
 
         {adminToken && (

@@ -13,7 +13,7 @@ import { Shoe } from '../types/types';
 import ProductDetailModal from '../modals/ProductDetaiModal';
 
 const brandCoverImages: Record<Brand, string> = {
-  [Brand.ADIDAS]: '/assets/brandCover.jpg',
+  [Brand.ADIDAS]: '/assets/adidasCover.jpeg',
   [Brand.ALLSTARCONVERSE]: '/assets/c.png',
   [Brand.NEWBALANCE]: '/assets/newBalance.png',
   [Brand.NIKE]: '/assets/NIKEE.png',
@@ -101,10 +101,10 @@ const BrandPage: React.FC = () => {
           alt={`${getReadableBrandName(brandName)} shoes`}
           className='cover-image'
         />
-        <div className="cover-overlay">
+        {/* <div className="cover-overlay">
           <h1 className="overlay-text">{getReadableBrandName(brandName)}</h1>
 
-        </div>
+        </div> */}
       </div>
 
       {displayShoesDynamically()}
