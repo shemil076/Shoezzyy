@@ -9,7 +9,7 @@ const ProductPage: React.FC = () => {
   return (
     <div>
       <div className="cover-container">
-        <img src='/assets/productCover.jpg' alt='shoes-cover-image' className='cover-image' />
+        <img src='/assets/homeCover1.png' alt='shoes-cover-image' className='cover-image' />
         {/* <div className="cover-overlay">
           <h1 className="overlay-text">Available Products</h1>
           <p className="overlay-subtext">on</p>

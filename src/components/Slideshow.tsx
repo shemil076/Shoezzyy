@@ -49,17 +49,19 @@ const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVis
 interface SlideshowProps {
   images: string[];
   height?: string; 
-  justifyContent?: string
+  justifyContent?: string;
+  transmitionTime?: number;
+  
   
 }
 
-const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justifyContent = "center" }) => {
+const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justifyContent = "center", transmitionTime= 2000 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, transmitionTime);
 
     return () => clearInterval(intervalId);
   }, [images.length]);
