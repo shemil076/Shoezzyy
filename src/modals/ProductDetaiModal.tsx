@@ -127,6 +127,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
               }
             </div>
             <h1>{shoe.name}</h1>
+            <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>
             {
               shoe.offerPrice ? (
                 <div className="product-price">
@@ -142,6 +143,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             {adminToken ? <Button onClick={openPriceUpdate} className='regular-black-button'>
           Update Price
         </Button>: null}
+        
         <UpdatePrice shoe={shoe} isOpen={isOpenPriceUpdate} onClose={closePriceUpdate}/>
             <div className='instructions-container'>
               <p className='instructions'>How to place the order? &nbsp;

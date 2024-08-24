@@ -17,6 +17,7 @@ import { responsive } from '../utils/constants';
 import { getOnlyTopPicks } from '../utils/helperFunctions';
 import BrandsButtonPanel from '../components/BrandsButtonPanel';
 import Maintenance from '../components/Maintenance';
+import Slideshow from '../components/Slideshow';
 
 const Home: React.FC = () => {
 
@@ -91,7 +92,9 @@ const Home: React.FC = () => {
     <div>
       {/* <Maintenance/> */}
       <div className="cover-container">
-        <img src="/assets/homeCover.png" alt="cover" className="cover-image" />
+        {/* <img src="/assets/homeCover.png" alt="cover" className="cover-image" /> */}
+
+        <Slideshow images={['/assets/homeCover0.png','/assets/homeCover1.png','/assets/homeCover2.png']} height='100vh'/>
         {/* <div className="cover-overlay">
           <h1 className="overlay-text">Featured Products</h1>
           <p className="overlay-subtext">Discover the Latest Arrivals with</p>

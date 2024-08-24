@@ -8,14 +8,25 @@ const fade = keyframes`
   100% { opacity: 1; }
 `;
 
-const SlideshowContainer = styled.div`
+interface SlideshowContainerProps {
+  height: string;
+  justifyContent: string;
+
+}
+
+const SlideshowContainer = styled.div<SlideshowContainerProps>`
   width: 100%;
-  height: 400px; /* Define a specific height for the container */
+  height: ${(props) => props.height}; 
   position: relative;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* Center the image horizontally */
+  justify-content: ${(props)=> props.justifyContent}; /* Center the image horizontally */
   align-items: center; /* Center the image vertically */
+
+  @media (max-width: 768px) {
+    height: 300px; 
+  }
+
 `;
 
 interface SlideImageProps {
@@ -25,10 +36,11 @@ interface SlideImageProps {
 const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVisible }) => ({
   'data-is-visible': isVisible,
 })) <SlideImageProps>`
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Ensure the image covers the container while maintaining aspect ratio */
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* Ensure the image covers the container while maintaining aspect ratio */
   position: absolute;
+
   opacity: ${(props) => (props['data-is-visible'] ? 1 : 0)};
   animation: ${(props) => (props['data-is-visible'] ? fade : '')} 1s;
   transition: opacity 1s;
@@ -36,9 +48,12 @@ const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVis
 
 interface SlideshowProps {
   images: string[];
+  height?: string; 
+  justifyContent?: string
+  
 }
 
-const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
+const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justifyContent = "center" }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -50,7 +65,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
   }, [images.length]);
 
   return (
-    <SlideshowContainer>
+    <SlideshowContainer height={height} justifyContent={justifyContent} >
       {images.map((image, index) => (
         <SlideImage
           key={index}

@@ -42,7 +42,7 @@ const TrackOrder: React.FC = () => {
     <div className='page-container'>
 
       <div className='cover-container'>
-        <img src='/assets/trackOrderCover.jpg' alt='shoes-cover-image' className='cover-image' />
+        <img src='/assets/trackOrderCover.jpeg' alt='shoes-cover-image' className='cover-image' />
         {/* <div className="cover-overlay">
           <h1 className="overlay-text">Track Your Order</h1>
           <p className="overlay-subtext">with</p>
