@@ -11,6 +11,8 @@ export interface Shoe {
   isATopPick: boolean;
   model: AdidasTypes | NewBalanceTypes | NikeTypes | null;
   sizeUrl: string;
+  minimumSize: number,
+  maximumSize: number
 }
 
 export interface Order {

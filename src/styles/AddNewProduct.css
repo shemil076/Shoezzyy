@@ -108,6 +108,12 @@ form textarea:invalid {
   background: #333;
 }
 
+.size-input-fields{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (min-width: 600px) {
   .modal-button {
     width: auto;

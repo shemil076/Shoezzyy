@@ -10,7 +10,6 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
 
-  console.log("shoe image in pronduct ",shoe.images[0])
 
   return (
     <div className="product-card" onClick={() => onCardClick(shoe)}>
@@ -34,6 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
             </div>
           )
         }
+        <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>
         <div className='product-card-payment-container'>
           <p className='payment-with-topic'>We accept,</p>
           <div className='payment-methods'>

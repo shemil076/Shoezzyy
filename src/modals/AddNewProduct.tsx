@@ -22,10 +22,12 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
     const [shoeModel, setShoeModel] = useState('');
     const [sizeUrl, setSizeUrl] = useState('');
     const [isSubmitting,setIsSubmitting] = useState(false);
+    const [minSize, setMinSize] = useState('');
+    const [maxSize, setMaxSize] = useState('');
 
     useEffect(() => {
-        setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0);
-    }, [shoeName, shoeBrand, shoePrice, shoeDescription, images, shoeModel]);
+        setIsFormValid(shoeName !== '' && shoeBrand !== '' && shoePrice !== '' && shoeDescription !== '' && images.length > 0 && maxSize != '' && minSize != '');
+    }, [shoeName, shoeBrand, shoePrice, shoeDescription, images, shoeModel,minSize,maxSize]);
     
 
     const handleSave = async () => {
@@ -41,6 +43,9 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         formData.append('offerPrice', offerPrice);
         formData.append('model', shoeModel);
         formData.append('sizeUrl', sizeUrl);
+        formData.append('minSize', minSize);
+        formData.append('maxSize', maxSize);
+        
     
         images.forEach((image, index) => {
             formData.append('images', image); // Append each image file
@@ -91,6 +96,8 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
         setShoeDescription('');
         setImages([]);
         setImageURLs([]);
+        setMaxSize('');
+        setMinSize('');
     };
 
     const getShoeTypeOptions = () => {
@@ -205,6 +212,30 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         placeholder='Enter the link to the sizes'
                     />
                 </label>
+
+                <div className='size-input-fields'>
+                <label>
+                    Minimum Size:
+                    <input
+                        type="number"
+                        value={minSize}
+                        onChange={(e) => setMinSize(e.target.value)}
+                        style={getInputStyle(minSize)}
+                        placeholder='Enter the minimum sizes'
+                    />
+                </label>
+                <label>
+                    Maximum Size :
+                    <input
+                        type="number"
+                        value={maxSize}
+                        onChange={(e) => setMaxSize(e.target.value)}
+                        style={getInputStyle(maxSize)}
+                        placeholder='Enter the maximum sizes'
+                    />
+                </label>
+                </div>
+                
                 <label>
                     Upload Images:
                     <input
@@ -222,11 +253,11 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                     </div>
                 )}
                 <div className="button-group">
+                <Button onClick={handleOnClose} className='modal-button'>
+                        Cancel
+                    </Button>
                     <Button onClick={handleSave} isDisabled={!isFormValid || isSubmitting} className='modal-button'>
                         {isSubmitting ? 'Saving...' : 'Save'}
-                    </Button>
-                    <Button onClick={handleOnClose} className='modal-button'>
-                        Cancel
                     </Button>
                 </div>
             </form>

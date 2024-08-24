@@ -13,6 +13,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
+import UpdatePrice from './UpdatePrice';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -26,6 +27,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [toggleState, setToggleState] = useState<boolean>(false);
   const [isToggleUpdated, setIsToggleUpdated] = useState<boolean>(false);
+  const [isOpenPriceUpdate, setIsOpenPriceUpdate] = useState<boolean>(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setToggleState(event.target.value === 'true'); // Update the toggle state
@@ -33,6 +35,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const openConfirmation = () => setIsConfirmationOpen(true);
   const closeConfirmation = () => setIsConfirmationOpen(false);
+
+  const openPriceUpdate = () => setIsOpenPriceUpdate(true);
+  const closePriceUpdate = () => setIsOpenPriceUpdate(false);
 
 
   const adminToken = useSelector(seletAdminToken);
@@ -134,6 +139,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
                 </div>
               )
             }
+            {adminToken ? <Button onClick={openPriceUpdate} className='regular-black-button'>
+          Update Price
+        </Button>: null}
+        <UpdatePrice shoe={shoe} isOpen={isOpenPriceUpdate} onClose={closePriceUpdate}/>
             <div className='instructions-container'>
               <p className='instructions'>How to place the order? &nbsp;
               <a href='https://drive.google.com/file/d/1XXNr-157HdS9gm19Y82J-BYu6jO08eRS/view?usp=drive_link' target='blank' style={{ textDecoration: 'none' }}>&#9432;</a>
