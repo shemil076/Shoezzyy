@@ -31,6 +31,7 @@ const SlideshowContainer = styled.div<SlideshowContainerProps>`
 
 interface SlideImageProps {
   'data-is-visible': boolean;
+  objectFit: string; 
 }
 
 const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVisible }) => ({
@@ -38,7 +39,7 @@ const SlideImage = styled.img.attrs<SlideImageProps>(({ 'data-is-visible': isVis
 })) <SlideImageProps>`
   width: 100%;
   height: 100%;
-  object-fit: fill; /* Ensure the image covers the container while maintaining aspect ratio */
+  object-fit: ${(props) => props.objectFit}; /* Ensure the image covers the container while maintaining aspect ratio */
   position: absolute;
 
   opacity: ${(props) => (props['data-is-visible'] ? 1 : 0)};
@@ -51,11 +52,13 @@ interface SlideshowProps {
   height?: string; 
   justifyContent?: string;
   transmitionTime?: number;
+  objectFit?: string;
+  
   
   
 }
 
-const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justifyContent = "center", transmitionTime= 2000 }) => {
+const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justifyContent = "center", transmitionTime= 2000, objectFit="contain" }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -75,6 +78,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images, height = '400px', justify
           alt={`Slide ${index}`}
           data-is-visible={index === currentImageIndex}
           className={index === currentImageIndex ? 'slide-image visible' : 'slide-image'}
+          objectFit={objectFit}
         />
       ))}
     </SlideshowContainer>

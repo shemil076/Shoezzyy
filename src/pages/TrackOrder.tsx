@@ -64,7 +64,7 @@ const TrackOrder: React.FC = () => {
         <button onClick={handleTrackOrder} className="regular-black-button">Track</button>
         {currentOrder?.status ?
           <>
-            <h1>Order Id: {currentOrder.jobId}</h1>
+            <h1>Order ID: {currentOrder.jobId}</h1>
             <ProgressBar currentStatus={currentOrder?.status} />
           </>
           : null}

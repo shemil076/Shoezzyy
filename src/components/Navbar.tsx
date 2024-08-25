@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-header">
         <Link to="/">
-          <img src="/assets/black-logo.png" alt="logo" className="logo" />
+          <img src="/assets/black-logo.PNG" alt="logo" className="logo" />
         </Link>
         <div className="burger-menu" onClick={toggleMenu}>
           <div className={`bar ${isMenuOpen ? 'change' : ''}`}></div>
@@ -61,10 +61,22 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
-        <Link to="/" className="navbar-link" onClick={closeMenu}>Home</Link>
-        <Link to="/product-page" className="navbar-link" onClick={closeMenu}>Products</Link>
-        <Link to="/track-order" className="navbar-link" onClick={closeMenu}>Track Order</Link>
-        <a href="https://drive.google.com/file/d/1Jfc096_gil8biMO2kJmXsb5LPz8cllI7/view" target="_blank" rel="noopener noreferrer" className="navbar-link">Return Policy</a>
+        <Link to="/" className="navbar-link" onClick={closeMenu}>
+          Home
+          {isMenuOpen ? <hr className='nav-bar-section-devider'/> :null}
+        </Link>
+        <Link to="/product-page" className="navbar-link" onClick={closeMenu}>
+          Products
+          {isMenuOpen ? <hr className='nav-bar-section-devider'/> :null}
+        </Link>
+        <Link to="/track-order" className="navbar-link" onClick={closeMenu}>
+          Track Order
+          {isMenuOpen ? <hr className='nav-bar-section-devider' /> :null}
+        </Link>
+        <a href="https://drive.google.com/file/d/1Jfc096_gil8biMO2kJmXsb5LPz8cllI7/view" target="_blank" rel="noopener noreferrer" className="navbar-link">
+        Return Policy
+        {isMenuOpen ? <hr className='nav-bar-section-devider' /> :null}
+        </a>
 
         {!adminToken ? (
           <>

@@ -33,7 +33,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
       onClose={onClose}
       overlayClassName="modal-overlay-custom"
       contentClassName="modal-content-custom">
-      <h2>Admin Sign-In</h2>
+      <h2>Sign-In</h2>
       {error && <p>{error}</p>}
       {authError && <p>{authError}</p>}
       <form onSubmit={handleSubmit}>

@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
 import UpdatePrice from './UpdatePrice';
+import UpdateSize from './UpdateSize';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -28,6 +29,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const [toggleState, setToggleState] = useState<boolean>(false);
   const [isToggleUpdated, setIsToggleUpdated] = useState<boolean>(false);
   const [isOpenPriceUpdate, setIsOpenPriceUpdate] = useState<boolean>(false);
+  const [isOpenSizeUpdate, setIsOpenSizeUpdate] = useState<boolean>(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setToggleState(event.target.value === 'true'); // Update the toggle state
@@ -38,6 +40,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const openPriceUpdate = () => setIsOpenPriceUpdate(true);
   const closePriceUpdate = () => setIsOpenPriceUpdate(false);
+
+  const openSizeUpdate = () => setIsOpenSizeUpdate(true);
+  const closeSizeUpdate = () => setIsOpenSizeUpdate(false);
 
 
   const adminToken = useSelector(seletAdminToken);
@@ -128,6 +133,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             </div>
             <h1>{shoe.name}</h1>
             <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>
+            {adminToken ? <Button onClick={openSizeUpdate} className='regular-black-button'>
+          Update Size
+        </Button>: null}
+        <UpdateSize shoe={shoe} isOpen={isOpenSizeUpdate} onClose={closeSizeUpdate}/>
             {
               shoe.offerPrice ? (
                 <div className="product-price">

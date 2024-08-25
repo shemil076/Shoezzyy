@@ -105,8 +105,13 @@
 
   .navbar-link {
     margin: 5px;
+    text-align: center;
   }
 
+  .nav-bar-section-devider{
+    width: 12rem;
+    margin-top: 3rem;
+  }
 
   .navbar-links.active {
     display: flex;
@@ -116,7 +121,7 @@
   }
 
   .burger-menu {
-    display: flex;
+    display: flex; 
   }
 
   .admin-button-container {
