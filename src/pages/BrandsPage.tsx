@@ -45,7 +45,7 @@ const BrandPage: React.FC = () => {
     if (shoes.length === 0 || !lastFetched) {
       dispatch(fetchAllShoes());
     }
-  }, [dispatch, shoes.length]);
+  }, [dispatch, shoes.length,lastFetched]);
 
 
   if (!brandName) {
@@ -56,6 +56,9 @@ const BrandPage: React.FC = () => {
   const filteredShoes = getShoesByBrand(shoes, brandName);
 
   const displayShoesDynamically = () => {
+    if (!Array.isArray(filteredShoes) || filteredShoes.length === 0) {
+      return <p>No shoes available</p>;
+    }
     switch (brandName) {
       case Brand.ALLSTARCONVERSE:
       case Brand.VANSOLDSKOOL:
@@ -77,8 +80,8 @@ const BrandPage: React.FC = () => {
         const categoriesWithShoes = categorizeShoesByModel(filteredShoes);
         return Object.keys(categoriesWithShoes).map((category,index) => {
           return (
-            <>
-              <SectionDevider title={getReadableModelName(brandName, category)} subtitle={''} key={index} />
+            <React.Fragment key={category}>
+              <SectionDevider title={getReadableModelName(brandName, category)} subtitle={''}  />
               <Carousel responsive={responsive}>
                 {categoriesWithShoes[category].map((shoe) => (
                   shoe ? (
@@ -86,7 +89,7 @@ const BrandPage: React.FC = () => {
                   ) : null
                 ))}
               </Carousel>
-            </>
+            </React.Fragment>
           );
         });
 

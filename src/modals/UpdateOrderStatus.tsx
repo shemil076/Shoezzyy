@@ -72,6 +72,10 @@ const UpdateOrderStatusModal: React.FC<CreateOrderProps> = ({ isOpen, onClose })
     }, [jobId]);
 
     const jobIdOptions = () => {
+
+        if(!Array.isArray(orders) || orders.length === 0){
+            return <option value=''>No id to select</option>
+        }
         return orders.map((order, index) => {
             return (
                 <option key={index} value={order.jobId}>{order.jobId}</option>
