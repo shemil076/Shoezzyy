@@ -86,3 +86,19 @@
   }
 
 }
+
+@media (max-width: 480px) {
+  .payment-methods{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4.5rem;
+    margin-top: -1rem;
+    padding-top: 0;
+    align-items: flex-start;
+  }
+
+  .koko-image{
+    margin-top: -1rem;
+    margin-left: 0;
+  }
+}

@@ -12,7 +12,9 @@ export interface Shoe {
   model: AdidasTypes | NewBalanceTypes | NikeTypes | null;
   sizeUrl: string;
   minimumSize: number,
-  maximumSize: number
+  maximumSize: number,
+  isInstantDelivery : boolean,
+  availableSize: number | null,
 }
 
 export interface Order {

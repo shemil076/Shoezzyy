@@ -54,6 +54,10 @@ export const getOnlyTopPicks = (shoes: Shoe[]): Shoe[] => {
   return filteredShoes.length > 0 ? filteredShoes : [];
 }
 
+export const getInstantDeliveries = (shoes : Shoe[]) : Shoe[] =>{
+  const filteredShoes = shoes.filter((shoe) => (shoe.isInstantDelivery));
+  return filteredShoes.length > 0 ? filteredShoes : [];
+}
 export const normalizeBrand = (brand: string | undefined): Brand | undefined => {
   if (!brand) return undefined;
   switch (brand.toLowerCase()) {
@@ -82,4 +86,13 @@ export const getReadableModelName = (brand: Brand, model: string): string => {
       .replace(/^./, str => str.toUpperCase());
   }
   return readableModel;
+}
+
+export const shuffleArray = <T>(array: T[]): T[] => {
+  const shuffledArray = [...array]; 
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
 }

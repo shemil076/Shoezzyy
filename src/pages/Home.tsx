@@ -14,7 +14,7 @@ import Features from '../components/Features';
 import SectionDevider from '../components/SectionDevider';
 import Carousel from 'react-multi-carousel';
 import { responsive } from '../utils/constants';
-import { getOnlyTopPicks } from '../utils/helperFunctions';
+import { getInstantDeliveries, getOnlyTopPicks } from '../utils/helperFunctions';
 import BrandsButtonPanel from '../components/BrandsButtonPanel';
 import Maintenance from '../components/Maintenance';
 import Slideshow from '../components/Slideshow';
@@ -43,19 +43,22 @@ const Home: React.FC = () => {
     setSelectedShoe(null);
   };
 
-  const displayOnlyTopPicks = () => {
+  const displayConditionalShoes = (isDisplayInstantDeliveries : boolean) => {
     if (loading) return <p>Loading...</p>;
 
-    const filteredShoes = getOnlyTopPicks(shoes);
+    let filteredShoes : Shoe[];
 
-    if (!filteredShoes) return null;
+    isDisplayInstantDeliveries ? filteredShoes = getInstantDeliveries(shoes):filteredShoes = getOnlyTopPicks(shoes);
+
+    console.log(filteredShoes)
+    
+    if (!filteredShoes || filteredShoes.length <= 0) return <p>No shoes available</p>;
+    console.log("after");
     return (
       <div className="new-arrival-list">
         <Carousel responsive={responsive}>
           {filteredShoes.map((shoe) => (
-            shoe.isATopPick ? (
-              <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
-            ) : null
+            <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
           ))}
         </Carousel>
       </div>
@@ -64,7 +67,9 @@ const Home: React.FC = () => {
 
   const displayNewArrivals = () => {
     if (loading) return <p>Loading...</p>;
-    const newArrivalList = shoes.slice(0, 4);
+    const newArrivalList = shoes.filter((shoe) => (shoe.isInstantDelivery === false)).slice(0, 4);
+    
+    if (!newArrivalList || newArrivalList.length <= 0) return <p>No shoes available</p>;
     return (
       <div className="new-arrival-list">
         <Carousel responsive={responsive}>
@@ -109,11 +114,18 @@ const Home: React.FC = () => {
 
       <BrandsButtonPanel />
 
-      <SectionDevider title={"Top Picks"} subtitle={"Handpicked Favorites Just for You."} />
+      <SectionDevider title={"Best Sellers"} subtitle={"Most selling items at the moment"} />
+      {/* The below line is not required but don't remove */}
+      {shoes.length === 0 ? <p style={{ "textAlign": "center" }}>No products to show...</p> : null}  
+      {displayConditionalShoes(false)}
+
+      <SectionDevider title={" Instant Delivery "} subtitle={"Products available in sri lanka"} />
+       {/* The below line is not required but don't remove */}
       {shoes.length === 0 ? <p style={{ "textAlign": "center" }}>No products to show...</p> : null}
-      {displayOnlyTopPicks()}
+      {displayConditionalShoes(true)}
 
       <SectionDevider title={"New Arrivals"} subtitle={'Step into the Latest Trends'} />
+       {/* The below line is not required but don't remove */}
       {shoes.length === 0 ? <p style={{ "textAlign": "center" }}>No products to show...</p> : null}
       {displayNewArrivals()}
 

@@ -15,6 +15,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { getReadableBrandName, getReadableModelName } from '../utils/helperFunctions';
 import UpdatePrice from './UpdatePrice';
 import UpdateSize from './UpdateSize';
+import UpdateShoeStringData from './UpdateShoeStringData';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -30,6 +31,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const [isToggleUpdated, setIsToggleUpdated] = useState<boolean>(false);
   const [isOpenPriceUpdate, setIsOpenPriceUpdate] = useState<boolean>(false);
   const [isOpenSizeUpdate, setIsOpenSizeUpdate] = useState<boolean>(false);
+  const [isOpenNameUpdate, SetIsOpenNameUpdate] = useState<boolean>(false);
+  const [isOpenDescriptionUpdate, SetIsOpenDescriptionUpdate] = useState<boolean>(false);
+  const [isInstantDeliveryUpdated, setIsInstantDeliveryUpdated] = useState<boolean>(false);
+  const [isInstantDelivery, setIsInstantDelivery] = useState<boolean>(shoe.isInstantDelivery);
+  const [availableSize, setAvailableSize] = useState('');
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setToggleState(event.target.value === 'true'); // Update the toggle state
@@ -43,6 +49,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const openSizeUpdate = () => setIsOpenSizeUpdate(true);
   const closeSizeUpdate = () => setIsOpenSizeUpdate(false);
+
+  const openNameUpdate = () => SetIsOpenNameUpdate(true);
+  const closeNameUpdate = () => SetIsOpenNameUpdate(false);
+
+  const openDescriptionUpdate = () => SetIsOpenDescriptionUpdate(true);
+  const closeDescriptionUpdate = () => SetIsOpenDescriptionUpdate(false);
 
 
   const adminToken = useSelector(seletAdminToken);
@@ -132,11 +144,15 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
               }
             </div>
             <h1>{shoe.name}</h1>
-            <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>
-            {adminToken ? <Button onClick={openSizeUpdate} className='regular-black-button'>
+            {adminToken && <Button onClick={openNameUpdate} className='regular-black-button'>
+          Update Name
+        </Button>}
+        
+        {shoe.isInstantDelivery ? <p>Available size: {shoe.availableSize}</p> : <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>}
+            {adminToken && !shoe.isInstantDelivery ? <Button onClick={openSizeUpdate} className='regular-black-button'>
           Update Size
         </Button>: null}
-        <UpdateSize shoe={shoe} isOpen={isOpenSizeUpdate} onClose={closeSizeUpdate}/>
+        
             {
               shoe.offerPrice ? (
                 <div className="product-price">
@@ -153,7 +169,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
           Update Price
         </Button>: null}
         
-        <UpdatePrice shoe={shoe} isOpen={isOpenPriceUpdate} onClose={closePriceUpdate}/>
+       
             <div className='instructions-container'>
               <p className='instructions'>How to place the order? &nbsp;
               <a href='https://drive.google.com/file/d/1XXNr-157HdS9gm19Y82J-BYu6jO08eRS/view?usp=drive_link' target='blank' style={{ textDecoration: 'none' }}>&#9432;</a>
@@ -166,6 +182,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
             </div>
             <div className='product-detail-description'>
               <p>{shoe.description}</p>
+              {adminToken && <Button onClick={openDescriptionUpdate} className='regular-black-button'>
+          Update Description
+        </Button>}
             </div>
             <p>Size chart &nbsp;
               <a href={shoe.sizeUrl} target='blank' style={{ textDecoration: 'none' }}>&#9432;</a>
@@ -194,8 +213,14 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
         {isToggleUpdated ? <Button onClick={handleSave} className='regular-black-button'>
           Save
         </Button> : null}
-        <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation} />
+        
       </div>
+
+      <UpdateShoeStringData isOpen={isOpenNameUpdate} onClose={closeNameUpdate} shoe={shoe} isNameToChange={true}/>
+      <UpdateShoeStringData isOpen={isOpenDescriptionUpdate} onClose={closeDescriptionUpdate} shoe={shoe}/>
+      <UpdateSize shoe={shoe} isOpen={isOpenSizeUpdate} onClose={closeSizeUpdate}/>
+      <UpdatePrice shoe={shoe} isOpen={isOpenPriceUpdate} onClose={closePriceUpdate}/>
+      <ConfirmationModal onClick={handleDelete} isOpen={isConfirmationOpen} onClose={closeConfirmation} />
     </Modal>
   );
 };

@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ shoe, onCardClick }) => {
             </div>
           )
         }
-        <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>
+        {shoe.isInstantDelivery ? <p>Available size: {shoe.availableSize}</p> : <p>Available sizes: {shoe.minimumSize} - {shoe.maximumSize}</p>}
         <div className='product-card-payment-container'>
           <p className='payment-with-topic'>We accept,</p>
           <div className='payment-methods'>
