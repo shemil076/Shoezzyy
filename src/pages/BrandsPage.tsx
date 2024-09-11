@@ -17,7 +17,7 @@ const brandCoverImages: Record<Brand, string> = {
   [Brand.ALLSTARCONVERSE]: '/assets/c.png',
   [Brand.NEWBALANCE]: '/assets/newBalance.png',
   [Brand.NIKE]: '/assets/NIKEE.png',
-  [Brand.VANSOLDSKOOL]: '/assets/vans.png',
+  [Brand.VANS]: '/assets/vans.png',
   [Brand.OTHER]: '/assets/homeCover1.png'
 };
 
@@ -53,7 +53,7 @@ const BrandPage: React.FC = () => {
     return <p>Invalid brand</p>;
   }
 
-  const filteredShoes = getShoesByBrand(shoes, brandName);
+  const filteredShoes = getShoesByBrand(shoes, brandName).filter((shoe)=> !shoe.isInstantDelivery);
 
   const displayShoesDynamically = () => {
     if (!Array.isArray(filteredShoes) || filteredShoes.length === 0) {
@@ -61,8 +61,7 @@ const BrandPage: React.FC = () => {
     }
     switch (brandName) {
       case Brand.ALLSTARCONVERSE:
-      case Brand.VANSOLDSKOOL:
-      case Brand.OTHER:
+      
         return (
           <div className="new-arrival-list">
             <Carousel responsive={responsive}>
@@ -77,6 +76,8 @@ const BrandPage: React.FC = () => {
       case Brand.ADIDAS:
       case Brand.NEWBALANCE:
       case Brand.NIKE:
+      case Brand.VANS:
+      case Brand.OTHER:
         const categoriesWithShoes = categorizeShoesByModel(filteredShoes);
         return Object.keys(categoriesWithShoes).map((category,index) => {
           return (

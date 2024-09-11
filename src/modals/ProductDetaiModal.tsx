@@ -16,6 +16,7 @@ import { getReadableBrandName, getReadableModelName } from '../utils/helperFunct
 import UpdatePrice from './UpdatePrice';
 import UpdateSize from './UpdateSize';
 import UpdateShoeStringData from './UpdateShoeStringData';
+import UpdateImages from './UpdateImages';
 
 interface ProductDetailModalProps {
   isOpen: boolean;
@@ -33,9 +34,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
   const [isOpenSizeUpdate, setIsOpenSizeUpdate] = useState<boolean>(false);
   const [isOpenNameUpdate, SetIsOpenNameUpdate] = useState<boolean>(false);
   const [isOpenDescriptionUpdate, SetIsOpenDescriptionUpdate] = useState<boolean>(false);
-  const [isInstantDeliveryUpdated, setIsInstantDeliveryUpdated] = useState<boolean>(false);
-  const [isInstantDelivery, setIsInstantDelivery] = useState<boolean>(shoe.isInstantDelivery);
-  const [availableSize, setAvailableSize] = useState('');
+  const [isOpenImageUpdate, SetIsOpenImageUpdate] = useState<boolean>(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setToggleState(event.target.value === 'true'); // Update the toggle state
@@ -55,6 +54,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
   const openDescriptionUpdate = () => SetIsOpenDescriptionUpdate(true);
   const closeDescriptionUpdate = () => SetIsOpenDescriptionUpdate(false);
+
+  const openImageUpdate = () => SetIsOpenImageUpdate(true);
+  const closeImageUpdate = () => SetIsOpenImageUpdate(false);
 
 
   const adminToken = useSelector(seletAdminToken);
@@ -193,6 +195,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
           </div>
         </div>
 
+        {adminToken && <Button onClick={openImageUpdate} className='regular-black-button'>
+          Update Images
+        </Button>}
+
         {adminToken ? <div className='top-pick-section'>
           <p >Is a Top Pick: </p>
           <RadioGroup
@@ -216,6 +222,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
         
       </div>
 
+      <UpdateImages isOpen={isOpenImageUpdate} onClose={closeImageUpdate} shoe={shoe}/>
       <UpdateShoeStringData isOpen={isOpenNameUpdate} onClose={closeNameUpdate} shoe={shoe} isNameToChange={true}/>
       <UpdateShoeStringData isOpen={isOpenDescriptionUpdate} onClose={closeDescriptionUpdate} shoe={shoe}/>
       <UpdateSize shoe={shoe} isOpen={isOpenSizeUpdate} onClose={closeSizeUpdate}/>

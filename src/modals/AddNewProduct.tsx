@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
 import '../styles/AddNewProduct.css';
-import { AdidasTypes, Brand, NewBalanceTypes, NikeTypes } from '../types/enum';
+import { AdidasTypes, Brand, NewBalanceTypes, NikeTypes, OtherTypes, VansTypes } from '../types/enum';
 import Button from '../components/Button';
 import { getReadableModelName } from '../utils/helperFunctions';
 
@@ -126,6 +126,14 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                 return Object.values(NikeTypes).map(type => (
                     <option key={type} value={type}>{getReadableModelName(Brand.NIKE, type)}</option>
                 ));
+                case Brand.OTHER:
+                return Object.values(OtherTypes).map(type => (
+                    <option key={type} value={type}>{getReadableModelName(Brand.OTHER, type)}</option>
+                ));
+                case Brand.VANS:
+                return Object.values(VansTypes).map(type => (
+                    <option key={type} value={type}>{getReadableModelName(Brand.VANS, type)}</option>
+                ));
             default:
                 return null;
         }
@@ -156,11 +164,11 @@ const AddNewProductModal: React.FC<AddNewProductModalProps> = ({ isOpen, onClose
                         <option value={Brand.ALLSTARCONVERSE}>All Star Converse</option>
                         <option value={Brand.NEWBALANCE}>New Balance</option>
                         <option value={Brand.NIKE}>Nike</option>
-                        <option value={Brand.VANSOLDSKOOL}>Vans Old Skool</option>
+                        <option value={Brand.VANS}>Vans</option>
                         <option value={Brand.OTHER}>Other</option>
                     </select>
                 </div>
-                {shoeBrand === Brand.ADIDAS || shoeBrand === Brand.NEWBALANCE || shoeBrand === Brand.NIKE ? (
+                {shoeBrand === Brand.ADIDAS || shoeBrand === Brand.NEWBALANCE || shoeBrand === Brand.NIKE || shoeBrand === Brand.OTHER || shoeBrand === Brand.VANS? (
                     <div>
                         <label>
                             Shoe Model:

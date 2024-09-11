@@ -6,7 +6,7 @@ const brandNames: Record<Brand, string> = {
   [Brand.ALLSTARCONVERSE]: 'All Star Converse',
   [Brand.NEWBALANCE]: 'New Balance',
   [Brand.NIKE]: 'Nike',
-  [Brand.VANSOLDSKOOL]: 'Vans Old Skool',
+  [Brand.VANS]: 'Vans',
   [Brand.OTHER] : 'Other'
 };
 
@@ -69,8 +69,8 @@ export const normalizeBrand = (brand: string | undefined): Brand | undefined => 
       return Brand.NEWBALANCE;
     case 'nike':
       return Brand.NIKE;
-    case 'vansoldskool':
-      return Brand.VANSOLDSKOOL;
+    case 'vans':
+      return Brand.VANS;
     case 'other':
       return Brand.OTHER;
     default:
@@ -80,9 +80,9 @@ export const normalizeBrand = (brand: string | undefined): Brand | undefined => 
 
 export const getReadableModelName = (brand: Brand, model: string): string => {
   let readableModel: string = model;
-  if (brand === Brand.ADIDAS || brand === Brand.NIKE) {
+  if (brand === Brand.ADIDAS || brand === Brand.NIKE || brand === Brand.OTHER) {
     readableModel = model.replace(/([a-z])([A-Z])/g, '$1 $2')
-      .replace(/(\d+)/g, ' $1')
+      .replace(/(\d+)/g, ' $1 ')
       .replace(/^./, str => str.toUpperCase());
   }
   return readableModel;

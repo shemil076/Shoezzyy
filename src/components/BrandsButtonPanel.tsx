@@ -31,10 +31,10 @@ const BrandsButtonPanel: React.FC = () => {
                 Nike
                 </>
             </Button>
-            <Button className="button-panel-item" onClick={() => navigate('/brand/VANSOLDSKOOL')}>
+            <Button className="button-panel-item" onClick={() => navigate('/brand/VANS')}>
                 <>
-                <img src="/assets/vansLogo.png" alt="Vans Old Skool Logo" />
-                Vans Old Skool
+                <img src="/assets/vansLogo.png" alt="Vans" />
+                Vans
                 </>
             </Button>
             <Button className="button-panel-item" onClick={() => navigate('/brand/OTHER')}>
