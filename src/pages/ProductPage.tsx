@@ -45,7 +45,7 @@ const ProductPage: React.FC = () => {
     return(
       <div className="product-grid">
         {shuffledShoes.filter((shoes) => !shoes.isInstantDelivery).map((shoe, index)=>(
-          <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} />
+          <ProductCard key={shoe._id} shoe={shoe} onCardClick={openProductDetailModal} isFromProductPage={true} />
         ))}
       </div>
     );

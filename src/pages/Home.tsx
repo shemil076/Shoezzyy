@@ -97,7 +97,7 @@ const Home: React.FC = () => {
       <div className="cover-container">
         {/* <img src="/assets/homeCover.png" alt="cover" className="cover-image" /> */}
 
-        <Slideshow images={['/assets/homeCover0.png','/assets/homeCover2.png','/assets/homeCover3.jpg']} height='100vh' transmitionTime={5000} objectFit="fill"/>
+        <Slideshow images={['/assets/homeCover0.jpg','/assets/homeCover2.jpg','/assets/homeCover3.jpg']} height='100vh' transmitionTime={5000} objectFit="fill"/>
         {/* <div className="cover-overlay">
           <h1 className="overlay-text">Featured Products</h1>
           <p className="overlay-subtext">Discover the Latest Arrivals with</p>
